@@ -124143,9 +124143,9 @@ g=J.j(k,"version")
 e=g==null?null:J.m(g)
 i=e==null?"":e
 o.c=j
-if(J.aq(j)!==0&&!J.d(j,"2026.03.04.1517"))if(!o.b){o.b=!0
+if(J.aq(j)!==0&&!J.d(j,"2026.03.05.0623"))if(!o.b){o.b=!0
 o.e.F(0,!0)
-A.bx().$1("\ud83d\udd04 [VersionService] Update available: 2026.03.04.1517 \u2192 "+A.l(j))}}q=1
+A.bx().$1("\ud83d\udd04 [VersionService] Update available: 2026.03.05.0623 \u2192 "+A.l(j))}}q=1
 s=5
 break
 case 3:q=2
