@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block nothing public; all marketing pages are indexable.
+
+Sitemap: https://renoresearch.sg/sitemap.xml
