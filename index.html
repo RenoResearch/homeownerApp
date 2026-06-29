@@ -34,6 +34,23 @@
   gtag('js', new Date());
   gtag('config', 'G-PWKB2Y6H6F');
 </script>
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1099636691181980');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1099636691181980&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,6 +111,7 @@ body{
   margin:0;background:var(--cream-soft);color:var(--ink);
   font-family:"Plus Jakarta Sans",system-ui,sans-serif;
   font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0}
 p{margin:0}
@@ -183,7 +201,7 @@ img{max-width:100%;display:block}
 .hero-visual .f .sub{font-size:.68rem;color:var(--muted);margin-top:1px}
 .hero-visual .f.google{top:6px;left:-6px;animation:floaty 5s ease-in-out infinite}
 .hero-visual .f.google .gmark2{width:26px;height:26px;flex:none}
-.hero-visual .f.joined{bottom:14px;left:-2px;animation:floaty 6.4s ease-in-out infinite}
+.hero-visual .f.joined{bottom:-24px;left:-8px;animation:floaty 6.4s ease-in-out infinite}
 .hero-visual .f .avs{display:flex}
 .hero-visual .f .avs span{width:28px;height:28px;border-radius:50%;border:2px solid #fff;margin-left:-9px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.7rem}
 .hero-visual .f .avs span:first-child{margin-left:0}
@@ -283,6 +301,7 @@ section{padding:4.8rem 0}
 .video-shell{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);
   box-shadow:var(--shadow);aspect-ratio:16/9;
   background:linear-gradient(135deg,#2A2A40,#1B1B2E);display:grid;place-items:center;margin-top:2.2rem}
+@media(min-width:981px){.video-shell{max-width:52rem;margin-left:auto;margin-right:auto}}
 .video-shell::before{content:"";position:absolute;inset:0;opacity:.5;
   background:radial-gradient(600px 300px at 30% 20%,rgba(232,164,30,.22),transparent 60%)}
 .play{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1rem;color:#fff;cursor:pointer}
@@ -297,11 +316,16 @@ section{padding:4.8rem 0}
 .vlabel{position:absolute;left:18px;bottom:16px;z-index:2;background:rgba(0,0,0,.4);color:#fff;
   font-size:.74rem;font-weight:600;padding:.35rem .7rem;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,164,30,.45)}70%{box-shadow:0 0 0 22px rgba(232,164,30,0)}100%{box-shadow:0 0 0 0 rgba(232,164,30,0)}}
+.video-el{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#1B1B2E;border-radius:inherit;display:block}
+.video-cover{position:absolute;inset:0;z-index:3;width:100%;height:100%;border:none;background:transparent;
+  cursor:pointer;display:grid;place-items:center;padding:0;font:inherit}
+.video-shell.playing .video-cover{display:none}
+.video-shell.playing::before{opacity:0}
 
 /* ---------- LEAD FORM ---------- */
 .form-band{background:var(--cream-soft)}
 /* keep anchored sections clear of the 74px sticky app bar */
-#lead,#how,#video,#reviews,#designers{scroll-margin-top:90px}
+#lead,#leadForm,#how,#video,#reviews,#designers{scroll-margin-top:90px}
 .form-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.6rem;align-items:start}
 .form-aside .badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;font-weight:600;font-size:.78rem;padding:.4rem .8rem;border-radius:999px}
 .form-aside h2{font-size:clamp(1.8rem,3vw,2.5rem);margin-top:1.1rem}
@@ -432,14 +456,20 @@ section{padding:4.8rem 0}
 /* ---------- TRUSTED IDs ---------- */
 .id-band{background:var(--cream)}
 .id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.4rem}
-.id-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.id-card{display:block;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
 .id-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .id-card .cover{height:150px;position:relative;background:linear-gradient(135deg,#33334d,#22223a)}
+.id-card .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.id-card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))}
+.id-card .pfp img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff}
+.id-card .certs{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.55rem}
+.id-card .certs span{display:inline-flex;align-items:center;gap:.25rem;background:rgba(46,125,107,.1);color:#1f6b58;font-size:.68rem;font-weight:700;padding:.22rem .5rem;border-radius:999px}
+.id-card .certs span svg{flex:none}
 .id-card .cover.v1{background:linear-gradient(135deg,#3a3550,#23202f)}
 .id-card .cover.v2{background:linear-gradient(135deg,#2e3a44,#1f2a33)}
 .id-card .cover.v3{background:linear-gradient(135deg,#3f3324,#2a2014)}
 .id-card .cover .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.35);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.id-card .cover .verified{position:absolute;top:12px;right:12px;background:var(--ink);color:#fff;font-size:.66rem;font-weight:700;padding:.3rem .6rem;border-radius:999px;display:flex;align-items:center;gap:.3rem;border:1px solid rgba(255,255,255,.12)}
+.id-card .cover .verified{position:absolute;z-index:2;top:12px;right:12px;background:var(--ink);color:#fff;font-size:.66rem;font-weight:700;padding:.3rem .6rem;border-radius:999px;display:flex;align-items:center;gap:.3rem;border:1px solid rgba(255,255,255,.12)}
 .id-card .body{padding:1.1rem 1.2rem 1.3rem;position:relative}
 .id-card .pfp{width:62px;height:62px;border-radius:50%;border:4px solid #fff;position:absolute;top:-46px;left:1.2rem;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.2rem;box-shadow:var(--shadow-sm)}
 .id-card .body h3{font-size:1.15rem;margin-top:1rem}
@@ -469,6 +499,7 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:980px){
   .nav{display:none}.menu-btn{display:block}
+  .appbar .inner{gap:.8rem}
   .hero .inner{grid-template-columns:1fr;gap:2.4rem}
   .diff-top{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr 1fr}
@@ -476,17 +507,31 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
   .reviews{grid-template-columns:1fr 1fr}
   .id-grid{grid-template-columns:1fr 1fr}
   .statstrip{grid-template-columns:1fr 1fr}
-  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:1.6rem 2rem}
+  .foot-brand{grid-column:1 / -1}
 }
 @media(max-width:620px){
+  section{padding:3.2rem 0}
+  .appbar .inner{gap:.6rem}
+  .brand .name b{font-size:1.06rem}
+  /* keep CTA on mobile but compact so it doesn't overflow the bar */
+  .appbar-cta{padding:.46rem .8rem!important;font-size:.82rem}
   .pillars{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .reviews,.id-grid{grid-template-columns:1fr}
   .row2,.minmax{grid-template-columns:1fr}
   .statstrip{grid-template-columns:1fr 1fr}
-  .foot-grid{grid-template-columns:1fr}
+  /* keep footer at two columns on phones */
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-bottom{flex-direction:column;align-items:flex-start}
   .trust-row .sep{display:none}
   .step .arrow{display:none}
+}
+@media(max-width:380px){
+  .foot-grid{grid-template-columns:1fr}
+  .brand .name b{font-size:.98rem}
+  .appbar-cta{padding:.42rem .65rem!important;font-size:.76rem}
+  .appbar .inner{gap:.45rem}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -511,13 +556,13 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
   color:#D7D7E2;font:inherit;font-weight:500;font-size:.92rem;padding:.3rem 0}
 .drop-toggle:hover{color:#fff}
 .drop-toggle svg{transition:transform .2s}
-.has-drop:hover .drop-toggle svg,.has-drop:focus-within .drop-toggle svg{transform:rotate(180deg)}
+.has-drop:hover .drop-toggle svg,.has-drop:focus-within .drop-toggle svg,.has-drop.open .drop-toggle svg{transform:rotate(180deg)}
 .drop-menu{position:absolute;top:calc(100% + 16px);right:0;min-width:194px;background:#23233a;
   border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.5rem;
   box-shadow:0 24px 48px -20px rgba(0,0,0,.65);opacity:0;visibility:hidden;transform:translateY(8px);
   transition:opacity .2s,transform .2s,visibility .2s;z-index:80}
 .drop-menu::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
-.has-drop:hover .drop-menu,.has-drop:focus-within .drop-menu{opacity:1;visibility:visible;transform:none}
+.has-drop:hover .drop-menu,.has-drop:focus-within .drop-menu,.has-drop.open .drop-menu{opacity:1;visibility:visible;transform:none}
 .drop-menu a{display:block;color:#D7D7E2;font-size:.9rem;font-weight:500;padding:.55rem .7rem;border-radius:9px;
   transition:background .15s,color .15s}
 .drop-menu a::after{display:none}
@@ -527,10 +572,12 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
   .nav{position:absolute;top:74px;left:0;right:0;flex-direction:column;align-items:stretch;
     background:var(--ink);padding:.5rem 5vw 1.1rem;gap:.1rem;border-bottom:1px solid rgba(255,255,255,.08);
     box-shadow:var(--shadow)}
-  .has-drop{display:block}
-  .drop-toggle{display:none}
+  .has-drop{display:block;width:100%}
+  /* show "More" as a tappable row; options stay hidden until it's clicked */
+  .drop-toggle{display:flex;width:100%;justify-content:space-between;padding:.7rem .2rem;font-size:.92rem}
   .drop-menu{position:static;opacity:1;visibility:visible;transform:none;background:none;border:none;
-    box-shadow:none;padding:0;min-width:0}
+    box-shadow:none;padding:0 0 .3rem .8rem;min-width:0;display:none}
+  .has-drop.open .drop-menu{display:block}
   .drop-menu::before{display:none}
 }
 
@@ -646,29 +693,27 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
   <div class="wrap inner">
     <a class="brand" href="#top" aria-label="Reno Research home">
       <span class="chip"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wgARCAH0AfQDASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgMCAf/EABkBAQADAQEAAAAAAAAAAAAAAAABAwQCBf/aAAwDAQACEAMQAAAC0YgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIZMVkmUp59QAAAAAAAAAAAAAAAAAAAAAAAAAAAHM6M155nS0Xjnx1dx491dxS+b0UUm0zZpBAAAAAAAAcjqoFfV+oBfqAX6g+l8pZMrF4998gAAAAAAAAAAec3L702V1nWys1klw91d/Ic2JfxoFfYbc7DbjFG1+/PoAAAAAAAjSY0Tm7CDdedohpjjqGmCGmCv42yVFZSay3i6mYv5tp2quseuQAAAAAAAAM7Y1s7Dor58GYevvhxPp5HG+z+g9HPyyGnzprwgAAAAAABGkxonO3VLdebpQJ9ETFT80V2/3r7h4kwIdfd6iS6e6yt0lFfXA1GY++jn3jl15AAAAAAAAZ7zb5yvu79xZXnaA5nl691d3Ey58e/RzVEHr6TfBAAAAAAACNJjROduqW683Sor2ilA8+vPqZdrKiyuSPIGRuoXbz9Eqss4NfdLxkR/TzaS1z2m65gsrtDjJqLkgTM2NDGnURe/WbLZw+FszuiByhzpSXifFj1d3EZJq6q7uT90Vvn2qmKW/otZE/RMAAAAAAAI0mNE526pbrzdKivaKUDz68+pl2sqLKgOUKPrW3WDR7gzqyrusj9uPp5rfUUF/wBc4fR5zcHDv49wpYU23lXcae1L3DbnGGx+efhjtvjdkM/YeSfEnZ0mRr8Zv5d1HMvvn5V368fecJF/w731gAAAAAAAI0mNE526pbrzdKivawqvlo01z/db9JFdPlVdRppRZ8opdbfXw+fLv0c916kOWLv7VLOaD2M3fdhAg3oV9ghQL9KDM9UZy0PHqVvWt0AEAAAAAAAAAAAAEaTGic7dUt15ukROOpaGmJjh3iT5VzFnXQ+N3HuLoLXbTSaL675CAAAAAAChvocplL4kkuSQAAAAAAAAAAAAARpMaJzt1S3Xm6VFe0Uo7h5357C7r/OO61rrH5T3nItnB30Xt7g9nfXJEPnDtkpaf7XxTQmZL3vCqDTR5GZL5TdS7+x5EPnOBQy2Qhw+VMaWk95a1LQy5f8ASHSmr4daEuOmevR1xO1OggAAAAAAjSY0TnbqluvN0qK9opQPPrz6mXZ0Gh8VdQpNHd+dp40uhreopJ/CN6Wbfqa5mGV1WVLGxjTj3mNPFKDQRKA2dBf0B4tq+4OhyhVQev2VrNzmjKiHMrj3ZZ/YHjJa7Hm1EFNc00oNvXXZjtviNuBAAAAAABGkxonO3VLdebpUV7RSgefXn1Mu1lRZUKDnoMrltvPPLvivo4OhptVMfa4ey3U6jJbFCh56IR89qRUxdAGV1QzMu7FXB0Qruk0YbZdxnY+qFND0oZ/QDPe74ec7pBlr2YMLs+4CAAAAAACNJjROdus/0waLyi+8yH51nT0c3WV59QV1iicpc10TDfe1cf5zMaPN0e2njaw5lvAQAAAAAAAAAAAAAAAAAAAAAfPo4uxPF2AIAA88+w4uxPHsIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//aAAwDAQACAAMAAAAh/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APvnf/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wC609bW/wD/AP8A/wD/AP8A+f8A/wD/AOt//wD/AP8A/wD/AP8A/wD9Rcgzf/f/AP8A/wD/AP8A/k8848tgt/8A/wD/AP8A/wD/APwqs41DH/8A/wD/AP8A/wD+DFNXaCFN3/8A/wD/AP8A/wD+ysOH8j//AP8A/wD/AP8A/g1Ff/YxHKwwWxfV/fx1lXO7/wD/AP8A/wD/AP8A/g1FfeWUHF1t6wu8X4/bbZO9/wD/AP8A/wD/AP8A/g1wlHQmbL//AH2281333/8A/wD/AP8A/wD/AP8A/wD/AP4MY8g0dR3/AP8A/wD/AP8A6f8A/wD/AP8A/wD/AP8A/wD/AP8A/wD+DUn2VS3/AEY7bff99/8Ad3nO2HP/AP8A/wD/AP8A/g1FfQgtFawfcqV81lQtj/8A2Nf/AP8A/wD/AP8A/g1FfZWCxLbXXXfbfTT/AG03003/AP8A/wD/AP8A/iFm9/mw2nf/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88f/AP8A3z3/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8Aw//aAAwDAQACAAMAAAAQ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++42+++++++++++++++++++++++++++6/Cx+s++++++++7999531+++++++++++I67o25e+++++++pPOOOtDM++++++++++9Kxh+p++++++++p+/29o9mg+++++++++V98Lee++++++++p+pUWvT/0AG8WqgIc6WYGf+w++++++++p+pUU7Z/08vWUb6o80u2pL4f++++++++p+9ed2cKPeMcsO++O0G+++++++++++++p+9y3zGGc+++++++u4++++++++++++++p+pGX5aS+ew4SWw+I2YWo402g+++++++p+pUw4IH8oOmn+Y2LWbP6+qm8+++++++p+pUU83Xtuu+O+++cusu8+suu+++++++p/wCEXvHKmHPvvvvvvvvvvvvvvvvvvvvvrjDHvvjzH/vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv/EADgRAAIBAgQCCAUBBwUAAAAAAAECAAMRBAUSMSFxEBMwMjNBUaEUFVJhsQYgIkCAkdHwJUJTY8H/2gAIAQIBAT8A/kXAJmk/x2KxdHCLqrtaUc8wTmwe3PhAxI1AzWZ3h2LMEBJnzShPmlCfNKE+Z0PWLj6DbNAwYXHaZ3mZwVILT77ewmJotVw1GnfjYsdzuftGwVVRex/oZkmLxGFqClUU6D9toRY2jNpHD1H57Gv4bcpjaz03AUz4ur9U+Lq/VPi6v1RMdVXc3mCzRlawNj7TB4pcUvDgwhBHZfqJWq44Ux6ACZhTDVyoW4UBRwPlynww/wCP2afD/wDX7N/eISUUtvaPug+//nY1/DblMx745TBUkqE6heDIGIuE942RN9HvMRlJTyIlWk1JtLTK8ayMD5j8QEVFDL59ljcGrVFxgF2Qbep8piaValUIrghjx49GX4M5jXUAfujf/BDvN3H2H5/w9jX8NuUzHvjlMu3aU+4IYyK62YTN6AQkehtME2mqJlja8Ot49g0ZQsIA2hQWuIALRV1GWW9oy2PQABwG8zLKaePILMQRKf6XoKb1HJ5cJh8PTwydXSWwgFzKDB1NQf7vx5f37Gv4bcpmPfHKZdu0p9wQ7xmCC5mb1tZJHmZg1LVRMsXRh1vKm8a1hfo1WtGFgSJTnnKm8XgLxRc3M1m8xQxDoPhyA33jHN02CGf6pXHVVECqeBI3t/WWC8BsOxr+G3KZj3xymBqKhOoxc+ZRYMI2et9QmIzc1Nzf8SrVas2pplWCZ2A8z+IqimoA8pfjcwvfeE3hN5qNrQEgzVxvBdjGNzG4cO2r+G3KZj3xylOk9TgonwlX6Y6Mh0sJRw7VuCzBZUXb90XPtMFhFwq33YxmLdgpAMAA49vX8NuUzHvjlMu3aJlOHZQTeZrgShI8x7iUappPqEybGBh1RP3EdbG/QqhpYXtFW5lgRwigE2mkXt0Klx0aRa8K8LiKpYwKDwEUAm0IANoyhewr+G3KZj3xymXbtKfcEzHDdelxuJjKHVtqXYzL8SUbTflMHiBiaWrz84RY2lPeNa8UkG8sG2ibxrX6BwMcWMHdj8BYRNj0JvHteVN+wr+G3KZj3xymXbtKfcEO8zbAjiRsfYxlNNrHcTKMx0EMeRjAMNQisFmoXvA1jNVtopsbwsCbwNxvLi94zBprFrQNwsYrEGavtFNjeFgTeMwbsK/htymJwprMCDaYbDGiSb3vKbjQId5WpLWQoZjsAS9jwImHwjUWuGmUYkvTNNvKNYnh/EdWnpOrT0/YKKxuROrT0iqq7D+VX//EADARAAEDAgMGBAYDAQAAAAAAAAEAAgMEERASMSEwMkFRcRMUIEAFImFigLEjJFKR/9oACAEDAQE/APw2ihfMbMCfQztF8qItsKtugCTYLyr15V68q9eVenU8g5Igg2O8oaYTuu7QKN4ZI93Yf8QnYTqq2GOVuZp+YYNF9zHxBQMa4XIXhM6LwmdF4TOiMDCp6QEbdqmiMXbd/DiGQElU7srLk7Tt5c14n3fpeJ936T+I2TND23MfEFT6FTvLLWRrwDxIV4/0o6vN9U1weLhVUAI7ogtNjuqeYhphJsCo3se27DswqJhTRkk7eWGjdzHxBU+hVTyTtTg1xabhUby4d1OLsKqRaQoY39dNVup7gC9074o8jY1SSOkdmeb4SDKcvTcx8QVPoVU8k7U4AEmwVGzLs6KY2YVUm8hQQ9BwGNlEYwf5Bs+iHkzrcL+oz5mkkhEkm53MfEFT6FVDC61kaAE3sUKAdFHR5dBZMYGCwVXOGjsiS43OFvbR8QVPoU54bxLxWdUHBwuE+QM1U1XYbdimmMvb3MfEFT6FVPJGqeCqScOHdPYHiyrIbHMhgfXfcDcR8QVPoVU8k7UqnlyOsdFC/OLFVEQcMymjMbrYHA4FDELmgjgUENxHxBU+hVTyTtThR1B06IEOFwqynuLBaG3uI+IKKURixUsufROG04MeWOuFT1ADbqSZrxayq4w11xz9zmd1WZ3X0BxGizO6om+v4q//xABNEAABAwIBBQkNBAkCBgMAAAABAgMEABEFEBITITEGFCIyNEFRcXIVIzNAQlJTYYGRkqGxIDViwTBQVHOCotHh8ENEJCU2Y6DxRVWT/9oACAEBAAE/Av8AwXp+ItQikOhZzvNpGNQztUpPWmkYjEVskN+02pDiF8RaVdR/XWyg4g7Fp99Sv+K3QttnWlH/ALpeHRFbY6PYLUvBIatiVJ6lUrc+15Dyx1667kTG/ATT8xWhxlriuhftH51gc12Wl3TWunoH61kPtx2yt1WampuNPuA72To29mdz03h65CUuSH1KuL2ruQx5zlDD3468+I9wuqouMLQ5osQRmHzxSVBSQUm4PP8AYwKUzGVI06825Fvn+tHXEtNqccNkjXXfMWkaRy6Y6eKmsYATHZZbTa6tQH+eugLC2WQwh9Ga4Pb0VAkuYdJEeQbsK4quj7BALTqufPA+tJ4o8QluFmOtabXA567syPMa9xruzI8xr3Gu7MjzGvca7syPMa9xruzI8xr3Gu7MjzGvca7syPMa9xoYy9zobpONHymR7DTWLsK42cimnm3hdtYV1eMboXS4tqI3tXrNNNhptKE7BU3vmKRW/N4X+e6nXCHCN8Mp/CR/etJ3uwdSV9NqS4LcI3PqTWlT+L4DWIhMiOQErzxrT3tVYHJ3xCGceEjgnIo2F6A/5eo/90fQ0nijxDEuQvdmmEBbqUnYa7ntecuu57XnLrue15y67ntecuu57XnLrue15y6OHt8ylUcOHM58qcgup2WVXfGF+UhVRMXUnVIGcPOFNYnEd/1QD0K1UDcXHioOmx99R8jZ9MkXv2LPuW1I1CtKr0DvvT/WtIr0K/eKzl+j+dXd5kI+P+1Xf9G3/wDp/asAu3PlNHVz2/zryS1ZsV5XQgmv/jUjnLv5eI4lyF7s1D5S31/onG0uCyxepUMt8JGtP0paAqosx+GrvSrfh5jWG4o1L4KuA90dPV4pH4ONyx1n51Ic0TK19ArCEhEUrUqxcO2s5HpzWcj05rOR6c1nI9OazkenNYJwsXkKBuM0i/tGTGVZmGvn1WptOf3Oa5yq59qvEcS5C92ah8pb68q55StSczYbba7on0fzruifR/Ou6J9H86GI9LfzpE5o7c4UhaVi6SDlnxszho4vP6qfTcXoGxuNtYJiW+U6J49+HP53ieKjeuMNv+Q5t+lYusq0cdHGWaaQG20oGxIt9hKrOlKl36Bm0+4GWlLVsFbm2joXX1bXDk3TOZsJKPOVUFsqxplHoUD6f18RxLkL3ZqHylvryv8AhnO0aL1jsrT+qomFpfjNuaUjOF7Wo4L0P/y09hUhsXTZfVQK2V86VVElaXgr4/1yKSFJIOw06jRuKSaWM1RplxTLqVoNlJ11EeEiOh1PlDxLFYm/IpSOONaagrS1IWuWohaBYA1GmsyDZBIV0H7MhRxCSmLH4nlKpltLLSW0cVOrJjStPikdnyUaz+fyFbnE6SRJkHn1eI4lyF7s1D5S315X/DOdo0rjHJhf3fH7AyzIqJKLKHC5j0UtK2HiDqWk0yvSNpV05MUTZxKumpA1g5Ny72cw40fJN6lSmYoBfVmg6tld2IPp/wCRVd2IPp/5FVHxGLIcDbLuco82aadWlptS1myUi5ruxB9P/IqmnEuthbZuk89SpTMVIU+rNB1bK7sQfT/yKpJCkgjYcj2LQ2jYu3P4RemMVhvKsHbH8Wr7MicxHeS26vNJ10y33WxRTpT/AMOj51i6mGsTa0SQjMtn5tNSWXeI4k5HZsdsa3QfUNdZ8nEjo4ycxnnUagQ24bWajb5SunIohIJOwUt3Sb8lny+An2/2rAmdDhyOlfC8RxLkL3ZqHylvryv+Gc7RpXGOTC/u+P2B9jHE5s2/nJvWGm8f25MU8GnrqRxRk3MqtNWnpRSkpVxgD11KATKeSnYFkCt7Mehb+GkQyzjyXGmiGCNoGoaqIvqNY+xfEkIZRwlN3sOfbWAT9A7oXD3tez1GlJSrjAHrrBmW+6U0ZibJVYatmvJuhnKU9vds2Qnjes1g2HNNxkOuICnFi/CGysaw9pcZbraAlxAvqG2tzs5Wk3u4bpPE9WWU+mOwpxewVAgnEy9JlEgK4tqzJuDk5lnY+2sAbZkKeU/muPK8lXRRhNSsYWwwMxpO23+dNDc+zzvOUxg8No3zCs/jNABIsBYZd0EnRRtCjju6vZTrF3IsFO3avrNJASkAbB4jiXIXuzUPlLfXlf8ADOdo0rjHJhf3fH7A+xjirzbeam1YaLR/bkxTwaeupGwZNzIvPV6kH8sk3lj/AG1fWu7bHoZHwj+tQ5KZTWehKki9rKyTv+o4nY/rWPwNA7p2x3te31GsCnb5Z0bh76j5isF+88Q7f5nJMVnS3yfPNNiyEj1U8LsrH4TWHqKZzBHnjLiTisSnpiMnvaTwjTTaWWktoFkjVWMS96RCRx1cFNYHDLMMubHnBz81JwSQ2bty809I1VMiz4ccumapSRzZ5plOJLbStMvUoX1qNZuKD/dJ/wA9lZ+Lj/WSfYP6VvjFx5p+Gm23lyVSp+rMGqtz7ZflOy1j1DxLEuQvdmofKW+vK/4ZztGlcY5ML+74/YGWVIRHbzln2dNOrU88Vnao0yjMaSnJiiruJT0VIOsDJuWa8M7/AA5JnLH+2frkdebaKdItKc7ZfnyTv+o4nY/rT7SXmlIcF0nVTqHcMn6tqTcHzhW59elmzHBqzjnfPJizRZnvA86s4VEcDsZtY8pN6muaKI8s8yTWDtF7EGvwnOPsyY1N3pGsnwq9SfVWBwt7R89Y76vWfVk+9sX6Y7WXEoxlxFNBVr89DDsTYTZp5ChzC/8AWs3Fm+M0F+78q3xiCePDPsSa39I54Tnz/pUl2XKb0SIjib7dVQY4jRkNDm29fiWJche7NQ+Ut9eV/wAM52jSmlZx2VoVeqoWJMMxGm1Z90ptspWMs+ShZp7GHD4JAR86Wtx9d1ErVUKLmcNzb0ZFKCUknYKdXnrKjSznKoa9lYZH3rDQjn2q66myFR0gpZcdvzIF6djSnHVr3q9wjfiGu6j/AP8AXSfd/apa5U6bGJiPNtoUNqTTqy20pYSVEC9hz1Ieku4m1KEJ/NRqtmnXUR4vtZymltHzVi1YvBEyPwfCp1prc2w6y49pWlouBxhbJi2HCakFJzXRsNQ14hhyNEqKp5vmzamHEMSSGkxiy3z5xrCsPTBbOvOcVtVTi0toUtZska71BQrFMRVJdHeUcUZMel73i5ifCOavZWDxN6RAFDvitavG8S5C92ah8pb68rkJ1TiiM3Wa3g7+H31vB38PvreDv4ffQw9znUmkYekcZRNNNIb4iQMuISM7gI2c9PqsLZNz+HlbgkOjgDies+IY6+t15EFnarjVEjpjMJaRsHzpRCUkq1AVCHdPFVSF+Bb4o+njmJche7NQ+Ut9f6Ja0oF1kCpU0r4LWodNLUEita1atZrDcFUuzkvgp8zpoAJFhqA8QdIY3TBbupKxqPstkx+WbCIzrcXxrVh8YRIqWxt2k9J8cxLkL3ZqHylvryqnNpUQQu41V3Qa81dd0GvNXTElDxITe/ryHZq207NeuRqTSlFRuo366U6L2HvpjAkrsp2QVA+ZUWGxGHeWwD08/iWJQETW7HUscVVJiYu2nRpkpzOv+1Ybhegc00helf8Ap47iXIXuzUPlLfXlf8M52jReAPPWmT66aWW1hSabWHEBQyYix/qJ9tPJzk5Nzk7OG9nDrHE+wtSUJzlqCUjnNb9i/tLPxit+xf2ln4xQmRibCQz8YyE220Z8UG2+GviptxDgu2tKh0g5N+xf2ln4xW/Yv7Sz8YrfsX9pZ+MUlQUkFJuDz5FKCUlSiABzmm5DDis1t5tauhKr5TLjA2MhkEdKxW/Yv7Sz8YpDza+I4hXUfsLnRUKsp9u/apqQy94J1C+o5DMjA2Mhn4xW/Yv7Sz8Ypx9lq2ldQjtKtW/Yv7Sz8Ypt1t0XacSsfhN/0+Jche7NQ+Ut9eV/wznaNK4xyPxbQY76NmYM6sPfzF5h4pyKAULHZUlrQu25uankWN+am1qbcC0GyhrvWHyhLjJcG3YodByuIS4kpWLpPNWOMoYnFLSc1Nr2rC8PiuwGluMgqI21i8FuO7HXHRYFWvJjspT07e+dmtJsKVhMQs5gaA/Fz1gkeS1iPFUGxcLPMcm6KKzH0GhQEZ172rc/DYkRll5sKIVasaw1huGXGG81SejnrDuQR/3YyboHSmKGUcd05tR1GBiYzvIVY9WXdHFZajJdQgBZXrPTW56KzJL2nQFWtWOQkQ3G1sXSlXNfYawCWuTGUHTdSDa/Tkxae5Lk6Fg97vm6vKqPhEVtoBbeernUaxGCuPPCYiV6+EnN5qbztGnP41tdboorLLKHG0BKirXbnrc7FZkafTIC7WtepURmQnvqAbCwPRURAclMoVxVLANMMNR0kNICB6v0+Jche7NQ+Ut9eV/wznaNK4xyYekOYWylWtJQBUxgxnyg+w9NQntK3Y8YZJbOla/ENlLTcEGlCxtWDTd6SeF4JWpX2N0f3l/CKwzE4jMJptx2ygNmaaizY8pRDDmcR6jk3Qw1okl9Iu2vn6DUHGnmAEOjSo+dQprMtN2la+dJ5sm6r/bfxflWBTo8WMtL7maSq+w0xiUR90NtO5yzzZpy8s3Qf9uOPn/7rdIzmTA4Njg+dYM/p4DZ5xwTk3T8gb/ej6GtzLiG1SM9SU7Np663Rym31tttKCs29yKwGIqNGJc1LXrt0VNWW4byhtCCRWEi+Isdr7G6jkjfbrAJjEUPadebnWtq66OLwbeH/lNYfy+N+8T9fEMS5C92ah8pb68r/hnO0aVxjkwv7vj9gVikXfDF0+ETrFMOFl0KFIUFJCk7DkxFjNOkTsO2n0XF8m56bpW97uHho4vrGXdH95fwisIYaVhzJU2gm20ikttt60ISnqGTfsdcrewVdzotUzBY72trvS/VsqPpIeIpHlpXmn15N1X+2/i/KtzbTbkReehKuHzikstIN0toB6QKBvsqU6GI7jh8kXrCo88tF+O40nSeftPyrFYs9cbPkrZWlvXwdv0rcw/mvLZPlcIZN0/IEfvB9DWAxGZenD6c61ra9lcPDsQ16y2feKZcS80lxGtKtdSkaWM635ySKw5WinslWrhfY3Uckb7dbmW0OCRnoSri7R10qOxbwLfw1h/L437xP18QxLkL3ZqHylvryv8AhnO0aVxjkwv7vj9gZMZi6JzSo4itvqNYc/Y6NWzmyLSFpKVbDT7RacKTTqM0+qmHVMupcRqUnXUOQmVHS4jn5uipDqWGlOL4orF5KJUwuN3zbW11h2LxmIbba8/OT6qxfFmpMXRMhWvbesO5BH/dp+lTI0mDiBfQkqTnZwUPzpGOMqb1NOlzzQKgQXpM7fUpGYL52aeejqrHZzUws6G/AvtrBcRZhsLQ7nXKr6hUvG2FR1paC88iwuK3OD/lo7RrH8RS6kx2r6lcM9VYPLZdZQy1fOQgX1ViktmOzmP374CLdNRHjHktujyTUOU3LbK2r2vbXWPz2n2tC3fOSvXqrAprUNTumvZVtlY7CMptLzCbrG0dIrCMQMO7MlKwjm1bMmMYStTpeii99ak0xjT0cBuWwSRqvsNLny8RGihsltB2uU2nMbSnbYWrH5zUhtLTV85KtdYFOah6bTX4VtlTsQZiCzl7qFwAKjL0Uhpw7EqCqhy25aCpm9gba/0+Jche7NQ+Ut9eV/wznaNK4xyYX93x+wMjzSXm1IXsNSGlR3ihW0VEe0zXrG3JNY0rdxxhS05wtRFjWBzd7SMxZ70v5H9X4lyF7s1D5S315X/DOdo0rjHJhf3fH7Ay4xF0zWkRx0fMVFe0Ll+bnoG4uMmIMZi88bDT6OfJgE7fDOiWe+I+Y/V2Jche7NAkG41GtO76RfvrTu+kX76Os66YwqEthtSmdZSDxjXceD6D+dVNNpabCECyRqA+xi0XQPZyfBq+VB1wCwWoDrrTu+kX76LrihYrUR15O48H0H86qYw2Kw4FtN5qhz5x/VykhSbKAI6DW9Y/oGvgFb1j+ga+AVvWP6Br4BW9Y/oGvgFAWFhs+04hLgs4kKHQRW9Y/oGvgFb1j+ga+AVvWP6Br4BW9Y/oGvgH/iK//8QAKhAAAQMBBgYDAQEBAAAAAAAAAQARITEQQVFhcfBAgaGxwdEgkfHhUKD/2gAIAQEAAT8h/wCF43lczAaakIuOb3h0TiblV38L/aJAOSwRZiDkCADDcAi6AhOPuURL7e8uu3+PRXV6nturt+p2IjG5DQVf/VAWB10QVNeIdCL4Tkn7KP8ATHpNrtxZHVBWRDuELME4Ch+A/Dds3f6gXEVxUl82QHJIyiAAFBbPxhe0J5CPY+ByiAxyP8hdDwA75YXFsTytieVsTytieVsTytieVsTyvB4KFMwaKgh1g/ZNBWbiC1TetC5gZPEU8joC2tZCATkMx+nQg5uSLIPT0I8T6wpejDuWc5lcFqUGzVR0xwLPMgly/QHpfoD0v0B6X6A9L9Ael+gPS/hKvkNUcC0yKDAhhyKaTsJlRA3TlAeHHC4DJHI1i+4POp7sYgtxr7U9Rmoo+dEn7JSBgcIqBjY/LaC5lkfVCBxbYxSCAFOGzBxUlQeS7CZda04QAlr+0WYkRmVQbRkEe1+iPS/RHpfoj0v0R6X6I9KXg7IB4p1iydMMVpfw4VsaZLiMouUXKKBMr1oTBZla4alQkLqEQRGChWmZwODI0MKXV4QwmM+lypuj4CSgmA3NUbl1lR/KzEIf0EZbEDFsvZwrZtGKMUY05SpY6P8Ae/tHABjH7R4zaCDCHcrASbgYo9wim0nAwYVRkc0N44IeJpzTdI2TgstwbH4nwgXukEVgMsE6hif7QMJVs5lzwrZtGK68/HBaFBbyJkshFmSnsmrI4aWuhTjeMLj2W16FtehXJBMO4ToZCZLa9CHrnBHFeYXGeS2vQjhwOEYEwM1zCY6gmR8p5IfBiu5XDVDbwkxyuhm9XAa/LJAeUOx+k4AcmEdE1i+Cly43nFV1lqFYQlgOSjnBfPtRJyKh86dG4Vs2jFdeflgBaGPDwuQkLBnTrLDXIXuENYbkdDIYaZOvw6L6STInIAEDgpodgxqf0TBOJlQVtFOjJog3DlQRARlg1KAIGPcYcFdpEZmaonFV7C2hu/aJxhsz0EDgahHfBE3fSQPmKkxN5OzV8ENUfSCCFZnSiGQgUAt5aTqRJzFjmfQQw2AwHCtm0Yrrz8sOd4Hl5XMSsONOvsdW0bG1YrLlzpBY2dCVwlEQq5J1P3Lq1kaqj30AbcAQjdCDotimRb1DyLzyTUIsCcbuHV/ogbi5Hrwq476TQ6YXqZcAB/AhRkS42ZLBpEljXaK8Fc0/zhmzaMV15+OCPTXiyV6rGWNAHWxlbj/aesnQB7mzf8VgAKkz7Os6ErGQuCkxlkDCLk1I2BaIBNAyrh46EK8CH0hmBAdKVgin2gqhKu3MLDtYI/q0sAGMhLIumwDsMW0j7I173sUPGwgrBjDnegmHHCQvvcM2bRiiiCD4raKGiQhMncMAFD5sUfDkC9OxpcFhk2A5R7/F0+lASaRTr3eYRRaTSATfV1uMV+wTVIiAySjGFBXyBCNQh/cqpJI0gjAhfHhUCsO4sbA9ObhmiIIX1Pp06h73zV2TgbKZMsC4sEYk7L0Fjoe55XlGx+Px7Yd5hDVZqM1Gagqh5lNXLYQf3FoTehXioXU2YAdH7OArKoPp5VL0k4kVJg5OSKDSydHn/HbG8VADmOJOoqnAluCOY1x6kIjADADgI0Eez81k1YORhzTIzIX+ANj2UGAHtfgD2vwB7TWELrDwbXuKBWYojw4sUZiCtVAg0skG6oDDCa+XPggcv1hOBaH/AKcnd4S9R/gmzaMUSAhyykOFRUwTZM0tAqLMxQWWHwO6gCsBaMMGEicLAAEkwTnvaFqONBUEwPgMMMJIM4CQRYLGzkjALJShLpaVFgxABFg1bjLNppKKBeBirBDDNhMCIqDYDHAJGjDvuwYyAxYkPZwbZtGK682GCpA14qTcHI2FI3ISjk1iyUGqR1RrATeNoAW9YSdtAokEcccVGXgQ50sY14JmTeU94NAeShJYQEEoyJkIyXTEZMT2jkwTo5CswJAT2TB8IspmMBkgcf8APFaWMo3gxAlCNlt6qZE8gXIScs7HRxFF7mh4m5pqj+rAwJPMmsPRxTRM5YgKcEZ6jp6HSEV0Ka7QYlkYMS5AX8G2bRiuvNg53MHJOztXCKccex+AxLJMhyqiCBXJhmgQQ4kZW1l1OfOLzgEyGjmLvYRawfkEJkGMioZMxayOVoPQwwVyuLDuLXbvSG8N0JOYXHzRbhMD4GxJIeY1w5ZAJc6BdYdRk3jm+p+HR+xWs/Q0yJ82/pbFg4Rs2jFdebcPwOq5K7AqMkRBwRZE3kqA1Fl2g2crayzJ8UE3lPuIyAKoiQheEnoQhB5d7EVPgMXHtwwnwTNFoCDRdcQgVAQr9tDM3J60XJuBOZGt3rQ4yA5otMU8V1wk+CFO2Z9IorBiKGr96EOHgIOTx8Oj9ihG1QmR17NbFg4Rs2jFdefhiNpUJql12AIcErlEnEKZFSJy4YrudOIi0m9ZUqUCQLyWUlfTDxaAhbeQTo/xDiXhKGtepRwdH1CuRMJNEKDMSEMW9KnTDSCfvdcDpjPXJGaJ0Kj8ycEImCwMAwf1YoIRiLwo21xl6F3tfwOFCcFhB6Omz3YCZty5mrZ1xOckKzMvWVGGTYa3KQCycb07lLLxg4TMbERB6OhGXaoQwhy4aF0TYnxjTwbZtGK68/DAioFVka4oIC91Yi3DQikiEBgqnaM9z/TbNoxXXn44jyJBA3sDkgCI4NDZEOPkU8G87LhX/nrDRSC8L9Kv0qIkJOSnU5wb9tVtexNPnoPhDrSjNghrBwEv06yy4TVRK2vYiR6ID+f84mPdQOPiAAAAIQAAoPlq2xf8jIAAAH//xAArEAEAAQEGBQUAAwEBAAAAAAABEQAQITFBUWFxgZGh8CBAscHRMOHxUKD/2gAIAQEAAT8Q/wDC8GqEIw1cBRoRuqiR4xy0JPCD4/8AacmDFWCtkpIaHw2WIZlOm4vDGnCVGYqbKVTvJi7qeFh2qbVHWAH/AFRg+xcVoM2pidlJPopc8mQhJCSshV4tVwE3ZkedSo2I7j7Cgy8dkHBE9BqS+EmUsOX/AFHQGVkFKrKcxw+Jf6o9HEUFyPkUTMABwLUUeYGJqqxWbGE3BoYz1428tIoW1OW1PsFKFEFTvH8AUKFChQoXOLgftp7xw/Iah12saj0OxhU4nuJpYOHMB79qjrGH2u7Say4XUzpSIOpmWZ3auZJiGfD9qF1EueLsX0h84/FL+3ZmZyqnJKRzAufNLAwIj0pP8xtQQvKPYd0pE4ovrLFixYsWZI8VfVROUTVDkm09GpVYMk1RTHABzlw06aPjQUE5IjI+1Nj0emzBI1NgwY4hYRee7wdfSE+Jr63nw7LePFzzcN3jCz/bhWlRpG6wB8tGM0PYd0/jVBuUYcGlwSxMxWUzhXiBj8SkaDWuo9pnH+stA3EmFuAuObQ2kb3H9Xq1q1atWJIUBZKzALu1UOkkAB6ex909CkB0wYoY09DnOz8cJfVDgbsh2rd3am2bjJc5nTZq5mMXcpqzRBhEzKgIwTpf2eZ+zdsCAuJDsEudTsEBOqA8X4rASI5sEX+iSoKNQb4WlDvb3cg3WsUMFamN5q9LBAZyLJX8qYcC1ex3unoXzGqoRrkY1t+tKPEQGJvq6Xl/lXY1dvSFBabglGyNRREVyYQ+7JikBs1mERxMmtARu4U+wUWpSG3CPI5DPT2UAQszTk7NDI21ZF84hVyBZJQGkKemX+Et8DF3Du8qj66OxYslhOC9g6FQGZdSW+rr7HunoXzGqvFa2eL0tPcKhL1UpUQ7DMqFYkV2cywRs0eNNxCOlisUGtzbJLvI244wcQt4wJbwKufgCsAlYLMTy7CzKzCJHwnI2YyLCNqJJSGUAStI984I+CgD7gMXnRD6BvPhFzlPKb6KSEK5Awbn4KP2LPGaIzEO1HXfPeoaUSGqiQbVZOaKG04CZeFx/dDhhipFiEI4jAC9aOy8ifEjSLie58zp9j7p6F8xqrxWtni9PQICSVECeZNk+nR1KN/Znd86VmwzIR3o8JoYAYFgMLkOCTSi5GhEkSjKKEtxI9O2mga+C5f38ogOMAR3pxMnxEHB2oAgAEBSyQGqr4di6mxVQQkgHlSsqTAnewOdBL3F4wvfla6cToblZButMykq8ZEflJrSqTB1GNGxnJ8TN7q+X0w8EoSMQmc1Grq2DQAGuYPRFACfAYA2C2NRZ4MTy701t6jjk1g8NJkBAex7p6F8xqrxWtni9PQJDKKgBdd9WOatPQp3Vjd9dr0OPDM/UBIbC2eU1q0AaQL+/u1YvgDiYPj9tLNzLL11hkkcisd1PNUo8J02a16Y5Nkhd3BxXWjED7IoQkNHdx5Lu1MyILp81/OtS178Sqb7BZW9FQhEDmE4q+SKfmvgf50/oFLndUmXMQbEVc+hbf5Q6+y7p6F8xqrxWtni9LYZ2XSFDEl0GEuRU34MflYKS51xpsgT1sxE4Hwy9GyHMCHYE2eU1qB6GXycKAOiiF+kkedP9AjSWVK+EM3hSDSc3ZJTdwcYYKVMoSxH+DrZAJBgbxnQTiEzGT8utmHxHIv37G1AAAsWd6DJcUAHuLxBwoHvcfwU6+W8Rob44pe79FuGYlAqblcxiXr2XdPQvmNVXuwmxURy3okIouLbF8tTYLVlQXEWSuAU4SWf397CKMJsViGtwGRW6bdwoSSjAGK1G6Ge9ebVJ95XuGKc6WwsMmlhLGHFbBXQUavApYMDVooK6SAq1HzxmLnOGiJAubdeb8p6AA5yGwINsLhoVWf63/lRRaKF1c4UjI/zVSJP4IAlqBAYnMv+Jd3ezPVzMcx8daCCEX2C4cl/f3fdPQpBI0Xgs6V/svyv9l+V/svymiO2T6qWbcT91C1M3FcVtvF2uMEZGxV7OrsWQAVnE/g+eHsL5Ronots3Ao0NEXritCNUdcAJVp7LDROH+ne7M953T+NZ2Rq48KAZW5cR9VnpyNaAydgGVdAKDhmgrvq0dugMAGAHsI/yOALk9Nk5kwBg8OL4camsFqji+aHvO6ehVOlkgkYtLFgpizCCm0LY2QhYLAtQiqSCSJxrPZ1JoN4wGTisXtBmKIAR0U0GfSLqFf7JwRVEllkmZUTQIuaHFBWWsiVDiy3rv/vve6ehfMaqggymBR/SlXppSaJTfyM8NRsjGzMdGnklixrYr3FXZ435d/QP6JNJuteb/deb/dMb8AUq87CKGSqwBTkSuXUsl1ilEVBXm/3Xm/3Xm/3Qb6OiBIiYjYmAhgBiq4FH1gW4Q2Vr2GNQMRFmvN/ulw0d8K2oE0JO2GSlOJigOnELGNegJE515v8AdGX+TBtpFeb/AHUcqRgdFT/P3T0L5jVXitbJxotpDx0przPYRENAcylnKrxnS636Wj+nyRKgjYTzC27p9nSheGRbhaXFpYFZUvTOPBFfNgBmkuEvhlWEqw5DrQpKZUAQ45UBgSENEYABgcH7pXgUKRK/avKdxFAAEoCjtZXu4wxSi/RzqBWO5mmT5oRBVmhLTp6aCyXypEs/qjpEuE7VacAUkyqXPd0suZPUiVidlRpOLwbCokBtBVIoQEO2Lt9PRSREEUyYEWAxfqssnoBM1CyhsYkKq7DygMMf5+6ehfMaq8VrYdfUSGk5gszNwaHLiTzMmwiJfp9c6EEmTqJQo3GlPykq7RyftE3EJH0JSmgLpqmMFRvCO4jwFhqKRYEEGhFDFWA+6vWym4cYswUpsKXiwsjvV8BGNoFbwLWA+Nh9yoI8RY4L9UsPt5PC0EEduonD/ShNW0AwlP8Aw2yES4e/WnejhwaUYTDH2PpM7vY8z4mB2p5mI9jw3dPQvmNVeK1s8XpQyHMpiM6TgQo1liVB4xVmYogGWrnVxN1fuWDeuYnIy7Op6JS3WkzU8zJEmm6UIShKUgcE68JRetC5vXjj+aZrBF3JBOCfNmCkI+JKj/epw7QsOYUVOohmowrgdBzY60IrYxUBPUp/q3GDNzkrDO9x5/1bgUVEEWr3FwoDhwVIG/V3qPiq7NYaI+KBUpi/dSU+lmcJcARmgtEfYobunoXzGqvFa2eL0sjYNyhd/b+1jKWVposkgYCrzaL+gNXGZh+VGrVW/k7NXQRuQ4jQtpixLCxQqoJCFjxoDZUjJitTWLAASfyoP5NE39MIErjnRpxQJ1qH44pAcMaF3SgwUFaFpTiL65cz8QkRUrpDQCETUw1lQcWiReoh5lUbm4mBAqQBnl3AI9PWiamORscwnrSUtRQoQfspp2i4AS9LCzigqLEiSvbDmX9aJayUSuSOTYP8tDAmd/NEwgpOQSkt5WVjlhSb9blAiWlwYqMEfpSKiHjCphHMIot48MUNBV/LBKuD/P3T0L5jVXitbPF6WTEIzqaJwqQsuwIhklIsYTvrzsLAiu8zKxG8nRoA4GGsfBv8PJ5H/P7p6F8xqrxWtni9LUvKhQxxEoPy8UUKkcQwRsxrPcpuHvOyzEcYFxwh82/53dKwmdJCWrLLkcqrKrV2IwmUFws4wSKkLAwJZfRNz3c4UhwzAYLEmDhioPJpBCxjP9TMDZh/ziGDACG4+myyyw/bgBABgB6r3DzAM8H/AMjFllli1//+AAMA/9k=" alt="Reno Research logo"></span>
-      <span class="name"><b>Reno Research</b><span>Renovation matchmaking</span></span>
+      <span class="name"><b>Reno Research</b></span>
     </a>
     <nav class="nav">
+      <a href="#how">How it works</a>
+      <a href="#video">Watch</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#designers">Trusted IDs</a>
       <a href="firms.html">Firms</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="events.html">Events</a>
-      <a href="loan.html">Loan</a>
       <div class="has-drop">
         <button class="drop-toggle" type="button" aria-haspopup="true">More
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="drop-menu">
+          <a href="portfolio.html">Portfolio</a>
+          <a href="loan.html">Loan</a>
           <a href="packages.html">Packages</a>
           <a href="blogs.html">Guides</a>
-          <span class="drop-sep"></span>
-          <a href="#how">How it works</a>
-          <a href="#video">Watch</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#designers">Trusted IDs</a>
         </div>
       </div>
     </nav>
-    <a href="#lead" class="btn btn-gold" style="padding:.65rem 1.2rem">Get matched</a>
+    <a href="#leadForm" class="btn btn-gold appbar-cta" style="padding:.65rem 1.2rem">Get matched</a>
     <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav').style.display=getComputedStyle(document.querySelector('.nav')).display==='flex'?'none':'flex'">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -703,7 +748,7 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
       <h1>Get matched to the <span class="mark">right renovation firm<svg viewBox="0 0 320 22" preserveAspectRatio="none"><path d="M6 15 C 70 5, 150 5, 210 11 S 300 17, 314 8" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/></svg></span> for your home.</h1>
       <p class="lead">We use technology and smart matching algorithms to pair you with renovation firms that actually fit your project, so you save energy, time and money instead of chasing cold calls.</p>
       <div class="hero-cta">
-        <a href="#lead" class="btn btn-gold">Find my match
+        <a href="#leadForm" class="btn btn-gold">Find my match
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#video" class="btn btn-ghost">See how it works</a>
@@ -736,10 +781,10 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
         <div class="engine">
           <div class="beam"></div>
           <div class="lens"></div>
-        <div class="firm" data-firm><div class="av" style="background:#E8A41E">A</div><div class="meta"><b>Atelier Reno Co.</b><span>BTO &middot; Scandinavian</span></div><div class="score">98%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <div class="firm" data-firm><div class="av" style="background:#2E7D6B">B</div><div class="meta"><b>BuildHaus Interiors</b><span>Condo &middot; Modern Luxe</span></div><div class="score">94%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <div class="firm" data-firm><div class="av" style="background:#7D5BA6">C</div><div class="meta"><b>Crafted Spaces SG</b><span>Landed &middot; Carpentry</span></div><div class="score">91%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <div class="firm" data-firm><div class="av" style="background:#C0392B">D</div><div class="meta"><b>Domus Renovate</b><span>Resale HDB &middot; Muji</span></div><div class="score">88%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="firm" data-firm><div class="av" style="background:#E8A41E">S</div><div class="meta"><b>SG Interior Times</b><span>Contemporary &middot; Industrial</span></div><div class="score">98%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="firm" data-firm><div class="av" style="background:#2E7D6B">R</div><div class="meta"><b>Ritchie Creative Design</b><span>Scandinavian &middot; Japanese Zen</span></div><div class="score">95%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="firm" data-firm><div class="av" style="background:#7D5BA6">T</div><div class="meta"><b>Twin Banyan Decor</b><span>Luxury &middot; Tropical</span></div><div class="score">92%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="firm" data-firm><div class="av" style="background:#C0392B">H</div><div class="meta"><b>Home4U</b><span>Modern &middot; Scandinavian</span></div><div class="score">90%</div><svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2861A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
         </div>
         <div class="mfoot">
           <span class="pill">5 max matches</span>
@@ -753,8 +798,8 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
       </div>
 
       <div class="f joined">
-        <div class="avs"><span style="background:#E8A41E">A</span><span style="background:#2E7D6B">M</span><span style="background:#7D5BA6">R</span></div>
-        <div><b>+37</b><div class="sub">joined this week</div></div>
+        <div class="avs"><span style="background:#E8A41E">S</span><span style="background:#2E7D6B">R</span><span style="background:#7D5BA6">N</span></div>
+        <div><b>+16</b><div class="sub">joined this week</div></div>
       </div>
     </div>
   </div>
@@ -822,13 +867,19 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
       <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem);margin-top:.7rem">How Reno Research finds your match</h2>
       <p style="color:var(--muted);margin-top:.9rem">A two-minute look at how homeowners go from "where do I even start" to a shortlist of firms that actually fit.</p>
     </div>
-    <div class="video-shell" role="button" tabindex="0" aria-label="Play overview video" onclick="alert('Video placeholder: embed your YouTube/Vimeo or .mp4 here.')" onkeydown="if(event.key==='Enter')this.click()">
-      <span class="vlabel">▶ Overview · 2:14</span>
-      <div class="play">
-        <span class="ring"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        <b>Watch the 2-minute overview</b>
-        <span>VIDEO PLACEHOLDER: DROP YOUR EMBED HERE</span>
-      </div>
+    <div class="video-shell" id="videoShell">
+      <video class="video-el" id="renoVideo" preload="none" poster="reno_video_poster.jpg" playsinline controls controlslist="nodownload">
+        <source src="reno_video.mp4" type="video/mp4">
+        Your browser can't play embedded video. <a href="reno_video.mp4" style="color:var(--gold)">Download the overview</a>.
+      </video>
+      <button class="video-cover" id="videoCover" aria-label="Play overview video">
+        <span class="vlabel">▶ Watch</span>
+        <span class="play">
+          <span class="ring"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <b>Watch the overview</b>
+          <span>See how Reno Research finds your match</span>
+        </span>
+      </button>
     </div>
   </div>
   <div class="sd" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="var(--cream-soft)" d="M0 42 C 240 82, 480 82, 720 50 S 1200 8, 1440 44 L1440 80 L0 80 Z"/></svg></div>
@@ -860,7 +911,7 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
       </div>
 
       <!-- the card -->
-      <div class="card reveal">
+      <div class="card reveal" id="leadForm">
         <!-- STATE: FORM -->
         <div class="state-form" id="stateForm">
           <div class="field">
@@ -949,10 +1000,11 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
               <input type="range" id="rMin" min="0" max="200000" step="1000" value="30000">
               <input type="range" id="rMax" min="0" max="200000" step="1000" value="80000">
             </div>
-            <div class="minmax">
+            <div class="minmax" id="minmax">
               <div class="mm"><span class="pfx">S$</span><input class="input" id="minBox" type="text" inputmode="numeric" value="30,000"></div>
               <div class="mm"><span class="pfx">S$</span><input class="input" id="maxBox" type="text" inputmode="numeric" value="80,000"></div>
             </div>
+            <div class="flex-note" id="flexNote" style="display:none;color:var(--muted);font-size:.86rem;margin-top:.2rem">Great — we'll match you across budgets and your designer can advise on a range that fits.</div>
           </div>
 
           <div class="field">
@@ -967,40 +1019,13 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
             <div class="hint" id="fileHint" style="display:none"></div>
           </div>
 
-          <div class="field">
-            <label for="venue">Where should the appointment be?</label>
-            <select class="select" id="venue">
-              <option value="Phone / video call">Phone / video call</option>
-              <option value="Renovation site">Renovation site</option>
-              <option value="Other venue">Other venue</option>
-            </select>
-            <div class="subblock" id="addressBlock" style="margin-top:.9rem">
-              <div class="sublabel">Appointment address</div>
-              <input class="input" id="address" type="text" placeholder="Block, street, unit, postal code">
-              <div class="err" id="err-address">Please add the address for this venue.</div>
-            </div>
-          </div>
-
           <div class="submit-row">
             <button class="btn btn-gold" id="submitBtn" type="button">
               <span id="submitText">Get my matches</span>
             </button>
-            <p class="form-foot">By submitting you agree to be contacted by suitable firms. We'll text a code to verify your number.</p>
+            <div class="err" id="err-submit" style="margin-top:.6rem">Something went wrong. Please try again.</div>
+            <p class="form-foot">By submitting you agree to be contacted by suitable firms about your renovation.</p>
           </div>
-        </div>
-
-        <!-- STATE: OTP -->
-        <div class="state-otp" id="stateOtp">
-          <div class="ring"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.7 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0122 16.92z"/></svg></div>
-          <h3>Verify your number</h3>
-          <p>We sent a 6-digit code to <b id="otpPhone">+65 8123 4567</b></p>
-          <div class="otp-inputs" id="otpInputs">
-            <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
-            <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
-          </div>
-          <div class="err" id="err-otp" style="text-align:center">That code didn't match. Try again.</div>
-          <button class="btn btn-gold" id="verifyBtn" type="button" style="width:100%;margin-top:.4rem">Verify &amp; submit</button>
-          <p class="resend">Didn't get it? <b id="resendBtn">Resend code</b></p>
         </div>
 
         <!-- STATE: DONE -->
@@ -1009,191 +1034,6 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
           <h3>You're in. We're on it.</h3>
           <p>Thanks <b id="doneName">there</b>! Your brief is matching against 200+ vetted firms right now. The handful that fit will reach out shortly. Keep an eye on your phone and inbox.</p>
           <button class="btn btn-dark" type="button" style="margin-top:1.4rem" onclick="location.reload()">Submit another</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sd" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#fff" d="M0 80 L1440 26 L1440 80 Z"/></svg></div>
-</section>
-
-<!-- ===== EXPLORE INTRO ===== -->
-<section class="bg-white sec-rel" style="padding-top:4.4rem;padding-bottom:1rem">
-  <div class="wrap center reveal" style="max-width:42rem">
-    <span class="eyebrow" style="justify-content:center">Explore Reno Research</span>
-    <h2 style="font-size:clamp(1.9rem,3.4vw,2.7rem);margin-top:.7rem">Everything you need to renovate, <em style="font-style:italic;color:var(--gold-deep)">in one place</em>.</h2>
-    <p style="color:var(--muted);margin-top:.9rem">From vetted firms and real portfolios to events and financing — dive into the tools that make renovating simpler.</p>
-  </div>
-</section>
-
-<!-- ===== SPOTLIGHT · FIRMS ===== -->
-<section class="feat bg-white sec-rel">
-  <span class="amb orb-g" style="width:300px;height:300px;left:-120px;top:10px"></span>
-  <div class="wrap">
-    <div class="feat-row">
-      <div class="feat-visual reveal">
-        <div class="fv">
-          <span class="amb-orb" style="width:180px;height:180px;right:-30px;bottom:-30px"></span>
-          <div class="fv-firms">
-            <span class="scan"></span>
-            <div class="frow"><span class="av" style="background:#E8A41E">A</span><div class="mt"><b>Atelier Reno Co.</b><span>BTO · Scandinavian</span></div><span class="pct">98%</span><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <div class="frow on"><span class="av" style="background:#2E7D6B">B</span><div class="mt"><b>BuildHaus Interiors</b><span>Condo · Modern Luxe</span></div><span class="pct">96%</span><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <div class="frow"><span class="av" style="background:#7D5BA6">C</span><div class="mt"><b>Crafted Spaces SG</b><span>Landed · Carpentry</span></div><span class="pct">92%</span><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <div class="frow"><span class="av" style="background:#C0392B">D</span><div class="mt"><b>Domus Renovate</b><span>Resale HDB · Muji</span></div><span class="pct">88%</span><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-          </div>
-        </div>
-      </div>
-      <div class="feat-copy reveal">
-        <span class="num-tag"><b>01</b> · Directory</span>
-        <h2>Browse <em>200+ vetted</em> renovation firms.</h2>
-        <p class="lead">Every firm is screened before it qualifies. Search the full directory and filter by location and specialty to find teams that fit your project.</p>
-        <ul class="feat-list">
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Filter by region, specialty and rating</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> See reviews, membership tier and activity</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Only licensed, vetted businesses</li>
-        </ul>
-        <div class="feat-cta">
-          <a href="firms.html" class="btn btn-gold btn-shine">Browse firms
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sd" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="var(--cream)" d="M0 80 L0 46 C 480 8, 960 8, 1440 46 L1440 80 Z"/></svg></div>
-</section>
-
-<!-- ===== SPOTLIGHT · PORTFOLIO ===== -->
-<section class="feat cream-band sec-rel">
-  <div class="wrap">
-    <div class="feat-row flip">
-      <div class="feat-visual reveal">
-        <div class="fv">
-          <div class="fv-port" aria-hidden="true">
-            <div class="col">
-              <span class="tile" style="background:linear-gradient(150deg,#E8A41E,#F4C24B)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#2E7D6B,#3E8E7E)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#7D5BA6,#9B6FC0)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#E8A41E,#F4C24B)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#2E7D6B,#3E8E7E)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#7D5BA6,#9B6FC0)"></span>
-            </div>
-            <div class="col down">
-              <span class="tile" style="background:linear-gradient(150deg,#C0392B,#D98324)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#2D6CB0,#5C6BC0)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#3A2E1E,#6B5535)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#C0392B,#D98324)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#2D6CB0,#5C6BC0)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#3A2E1E,#6B5535)"></span>
-            </div>
-            <div class="col">
-              <span class="tile" style="background:linear-gradient(150deg,#9B4F96,#C264A6)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#B7791F,#E8A41E)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#1F9D6B,#3E8E7E)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#9B4F96,#C264A6)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#B7791F,#E8A41E)"></span>
-              <span class="tile" style="background:linear-gradient(150deg,#1F9D6B,#3E8E7E)"></span>
-            </div>
-          </div>
-          <span class="veil"></span>
-        </div>
-      </div>
-      <div class="feat-copy reveal">
-        <span class="num-tag"><b>02</b> · Inspiration</span>
-        <h2>Real <em>renovation projects</em> from real firms.</h2>
-        <p class="lead">Explore hundreds of completed projects. Filter by property type and design style to find ideas that match the home you're dreaming of.</p>
-        <ul class="feat-list">
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> 700+ portfolios across every style</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Filter by HDB, condo, landed &amp; more</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> See budgets, themes and the firm behind each</li>
-        </ul>
-        <div class="feat-cta">
-          <a href="portfolio.html" class="btn btn-gold btn-shine">View portfolios
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="packages.html" class="feat-link">or compare packages
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sd" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#fff" d="M0 46 C 240 82, 480 82, 720 50 S 1200 8, 1440 44 L1440 80 L0 80 Z"/></svg></div>
-</section>
-
-<!-- ===== SPOTLIGHT · EVENTS ===== -->
-<section class="feat bg-white sec-rel">
-  <span class="amb dots" style="right:6%;top:30px"></span>
-  <div class="wrap">
-    <div class="feat-row">
-      <div class="feat-visual reveal">
-        <div class="fv" style="background:linear-gradient(160deg,#272544,#3A2E1E)">
-          <span class="amb-orb" style="width:200px;height:200px;left:-40px;top:-30px"></span>
-          <div class="fv-ev" style="width:100%;display:grid;place-items:center;position:relative">
-            <span class="conf" style="background:#E8A41E;left:18%;top:18%"></span>
-            <span class="conf" style="background:#1F9D6B;right:16%;top:24%;animation-delay:1s"></span>
-            <span class="conf" style="background:#7C5BA6;left:24%;bottom:18%;animation-delay:.5s"></span>
-            <span class="conf" style="background:#F6D88A;right:22%;bottom:22%;animation-delay:1.4s"></span>
-            <div class="ticket">
-              <div class="top">
-                <span class="live"><span class="dot"></span> Upcoming</span>
-                <h4>Renovation Masterclass</h4>
-              </div>
-              <div class="perf"></div>
-              <div class="btm">
-                <div class="b"><b>04</b><span>JUL</span></div>
-                <div class="b"><b>7:30<small style="font-size:.6em">pm</small></b><span>E-Centre @ Redhill</span></div>
-                <div class="b" style="margin-left:auto;text-align:right"><b style="color:var(--gold-deep)">Free</b><span>Limited seats</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="feat-copy reveal">
-        <span class="num-tag"><b>03</b> · Events</span>
-        <h2>Meet the experts at our <em>events &amp; workshops</em>.</h2>
-        <p class="lead">Learn from renovation pros, meet vetted firms in person and get your questions answered — then book your spot online in seconds.</p>
-        <ul class="feat-list">
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Workshops, masterclasses &amp; meetups</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Instant booking with phone verification</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Free to attend — limited seats</li>
-        </ul>
-        <div class="feat-cta">
-          <a href="events.html" class="btn btn-gold btn-shine">See events
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sd" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="var(--cream-soft)" d="M0 80 L0 46 C 480 8, 960 8, 1440 46 L1440 80 Z"/></svg></div>
-</section>
-
-<!-- ===== SPOTLIGHT · LOAN ===== -->
-<section class="feat form-band sec-rel">
-  <span class="amb orb-g" style="width:320px;height:320px;right:-130px;bottom:0"></span>
-  <div class="wrap">
-    <div class="feat-row flip">
-      <div class="feat-visual reveal">
-        <div class="fv">
-          <span class="amb-orb" style="width:170px;height:170px;left:-20px;top:-20px"></span>
-          <div class="fv-loan" style="width:100%;display:grid;place-items:center;position:relative">
-            <span class="offer"><span class="dot"></span> 3 partners matched</span>
-            <div class="panel">
-              <div class="rate"><b>From 2.88</b><span class="pc">%</span>
-                <span class="lab">p.a.<br>renovation loan</span></div>
-              <div class="bars"><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="feat-copy reveal">
-        <span class="num-tag"><b>04</b> · Financing</span>
-        <h2>Get matched to the <em>right renovation loan</em>.</h2>
-        <p class="lead">Tell us about your project and finances once. Trusted loan partners compete to offer you the best rate — no obligation, no chasing banks.</p>
-        <ul class="feat-list">
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> One form, multiple competing offers</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Only licensed, vetted loan providers</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Free &amp; no obligation — compare, decide later</li>
-        </ul>
-        <div class="feat-cta">
-          <a href="loan.html" class="btn btn-gold btn-shine">Apply for a loan
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -1261,36 +1101,54 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
     <div class="center" style="max-width:44rem">
       <span class="eyebrow">Featured · Trusted IDs</span>
       <h2 style="font-size:clamp(1.9rem,3.4vw,2.7rem);margin-top:.7rem">Meet a few of the designers behind the work.</h2>
-      <p style="color:var(--muted);margin-top:.9rem">Every interior designer on Reno Research is reviewed and verified. Here's a template of how featured profiles appear, so swap in real photos and details.</p>
+      <p style="color:var(--muted);margin-top:.9rem">Every interior designer on Reno Research is reviewed and verified — BCA &amp; HDB licensed, BizSafe and ISO certified. Here are a few of the firms homeowners are matching with right now.</p>
     </div>
     <div class="id-grid">
-      <div class="id-card reveal">
-        <div class="cover v1"><span class="ph">Project cover photo</span><span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Verified ID</span></div>
-        <div class="body"><div class="pfp" style="background:#E8A41E">D1</div>
-          <h3>Designer Name</h3><div class="firm-name">Renovation Firm Pte. Ltd.</div>
-          <div class="tags"><span>Scandinavian</span><span>BTO HDB</span><span>Carpentry</span></div>
-          <div class="stats"><div><b>120+</b>Projects</div><div><b>4.9★</b>Avg rating</div><div><b>8 yrs</b>Experience</div></div>
+      <a class="id-card reveal" href="/firms/2nd-phase-design-interior-pte-ltd/">
+        <div class="cover"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1762792403605_9ceacr02ak7_showroom_1762792411364_scaled_IMG_3739.jpeg" alt="2nd Phase Design Interior showroom" loading="lazy"><span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Verified ID</span></div>
+        <div class="body"><div class="pfp"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1767612782382_9pylkr2a0gh_company_logo_1767612781708.jpeg" alt="2nd Phase Design Interior logo"></div>
+          <h3>2nd Phase Design Interior</h3>
+          <div class="certs">
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>BCA</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>HDB</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>BizSafe</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>ISO</span>
+          </div>
+          <div class="tags"><span>Modern</span><span>Contemporary</span><span>Industrial</span></div>
+          <div class="stats"><div><b>5.0★</b>Avg rating</div><div><b>145</b>Reviews</div><div><b>25 yrs</b>Experience</div></div>
         </div>
-      </div>
-      <div class="id-card reveal">
-        <div class="cover v2"><span class="ph">Project cover photo</span><span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Verified ID</span></div>
-        <div class="body"><div class="pfp" style="background:#2E7D6B">D2</div>
-          <h3>Designer Name</h3><div class="firm-name">Renovation Firm Pte. Ltd.</div>
-          <div class="tags"><span>Modern Luxe</span><span>Condo</span><span>Lighting</span></div>
-          <div class="stats"><div><b>90+</b>Projects</div><div><b>5.0★</b>Avg rating</div><div><b>6 yrs</b>Experience</div></div>
+      </a>
+      <a class="id-card reveal" href="/firms/livinci-interior-design/">
+        <div class="cover"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1767516411542_t7f9r1wpxtq_showroom_1767516411053_scaled_72054.jpg" alt="Livinci Interior Design showroom" loading="lazy"><span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Verified ID</span></div>
+        <div class="body"><div class="pfp"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1772611922849_i6azdbdcvcl_Livinci_Interior_Logo.webp" alt="Livinci Interior Design logo"></div>
+          <h3>Livinci Interior Design</h3>
+          <div class="certs">
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>BCA</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>HDB</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>BizSafe</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>ISO</span>
+          </div>
+          <div class="tags"><span>Modern</span><span>Contemporary</span><span>Scandinavian</span></div>
+          <div class="stats"><div><b>4.7★</b>Avg rating</div><div><b>83</b>Reviews</div><div><b>10 yrs</b>Experience</div></div>
         </div>
-      </div>
-      <div class="id-card reveal">
-        <div class="cover v3"><span class="ph">Project cover photo</span><span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Verified ID</span></div>
-        <div class="body"><div class="pfp" style="background:#7D5BA6">D3</div>
-          <h3>Designer Name</h3><div class="firm-name">Renovation Firm Pte. Ltd.</div>
-          <div class="tags"><span>Muji</span><span>Resale HDB</span><span>Space-saving</span></div>
-          <div class="stats"><div><b>150+</b>Projects</div><div><b>4.8★</b>Avg rating</div><div><b>10 yrs</b>Experience</div></div>
+      </a>
+      <a class="id-card reveal" href="/firms/des-and-co-interior-pte-ltd/">
+        <div class="cover"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1763530390948_plqa0bqrhkl_showroom_1763530401200_scaled_IMG_3770.jpeg" alt="Des &amp; Co Interior showroom" loading="lazy"><span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Verified ID</span></div>
+        <div class="body"><div class="pfp"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1763530399521_rbha1k92tua_company_logo_1763530409787.jpeg" alt="Des &amp; Co Interior logo"></div>
+          <h3>Des &amp; Co Interior</h3>
+          <div class="certs">
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>BCA</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>HDB</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>BizSafe</span>
+            <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>ISO</span>
+          </div>
+          <div class="tags"><span>Modern</span><span>Contemporary</span><span>Industrial</span></div>
+          <div class="stats"><div><b>4.6★</b>Avg rating</div><div><b>39</b>Reviews</div><div><b>15 yrs</b>Experience</div></div>
         </div>
-      </div>
+      </a>
     </div>
     <div class="center" style="margin-top:2.4rem">
-      <a href="#lead" class="btn btn-dark">Get matched with verified IDs
+      <a href="#leadForm" class="btn btn-dark">Get matched with verified IDs
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -1304,9 +1162,9 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
         <div class="l"><span class="chip"><img src="data:image/jpeg;base64,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AQACAAMAAAAh/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APvnf/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wC609bW/wD/AP8A/wD/AP8A+f8A/wD/AOt//wD/AP8A/wD/AP8A/wD9Rcgzf/f/AP8A/wD/AP8A/k8848tgt/8A/wD/AP8A/wD/APwqs41DH/8A/wD/AP8A/wD+DFNXaCFN3/8A/wD/AP8A/wD+ysOH8j//AP8A/wD/AP8A/g1Ff/YxHKwwWxfV/fx1lXO7/wD/AP8A/wD/AP8A/g1FfeWUHF1t6wu8X4/bbZO9/wD/AP8A/wD/AP8A/g1wlHQmbL//AH2281333/8A/wD/AP8A/wD/AP8A/wD/AP4MY8g0dR3/AP8A/wD/AP8A6f8A/wD/AP8A/wD/AP8A/wD/AP8A/wD+DUn2VS3/AEY7bff99/8Ad3nO2HP/AP8A/wD/AP8A/g1FfQgtFawfcqV81lQtj/8A2Nf/AP8A/wD/AP8A/g1FfZWCxLbXXXfbfTT/AG03003/AP8A/wD/AP8A/iFm9/mw2nf/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88f/AP8A3z3/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8Aw//aAAwDAQACAAMAAAAQ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++42+++++++++++++++++++++++++++6/Cx+s++++++++7999531+++++++++++I67o25e+++++++pPOOOtDM++++++++++9Kxh+p++++++++p+/29o9mg+++++++++V98Lee++++++++p+pUWvT/0AG8WqgIc6WYGf+w++++++++p+pUU7Z/08vWUb6o80u2pL4f++++++++p+9ed2cKPeMcsO++O0G+++++++++++++p+9y3zGGc+++++++u4+++++++++++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" alt="Reno Research"></span><b>Reno Research</b></div>
         <p>Technology, algorithms and a human touch, matching Singapore homeowners with the right renovation firms since day one.</p>
       </div>
-      <div class="foot-col"><h4>Explore</h4><a href="firms.html">Firms</a><a href="portfolio.html">Portfolio</a><a href="packages.html">Packages</a><a href="events.html">Events</a><a href="blogs.html">Guides</a><a href="loan.html">Loan</a></div>
+      <div class="foot-col"><h4>Explore</h4><a href="firms.html">Firms</a><a href="portfolio.html">Portfolio</a><a href="blogs.html">Guides</a><a href="loan.html">Loan</a></div>
       <div class="foot-col"><h4>Company</h4><a href="#how">How it works</a><a href="#designers">Trusted IDs</a><a href="#reviews">Reviews</a></div>
-      <div class="foot-col"><h4>Homeowners</h4><a href="#lead">Get matched</a><a href="#video">Watch overview</a><a href="#lead">Submit floor plan</a></div>
+      <div class="foot-col"><h4>Homeowners</h4><a href="#leadForm">Get matched</a><a href="#video">Watch overview</a><a href="#leadForm">Submit floor plan</a></div>
       <div class="foot-col"><h4>Contact</h4><a href="#">hello@renoresearch.sg</a><a href="#">WhatsApp us</a><a href="#">renoresearch.sg</a></div>
     </div>
     <div class="foot-bottom">
@@ -1371,15 +1229,6 @@ document.querySelectorAll('#timelineChips .chip-opt').forEach(chip=>{
   });
 });
 
-/* ---------- venue → conditional address ---------- */
-const venue=document.getElementById('venue');
-const addressBlock=document.getElementById('addressBlock');
-function syncVenue(){
-  const need=(venue.value==='Renovation site'||venue.value==='Other venue');
-  addressBlock.classList.toggle('show',need);
-}
-venue.addEventListener('change',syncVenue);
-
 /* ---------- budget dual slider <-> min/max boxes ---------- */
 const rMin=document.getElementById('rMin'),rMax=document.getElementById('rMax');
 const minBox=document.getElementById('minBox'),maxBox=document.getElementById('maxBox');
@@ -1416,6 +1265,19 @@ maxBox.addEventListener('change',()=>fromBoxes('max'));
 minBox.addEventListener('input',()=>{minBox.value=minBox.value.replace(/[^\d,]/g,'')});
 maxBox.addEventListener('input',()=>{maxBox.value=maxBox.value.replace(/[^\d,]/g,'')});
 paintFill();
+
+/* ---------- flexible budget → hide range + slider ---------- */
+const flexBudget=document.getElementById('flexBudget');
+const dual=document.getElementById('dual'),minmax=document.getElementById('minmax'),flexNote=document.getElementById('flexNote');
+function syncFlexBudget(){
+  const flex=flexBudget.checked;
+  dual.style.display=flex?'none':'';
+  minmax.style.display=flex?'none':'';
+  flexNote.style.display=flex?'block':'none';
+  budgetLabel.textContent=flex?'Flexible budget':fmt(+rMin.value)+' to '+fmt(+rMax.value);
+}
+flexBudget.addEventListener('change',syncFlexBudget);
+syncFlexBudget();
 
 /* ---------- file upload (max 5, drag&drop, split img/pdf) ---------- */
 const dropzone=document.getElementById('dropzone'),fileInput=document.getElementById('fileInput');
@@ -1466,83 +1328,134 @@ function validateForm(){
   if(!emailRe.test(email)){setErr('email',true);ok=false}else setErr('email',false);
   if(phone.length!==8){setErr('phone',true);ok=false}else setErr('phone',false);
   if(!timeline){document.getElementById('err-timeline').classList.add('show');ok=false}
-  const needAddr=(venue.value==='Renovation site'||venue.value==='Other venue');
-  if(needAddr&&!document.getElementById('address').value.trim()){setErr('address',true);ok=false}else setErr('address',false);
   return ok;
 }
-function collectPayload(){
-  const phone=document.getElementById('phone').value.replace(/\D/g,'');
+const API='https://api.renoresearch.sg';
+
+// Build the lead `data` object matching the server / admin-console schema
+// (mirrors AuthService().registerLead → _buildUserData in the homeowner app).
+function buildUserData(imageUrls,pdfUrls){
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone='+65'+document.getElementById('phone').value.replace(/\D/g,'');
+  const flex=document.getElementById('flexBudget').checked;
+  const pType=propertyType.value;
+  const keys=document.getElementById('keysCollected').checked;
   return {
-    name:document.getElementById('name').value.trim(),
-    email:document.getElementById('email').value.trim(),
-    phone:'+65'+phone,
-    propertyType:propertyType.value,
-    otherSelection:propertyType.value==='Other'?otherSelection:null,
-    partialSelections:propertyType.value==='Partial'?[...partialSelections]:[],
-    timeline, renovationTiming:timeline,
-    hasCollectedKeys:document.getElementById('keysCollected').checked,
-    keysCollected:document.getElementById('keysCollected').checked,
-    flexibleBudget:document.getElementById('flexBudget').checked,
+    role:'Homeowner', id:'lead_'+Date.now(), userType:'Homeowner',
+    name, email, phone, profileImage:null,
+    address:'', unitNumber:'', postalCode:'',
+    companyName:'', uen:'', bio:'',
+    specialRequirements:'',
+    renovationType:pType,
+    otherRenovationType:pType==='Other'?otherSelection:null,
+    renovationTypes:[pType],
+    renovationTiming:timeline, timeline:timeline,
+    partialSelections:pType==='Partial'?[...partialSelections]:[],
+    hasCollectedKeys:keys, keysCollected:keys,
+    isFlexibleBudget:flex,
+    selectedBudgetRangeLabel:flex?'Flexible':null,
     selectedBudgetValues:{min:+rMin.value,max:+rMax.value},
-    floorplanImages:floorPlanFiles.filter(f=>f.type!=='application/pdf').map(f=>f.name),
-    floorplanFiles:floorPlanFiles.filter(f=>f.type==='application/pdf').map(f=>f.name),
-    venue:venue.value,
-    appointmentAddress:(venue.value==='Renovation site'||venue.value==='Other venue')?document.getElementById('address').value.trim():null,
-    registrationSource:'lead-registration'
+    budgetFlexibility:null,
+    renovationLoanInterest:false,
+    renovationLoan:{isLookingForLoan:false,loanTypes:[]},
+    selectedLoanTypes:[],
+    allowDesignerMatching:true,
+    meetingExpertInterest:false,
+    importantFactor:'Quality of materials and workmanship',
+    newLeadsNotification:true, portfolioUpdatesNotification:false,
+    newMatchesNotification:true, messagesNotification:true, leadUpdatesNotification:false,
+    floorplanImages:imageUrls, floorplanFiles:pdfUrls,
+    siteImages:[], portfolioImages:[], accreditationFiles:[],
+    appointmentSlots:[], appointmentDates:[],
+    socialLoginData:null, renovationPlans:[],
+    rateLimiting:{periodStartTime:new Date().toISOString(),requestCount:0,requestsInPeriod:[]},
+    leadFormMetadata:{submittedFromLeadForm:true,advancedFormFilled:false,submissionTimestamp:new Date().toISOString(),formVersion:'1.0'}
   };
 }
 
+// Upload floor-plan files to /uploadfile (public, multipart). Returns image + pdf URLs.
+async function uploadFloorPlans(){
+  const imageUrls=[],pdfUrls=[];
+  for(const f of floorPlanFiles){
+    const fd=new FormData(); fd.append('file',f,f.name);
+    try{
+      const res=await fetch(`${API}/uploadfile`,{method:'POST',body:fd});
+      if(!res.ok) continue;
+      const j=await res.json();
+      const url=(j&&j.file&&j.file.url)||j.url||j.fileUrl||j.Location;
+      if(url&&/^https?:/.test(url)){ (f.type==='application/pdf'?pdfUrls:imageUrls).push(url); }
+    }catch(_){/* skip failed upload, keep submission going */}
+  }
+  return {imageUrls,pdfUrls};
+}
+
 const stateForm=document.getElementById('stateForm');
-const stateOtp=document.getElementById('stateOtp');
 const stateDone=document.getElementById('stateDone');
 const submitBtn=document.getElementById('submitBtn'),submitText=document.getElementById('submitText');
+const errSubmit=document.getElementById('err-submit');
 
-submitBtn.addEventListener('click',()=>{
+submitBtn.addEventListener('click',async ()=>{
+  if(submitBtn.disabled) return;
+  errSubmit.classList.remove('show');
   if(!validateForm()){
     const firstBad=document.querySelector('.err.show, .input.bad, .select.bad');
     if(firstBad)firstBad.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-  const payload=collectPayload();
-  console.log('registerLead payload →',payload); // AuthService().registerLead(...)
-  // simulate upload + register
   submitText.textContent='Uploading & matching…';submitBtn.disabled=true;
-  setTimeout(()=>{
+  try{
+    const {imageUrls,pdfUrls}=await uploadFloorPlans();
+    const userData=buildUserData(imageUrls,pdfUrls);
+    const body=new URLSearchParams({
+      phone:userData.phone,
+      email:userData.email,
+      data:JSON.stringify(userData),
+      registrationSource:'lead-registration'
+    });
+    const res=await fetch(`${API}/registerlead`,{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
+      body
+    });
+    const j=await res.json().catch(()=>({}));
+    if(res.ok && j.success){
+      // Meta Pixel: lead conversion
+      if(window.fbq) fbq('track','Lead',{
+        content_name:'Lead Registration',
+        content_category:userData.renovationType,
+        currency:'SGD',
+        value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0
+      });
+      document.getElementById('doneName').textContent=userData.name.split(' ')[0]||'there';
+      stateForm.style.display='none';stateDone.classList.add('show');
+      stateDone.scrollIntoView({behavior:'smooth',block:'center'});
+    }else{
+      errSubmit.textContent=(j&&j.msg)||'We couldn’t submit your request. Please try again.';
+      errSubmit.classList.add('show');
+    }
+  }catch(err){
+    errSubmit.textContent='Network error — please check your connection and try again.';
+    errSubmit.classList.add('show');
+  }finally{
     submitBtn.disabled=false;submitText.textContent='Get my matches';
-    document.getElementById('otpPhone').textContent=payload.phone.replace('+65','+65 ');
-    document.getElementById('doneName').textContent=payload.name.split(' ')[0]||'there';
-    stateForm.style.display='none';stateOtp.classList.add('show');
-    document.querySelector('#otpInputs input').focus();
-  },1100);
+  }
 });
 
-/* OTP boxes: auto-advance + accept demo code 123456 */
-const otpInputs=[...document.querySelectorAll('#otpInputs input')];
-otpInputs.forEach((inp,idx)=>{
-  inp.addEventListener('input',()=>{inp.value=inp.value.replace(/\D/g,'');if(inp.value&&idx<5)otpInputs[idx+1].focus();document.getElementById('err-otp').classList.remove('show')});
-  inp.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!inp.value&&idx>0)otpInputs[idx-1].focus()});
-});
-document.getElementById('verifyBtn').addEventListener('click',()=>{
-  const code=otpInputs.map(i=>i.value).join('');
-  if(code.length<6){document.getElementById('err-otp').classList.add('show');return;}
-  // demo: accept any 6 digits (real flow verifies via backend) → success message
-  stateOtp.classList.remove('show');stateDone.classList.add('show');
-});
-document.getElementById('resendBtn').addEventListener('click',()=>{
-  const b=document.getElementById('resendBtn');b.textContent='Code sent ✓';setTimeout(()=>b.textContent='Resend code',2500);
-});
 
 /* init */
-syncPropertyBlocks();syncVenue();
+syncPropertyBlocks();
 
 /* ---------- shareable "scroll to lead form" slugs ----------
    Any of these hashes scroll to the lead form (offset for the sticky bar)
    and focus the first field:
      /#get-matched   /#apply   /#get-quote   /#book   /#lead   /#form        */
 (function(){
-  const ALIASES=['get-matched','getmatched','apply','get-quote','quote','book','lead','form'];
+  const ALIASES=['get-matched','getmatched','apply','get-quote','quote','book','lead','leadform','form'];
   function goToLead(){
-    const lead=document.getElementById('lead');
+    // Scroll straight to the form card so the inputs are visible without
+    // manual scrolling (on mobile the aside text stacks above it).
+    const lead=document.getElementById('leadForm')||document.getElementById('lead');
     if(!lead) return;
     lead.scrollIntoView({behavior:'smooth',block:'start'});
     const first=document.getElementById('name');
@@ -1557,6 +1470,42 @@ syncPropertyBlocks();syncVenue();
   if(ALIASES.includes((location.hash||'').replace('#','').toLowerCase())){
     window.addEventListener('load',()=>setTimeout(goToLead,120));
   }
+})();
+
+/* ---------- nav "More" dropdown: open on click (required on touch/mobile) ---------- */
+(function(){
+  const hasDrop=document.querySelector('.has-drop');
+  const toggle=hasDrop&&hasDrop.querySelector('.drop-toggle');
+  if(!hasDrop||!toggle) return;
+  toggle.setAttribute('aria-expanded','false');
+  toggle.addEventListener('click',(e)=>{
+    e.preventDefault();e.stopPropagation();
+    const open=hasDrop.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+  // tap/click anywhere outside closes it
+  document.addEventListener('click',(e)=>{
+    if(!hasDrop.contains(e.target)){hasDrop.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+  });
+  document.addEventListener('keydown',(e)=>{
+    if(e.key==='Escape'){hasDrop.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+  });
+})();
+
+/* ---------- overview video: lazy play on click ---------- */
+(function(){
+  const shell=document.getElementById('videoShell');
+  const vid=document.getElementById('renoVideo');
+  const cover=document.getElementById('videoCover');
+  if(!shell||!vid||!cover) return;
+  cover.addEventListener('click',()=>{
+    shell.classList.add('playing');
+    const p=vid.play();
+    if(p&&p.catch) p.catch(()=>{}); // ignore autoplay-policy rejections
+    vid.focus({preventScroll:true});
+  });
+  // show the poster again if the user stops at the very start / end
+  vid.addEventListener('ended',()=>shell.classList.remove('playing'));
 })();
 </script>
 </body>
