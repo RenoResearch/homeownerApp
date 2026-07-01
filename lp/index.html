@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>document.documentElement.className+=' js';</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- A/B variant of the landing page. Keep it out of the index to avoid duplicate-content
+     penalties against the primary "/" page, but let link equity flow. -->
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://renoresearch.sg/" />
+<meta name="theme-color" content="#102839" />
+<meta name="geo.region" content="SG" />
+<meta name="geo.placename" content="Singapore" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Reno Research" />
+<meta property="og:locale" content="en_SG" />
+<meta property="og:title" content="Reno Research | The smarter way to find an interior designer" />
+<meta property="og:description" content="Get connected to interior designers suited to your project requirements. Free, 60 seconds — Reno Research matches Singapore homeowners with vetted renovation firms." />
+<meta property="og:url" content="https://renoresearch.sg/lp/" />
+<meta property="og:image" content="https://renoresearch.sg/og-image.jpg" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWKB2Y6H6F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PWKB2Y6H6F');
+  // Tag the A/B experiment arm so you can slice conversions by variant in GA4.
+  gtag('event', 'experiment_impression', {experiment_id:'landing_page', variant_id:'alt_b'});
+</script>
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1099636691181980');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1099636691181980&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<title>Reno Research | The smarter way to find an interior designer</title>
+<meta name="description" content="Get connected to interior designers suited to your project requirements. Free, 60 seconds — Reno Research matches Singapore homeowners with vetted renovation firms." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- Granville (self-hosted, for elegant italic display) ---------- */
+@font-face{font-family:'Granville';src:url('assets/fonts/Granville-Italic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Granville';src:url('assets/fonts/Granville-BoldItalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap}
+@font-face{font-family:'Granville';src:url('assets/fonts/Granville-LightItalic.otf') format('opentype');font-weight:300;font-style:italic;font-display:swap}
+@font-face{font-family:'Granville';src:url('assets/fonts/Granville.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Granville';src:url('assets/fonts/Granville-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+
+:root{
+  --navy:#102839;      /* deepest — page + dark bands */
+  --navy2:#1d4056;     /* panels / cards on navy */
+  --gold:#dea741;      /* primary accent */
+  --gold-deep:#c6902f;
+  --cream:#f3e6d2;     /* review cards / soft surfaces */
+  --mist:#ecf1f5;      /* light bands */
+  --paper:#ffffff;
+  --ink:#132a3b;
+  --muted:#5b6b78;
+  --line:#d9e0e7;
+  --r:16px; --r-lg:22px;
+  --shadow:0 22px 55px -28px rgba(16,40,57,.55);
+  --shadow-navy:0 26px 60px -30px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--navy);color:var(--ink);
+  font-family:"PT Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+
+/* Granville italic display helper */
+.gv{font-family:"Granville",Georgia,serif;font-style:italic;font-weight:400}
+.gv-b{font-family:"Granville",Georgia,serif;font-style:italic;font-weight:700}
+
+h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:"Granville",Georgia,serif;font-style:italic;font-weight:700;
+  font-size:1.15rem;letter-spacing:.01em;cursor:pointer;border:none;
+  border-radius:12px;padding:.85rem 1.6rem;transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+}
+.btn svg{stroke-width:2.4}
+.btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 10px 26px -12px rgba(222,167,65,.8)}
+.btn-gold:hover{transform:translateY(-2px);filter:brightness(1.03)}
+.btn-block{width:100%;padding:1.05rem;font-size:1.25rem}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(243,230,210,.55);border-radius:999px;font-size:1.05rem}
+.btn-ghost:hover{background:rgba(243,230,210,.08)}
+
+/* ---------- header ---------- */
+.appbar{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06)}
+.appbar .inner{display:flex;align-items:center;gap:1.6rem;height:78px}
+.brand{display:flex;align-items:center;gap:.7rem;margin-right:auto}
+.brand .chip{width:46px;height:46px;border-radius:11px;overflow:hidden;background:#fff;flex:none}
+.brand .chip img{width:100%;height:100%;object-fit:cover}
+.brand b{font-family:"Granville",Georgia,serif;font-weight:700;font-style:normal;color:#fff;font-size:1.4rem;letter-spacing:.01em}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{color:rgba(243,230,210,.9);font-size:1.02rem}
+.nav a:hover{color:var(--gold)}
+.menu-btn{display:none;background:none;border:none;color:#fff;cursor:pointer}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:center;
+  background:linear-gradient(90deg,rgba(16,40,57,.15) 0%,rgba(16,40,57,.55) 48%,rgba(16,40,57,.95) 78%),url('assets/hero.jpg') center/cover no-repeat;}
+.hero .wrap{width:min(1200px,92vw);padding:5rem 0}
+.hero-copy{max-width:640px;margin-left:auto;text-align:right;color:var(--cream)}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);color:#fbeddb;line-height:1.05}
+.hero h1 .gv{color:#fff}
+.hero p{margin:1.4rem 0 2rem;font-size:1.15rem;color:rgba(243,230,210,.9);max-width:34rem;margin-left:auto}
+.hero .btn{font-size:1.3rem;padding:1rem 2rem}
+
+/* ---------- generic band ---------- */
+.band{position:relative}
+.band-navy{background:var(--navy) url('assets/bg-navy.jpg') center/cover;color:var(--cream)}
+.band-light{background:var(--mist) url('assets/bg-light.jpg') center/cover;color:var(--ink)}
+.band-pad{padding:5.5rem 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:700;
+  letter-spacing:.02em;background:rgba(222,167,65,.16);color:var(--gold);padding:.4rem .9rem;border-radius:999px}
+.sec-label{display:flex;align-items:center;gap:1rem;font-size:1.9rem}
+.sec-label .line{width:64px;height:2px;background:currentColor;opacity:.6}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-bottom:2.2rem;flex-wrap:wrap}
+
+/* ---------- FORM band ---------- */
+.form-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:3.5rem;align-items:center}
+.form-aside h2{font-size:clamp(2rem,3.6vw,3rem);color:#fbeddb;margin:1.2rem 0 1rem;line-height:1.06}
+.form-aside h2 .gv{color:#fff}
+.form-aside > p{color:rgba(243,230,210,.85);font-size:1.1rem;max-width:32rem}
+.aside-list{list-style:none;padding:0;margin:1.6rem 0;display:grid;gap:.85rem}
+.aside-list li{display:flex;align-items:center;gap:.7rem;font-size:1.06rem;color:#eef2f5}
+.aside-list .bx{width:15px;height:15px;background:var(--gold);border-radius:3px;flex:none}
+.privacy-note{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:.75rem 1.1rem;color:rgba(243,230,210,.85);font-size:.95rem}
+
+/* the form card */
+.card{background:var(--cream);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow-navy);color:var(--ink)}
+.field{margin-bottom:1.15rem}
+.field > label{display:block;font-weight:700;font-size:.95rem;margin-bottom:.45rem;color:#25404f}
+.req{color:var(--gold-deep)}
+.input,.select{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#fbf3e6;
+  border:1.5px solid #dcc9a6;border-radius:11px;padding:.8rem .95rem;transition:border-color .15s,box-shadow .15s}
+.input::placeholder{color:#9a8f7c}
+.input:focus,.select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(222,167,65,.25);background:#fff}
+.select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2325404f' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.input.bad,.select.bad{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.15)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.phone-wrap{display:flex;align-items:stretch}
+.phone-wrap .cc{display:flex;align-items:center;padding:0 .8rem;background:#f0e2c8;border:1.5px solid #dcc9a6;border-right:none;border-radius:11px 0 0 11px;font-weight:700;color:#6b5c3f}
+.phone-wrap .input{border-radius:0 11px 11px 0}
+.err{display:none;color:#c0392b;font-size:.82rem;margin-top:.35rem}
+.err.show{display:block}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:.55rem}
+.chip-opt{font:inherit;font-size:.92rem;cursor:pointer;background:#fbf3e6;border:1.5px solid #dcc9a6;
+  border-radius:10px;padding:.6rem .95rem;color:#3d4c57;transition:all .15s}
+.chip-opt:hover{border-color:var(--gold)}
+.chip-opt.on{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.subblock{display:none;margin-top:.75rem}
+.subblock.show{display:block}
+.sublabel{font-size:.85rem;font-weight:700;color:#6b5c3f;margin-bottom:.45rem}
+
+/* budget */
+.budget-display{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem;flex-wrap:wrap}
+.budget-display .v{font-weight:700;font-size:1.15rem;color:#25404f}
+.check-line{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;font-weight:700;color:#6b5c3f;cursor:pointer}
+.dual{position:relative;height:34px;margin:.2rem 0 .4rem}
+.dual .track,.dual .fill{position:absolute;top:14px;height:6px;border-radius:6px}
+.dual .track{left:0;right:0;background:#e4d3b1}
+.dual .fill{background:var(--gold)}
+.dual input[type=range]{position:absolute;top:0;left:0;width:100%;height:34px;margin:0;background:none;-webkit-appearance:none;pointer-events:none}
+.dual input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--gold);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2);margin-top:6px}
+.dual input[type=range]::-moz-range-thumb{pointer-events:auto;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--gold);cursor:pointer}
+.minmax{display:none}
+
+/* dropzone */
+.dropzone{border:2px dashed #cdb98f;border-radius:14px;background:#fbf3e6;padding:1.6rem;text-align:center;cursor:pointer;transition:all .15s}
+.dropzone:hover,.dropzone.drag{border-color:var(--gold);background:#fff}
+.dropzone .di{color:var(--gold-deep);display:flex;justify-content:center;margin-bottom:.4rem}
+.dropzone b{display:block;color:#25404f}
+.dropzone span{font-size:.85rem;color:#8a7c62}
+.filelist{margin-top:.7rem;display:grid;gap:.4rem}
+.fileitem{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid #e4d3b1;border-radius:9px;padding:.45rem .6rem;font-size:.85rem}
+.fileitem .ft{font-size:.66rem;font-weight:700;padding:.15rem .4rem;border-radius:5px;color:#fff}
+.fileitem .ft.img{background:#2E7D6B}.fileitem .ft.pdf{background:#c0392b}
+.fileitem .fn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fileitem .rm{margin-left:auto;border:none;background:none;font-size:1.1rem;cursor:pointer;color:#8a7c62}
+.hint{font-size:.82rem;margin-top:.4rem;color:var(--muted)}
+.form-foot{font-size:.82rem;color:#8a7c62;margin-top:.7rem;text-align:center}
+
+/* done state */
+.state-done{display:none;text-align:center;padding:1.5rem .5rem}
+.state-done.show{display:block}
+.state-done .ring{width:66px;height:66px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.state-done h3{font-size:1.7rem;color:#25404f}
+.state-done p{margin-top:.6rem;color:#4a5a64}
+.btn-dark{background:var(--navy);color:var(--cream)}
+
+/* ---------- smart matching ---------- */
+.match-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:center}
+.video{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:9/13;background:#0a1a25}
+.video video,.video img{width:100%;height:100%;object-fit:cover}
+.video .cover{position:absolute;inset:0;cursor:pointer}
+.video .play{position:absolute;inset:0;margin:auto;width:82px;height:82px;border-radius:50%;background:rgba(255,255,255,.25);backdrop-filter:blur(3px);border:2px solid rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;color:#fff}
+.video.playing .cover,.video.playing .play{display:none}
+.match-copy h2{font-size:clamp(1.9rem,3.4vw,2.8rem);color:var(--navy)}
+.match-copy h2 .gv{color:#274a5f}
+.match-copy .sub1{font-weight:700;color:#3a5566;margin-top:.6rem;font-size:1.1rem}
+.match-copy .sub2{color:#5b6b78;font-size:1.1rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.8rem 0 1.4rem}
+.step{position:relative;background:var(--navy2);color:var(--cream);border-radius:12px;padding:1rem .95rem;box-shadow:0 12px 26px -18px rgba(0,0,0,.5)}
+.step:not(:last-child)::after{content:"";position:absolute;right:-11px;top:26px;width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:11px solid var(--navy2);z-index:2}
+.step.gold{background:var(--gold);color:var(--navy)}
+.step.gold::after{border-left-color:var(--gold)}
+.step h4{color:var(--gold);font-size:.98rem;margin-bottom:.4rem}
+.step.gold h4{color:var(--navy)}
+.step p{font-size:.82rem;line-height:1.45;opacity:.92}
+.trust-row{display:flex;flex-wrap:wrap;gap:1.6rem 2rem;align-items:center}
+.trust-row .t{display:flex;align-items:center;gap:.6rem;font-weight:700;color:#2b4757;font-size:1rem}
+.trust-row .t img{width:30px;height:30px;object-fit:contain}
+
+/* ---------- reviews ---------- */
+.reviews-head{text-align:center;margin-bottom:2.6rem}
+.reviews-head h2{font-size:clamp(2rem,4vw,3.1rem);color:#f4ecdf}
+.reviews-head h2 .gv{display:block;color:#fff}
+.reviews-head .stars{display:inline-flex;align-items:center;gap:.6rem;margin-top:.8rem;font-size:1.6rem;color:rgba(236,241,245,.7);font-weight:700}
+.reviews-head .stars .g{color:var(--gold);letter-spacing:.1em}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.review{background:var(--cream);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow-navy);color:#2c3a44}
+.review .top{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem}
+.review .av{width:44px;height:44px;border-radius:50%;flex:none}
+.review .nm{font-weight:700;font-size:1.05rem;color:#1c2a33}
+.review .rs{color:#9aa0a6;letter-spacing:.08em;font-size:.9rem}
+.review p{font-size:.95rem;color:#4a5560;line-height:1.55}
+
+/* ---------- panels (IDs + portfolio) ---------- */
+.panel{background:var(--navy2);border-radius:22px;padding:1.8rem;box-shadow:var(--shadow)}
+.band-light .panel{color:var(--cream)}
+.id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.4rem}
+.id-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 24px -16px rgba(0,0,0,.4)}
+.id-card .logo{height:150px;display:flex;align-items:center;justify-content:center;padding:1.4rem;background:#fff}
+.id-card .logo img{max-height:100%;max-width:80%;object-fit:contain}
+.id-card .meta{background:var(--cream);text-align:center;padding:1rem}
+.id-card .meta b{font-family:"Granville",Georgia,serif;font-style:italic;font-weight:700;font-size:1.25rem;color:#1c2a33;display:block}
+.id-card .meta span{font-size:.9rem;color:#5b6b78}
+
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-bottom:1.4rem}
+.pf{color:var(--cream)}
+.pf img{border-radius:14px;aspect-ratio:1/.92;object-fit:cover;box-shadow:0 12px 26px -18px rgba(0,0,0,.6)}
+.pf .cap{font-family:"Granville",Georgia,serif;font-style:italic;font-weight:700;font-size:1.35rem;margin-top:.7rem;line-height:1.1}
+.pf .sub{font-size:.92rem;color:rgba(236,241,245,.7)}
+
+/* ---------- footer ---------- */
+.foot{background:#0b1f2c;color:rgba(236,241,245,.7);padding:3rem 0 2rem}
+.foot-inner{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.foot .brand b{font-size:1.25rem}
+.foot-links{display:flex;gap:1.6rem;flex-wrap:wrap}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{margin-top:1.6rem;font-size:.85rem;opacity:.6;border-top:1px solid rgba(255,255,255,.08);padding-top:1.2rem}
+
+/* ---------- reveal (only when JS is active, so no-JS users still see content) ---------- */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .form-grid,.match-grid{grid-template-columns:1fr;gap:2.2rem}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:not(:last-child)::after{display:none}
+  .review-grid,.id-grid,.pf-grid{grid-template-columns:1fr 1fr}
+  .hero-copy{text-align:left;margin-left:0}
+  .hero p{margin-left:0}
+  .hero{background:linear-gradient(180deg,rgba(16,40,57,.5),rgba(16,40,57,.92)),url('assets/hero.jpg') center/cover}
+}
+@media(max-width:760px){
+  .nav{display:none;position:absolute;top:78px;left:0;right:0;flex-direction:column;background:var(--navy);padding:1rem 5vw;gap:1rem;border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav.open{display:flex}
+  .menu-btn{display:block}
+  .appbar-cta{display:none}
+  .review-grid,.id-grid,.pf-grid{grid-template-columns:1fr}
+  .band-pad{padding:3.5rem 0}
+}
+@media(max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="appbar">
+  <div class="wrap inner">
+    <a class="brand" href="#top" aria-label="Reno Research home">
+      <span class="chip"><img src="data:image/jpeg;base64,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AQACAAMAAAAh/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APvnf/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wC609bW/wD/AP8A/wD/AP8A+f8A/wD/AOt//wD/AP8A/wD/AP8A/wD9Rcgzf/f/AP8A/wD/AP8A/k8848tgt/8A/wD/AP8A/wD/APwqs41DH/8A/wD/AP8A/wD+DFNXaCFN3/8A/wD/AP8A/wD+ysOH8j//AP8A/wD/AP8A/g1Ff/YxHKwwWxfV/fx1lXO7/wD/AP8A/wD/AP8A/g1FfeWUHF1t6wu8X4/bbZO9/wD/AP8A/wD/AP8A/g1wlHQmbL//AH2281333/8A/wD/AP8A/wD/AP8A/wD/AP4MY8g0dR3/AP8A/wD/AP8A6f8A/wD/AP8A/wD/AP8A/wD/AP8A/wD+DUn2VS3/AEY7bff99/8Ad3nO2HP/AP8A/wD/AP8A/g1FfQgtFawfcqV81lQtj/8A2Nf/AP8A/wD/AP8A/g1FfZWCxLbXXXfbfTT/AG03003/AP8A/wD/AP8A/iFm9/mw2nf/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88f/AP8A3z3/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8Aw//aAAwDAQACAAMAAAAQ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++42+++++++++++++++++++++++++++6/Cx+s++++++++7999531+++++++++++I67o25e+++++++pPOOOtDM++++++++++9Kxh+p++++++++p+/29o9mg+++++++++V98Lee++++++++p+pUWvT/0AG8WqgIc6WYGf+w++++++++p+pUU7Z/08vWUb6o80u2pL4f++++++++p+9ed2cKPeMcsO++O0G+++++++++++++p+9y3zGGc+++++++u4++++++++++++++p+pGX5aS+ew4SWw+I2YWo402g+++++++p+pUw4IH8oOmn+Y2LWbP6+qm8+++++++p+pUU83Xtuu+O+++cusu8+suu+++++++p/wCEXvHKmHPvvvvvvvvvvvvvvvvvvvvvrjDHvvjzH/vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv/EADgRAAIBAgQCCAUBBwUAAAAAAAECAAMRBAUSMSFxEBMwMjNBUaEUFVJhsQYgIkCAkdHwJUJTY8H/2gAIAQIBAT8A/kXAJmk/x2KxdHCLqrtaUc8wTmwe3PhAxI1AzWZ3h2LMEBJnzShPmlCfNKE+Z0PWLj6DbNAwYXHaZ3mZwVILT77ewmJotVw1GnfjYsdzuftGwVVRex/oZkmLxGFqClUU6D9toRY2jNpHD1H57Gv4bcpjaz03AUz4ur9U+Lq/VPi6v1RMdVXc3mCzRlawNj7TB4pcUvDgwhBHZfqJWq44Ux6ACZhTDVyoW4UBRwPlynww/wCP2afD/wDX7N/eISUUtvaPug+//nY1/DblMx745TBUkqE6heDIGIuE942RN9HvMRlJTyIlWk1JtLTK8ayMD5j8QEVFDL59ljcGrVFxgF2Qbep8piaValUIrghjx49GX4M5jXUAfujf/BDvN3H2H5/w9jX8NuUzHvjlMu3aU+4IYyK62YTN6AQkehtME2mqJlja8Ot49g0ZQsIA2hQWuIALRV1GWW9oy2PQABwG8zLKaePILMQRKf6XoKb1HJ5cJh8PTwydXSWwgFzKDB1NQf7vx5f37Gv4bcpmPfHKZdu0p9wQ7xmCC5mb1tZJHmZg1LVRMsXRh1vKm8a1hfo1WtGFgSJTnnKm8XgLxRc3M1m8xQxDoPhyA33jHN02CGf6pXHVVECqeBI3t/WWC8BsOxr+G3KZj3xymBqKhOoxc+ZRYMI2et9QmIzc1Nzf8SrVas2pplWCZ2A8z+IqimoA8pfjcwvfeE3hN5qNrQEgzVxvBdjGNzG4cO2r+G3KZj3xylOk9TgonwlX6Y6Mh0sJRw7VuCzBZUXb90XPtMFhFwq33YxmLdgpAMAA49vX8NuUzHvjlMu3aJlOHZQTeZrgShI8x7iUappPqEybGBh1RP3EdbG/QqhpYXtFW5lgRwigE2mkXt0Klx0aRa8K8LiKpYwKDwEUAm0IANoyhewr+G3KZj3xymXbtKfcEzHDdelxuJjKHVtqXYzL8SUbTflMHiBiaWrz84RY2lPeNa8UkG8sG2ibxrX6BwMcWMHdj8BYRNj0JvHteVN+wr+G3KZj3xymXbtKfcEO8zbAjiRsfYxlNNrHcTKMx0EMeRjAMNQisFmoXvA1jNVtopsbwsCbwNxvLi94zBprFrQNwsYrEGavtFNjeFgTeMwbsK/htymJwprMCDaYbDGiSb3vKbjQId5WpLWQoZjsAS9jwImHwjUWuGmUYkvTNNvKNYnh/EdWnpOrT0/YKKxuROrT0iqq7D+VX//EADARAAEDAgMGBAYDAQAAAAAAAAEAAgMEERASMSEwMkFRcRMUIEAFImFigLEjJFKR/9oACAEDAQE/APw2ihfMbMCfQztF8qItsKtugCTYLyr15V68q9eVenU8g5Igg2O8oaYTuu7QKN4ZI93Yf8QnYTqq2GOVuZp+YYNF9zHxBQMa4XIXhM6LwmdF4TOiMDCp6QEbdqmiMXbd/DiGQElU7srLk7Tt5c14n3fpeJ936T+I2TND23MfEFT6FTvLLWRrwDxIV4/0o6vN9U1weLhVUAI7ogtNjuqeYhphJsCo3se27DswqJhTRkk7eWGjdzHxBU+hVTyTtTg1xabhUby4d1OLsKqRaQoY39dNVup7gC9074o8jY1SSOkdmeb4SDKcvTcx8QVPoVU8k7U4AEmwVGzLs6KY2YVUm8hQQ9BwGNlEYwf5Bs+iHkzrcL+oz5mkkhEkm53MfEFT6FVDC61kaAE3sUKAdFHR5dBZMYGCwVXOGjsiS43OFvbR8QVPoU54bxLxWdUHBwuE+QM1U1XYbdimmMvb3MfEFT6FVPJGqeCqScOHdPYHiyrIbHMhgfXfcDcR8QVPoVU8k7UqnlyOsdFC/OLFVEQcMymjMbrYHA4FDELmgjgUENxHxBU+hVTyTtThR1B06IEOFwqynuLBaG3uI+IKKURixUsufROG04MeWOuFT1ADbqSZrxayq4w11xz9zmd1WZ3X0BxGizO6om+v4q//xABNEAABAwIBBQkNBAkCBgMAAAABAgMEABEFEBITITEGFCIyNEFRcXIVIzNAQlJTYYGRkqGxIDViwTBQVHOCotHh8ENEJCU2Y6DxRVWT/9oACAEBAAE/Av8AwXp+ItQikOhZzvNpGNQztUpPWmkYjEVskN+02pDiF8RaVdR/XWyg4g7Fp99Sv+K3QttnWlH/ALpeHRFbY6PYLUvBIatiVJ6lUrc+15Dyx1667kTG/ATT8xWhxlriuhftH51gc12Wl3TWunoH61kPtx2yt1WampuNPuA72To29mdz03h65CUuSH1KuL2ruQx5zlDD3468+I9wuqouMLQ5osQRmHzxSVBSQUm4PP8AYwKUzGVI06825Fvn+tHXEtNqccNkjXXfMWkaRy6Y6eKmsYATHZZbTa6tQH+eugLC2WQwh9Ga4Pb0VAkuYdJEeQbsK4quj7BALTqufPA+tJ4o8QluFmOtabXA567syPMa9xruzI8xr3Gu7MjzGvca7syPMa9xruzI8xr3Gu7MjzGvca7syPMa9xoYy9zobpONHymR7DTWLsK42cimnm3hdtYV1eMboXS4tqI3tXrNNNhptKE7BU3vmKRW/N4X+e6nXCHCN8Mp/CR/etJ3uwdSV9NqS4LcI3PqTWlT+L4DWIhMiOQErzxrT3tVYHJ3xCGceEjgnIo2F6A/5eo/90fQ0nijxDEuQvdmmEBbqUnYa7ntecuu57XnLrue15y67ntecuu57XnLrue15y6OHt8ylUcOHM58qcgup2WVXfGF+UhVRMXUnVIGcPOFNYnEd/1QD0K1UDcXHioOmx99R8jZ9MkXv2LPuW1I1CtKr0DvvT/WtIr0K/eKzl+j+dXd5kI+P+1Xf9G3/wDp/asAu3PlNHVz2/zryS1ZsV5XQgmv/jUjnLv5eI4lyF7s1D5S31/onG0uCyxepUMt8JGtP0paAqosx+GrvSrfh5jWG4o1L4KuA90dPV4pH4ONyx1n51Ic0TK19ArCEhEUrUqxcO2s5HpzWcj05rOR6c1nI9OazkenNYJwsXkKBuM0i/tGTGVZmGvn1WptOf3Oa5yq59qvEcS5C92ah8pb68q55StSczYbba7on0fzruifR/Ou6J9H86GI9LfzpE5o7c4UhaVi6SDlnxszho4vP6qfTcXoGxuNtYJiW+U6J49+HP53ieKjeuMNv+Q5t+lYusq0cdHGWaaQG20oGxIt9hKrOlKl36Bm0+4GWlLVsFbm2joXX1bXDk3TOZsJKPOVUFsqxplHoUD6f18RxLkL3ZqHylvryv8AhnO0aL1jsrT+qomFpfjNuaUjOF7Wo4L0P/y09hUhsXTZfVQK2V86VVElaXgr4/1yKSFJIOw06jRuKSaWM1RplxTLqVoNlJ11EeEiOh1PlDxLFYm/IpSOONaagrS1IWuWohaBYA1GmsyDZBIV0H7MhRxCSmLH4nlKpltLLSW0cVOrJjStPikdnyUaz+fyFbnE6SRJkHn1eI4lyF7s1D5S315X/DOdo0rjHJhf3fH7AyzIqJKLKHC5j0UtK2HiDqWk0yvSNpV05MUTZxKumpA1g5Ny72cw40fJN6lSmYoBfVmg6tld2IPp/wCRVd2IPp/5FVHxGLIcDbLuco82aadWlptS1myUi5ruxB9P/IqmnEuthbZuk89SpTMVIU+rNB1bK7sQfT/yKpJCkgjYcj2LQ2jYu3P4RemMVhvKsHbH8Wr7MicxHeS26vNJ10y33WxRTpT/AMOj51i6mGsTa0SQjMtn5tNSWXeI4k5HZsdsa3QfUNdZ8nEjo4ycxnnUagQ24bWajb5SunIohIJOwUt3Sb8lny+An2/2rAmdDhyOlfC8RxLkL3ZqHylvryv+Gc7RpXGOTC/u+P2B9jHE5s2/nJvWGm8f25MU8GnrqRxRk3MqtNWnpRSkpVxgD11KATKeSnYFkCt7Mehb+GkQyzjyXGmiGCNoGoaqIvqNY+xfEkIZRwlN3sOfbWAT9A7oXD3tez1GlJSrjAHrrBmW+6U0ZibJVYatmvJuhnKU9vds2Qnjes1g2HNNxkOuICnFi/CGysaw9pcZbraAlxAvqG2tzs5Wk3u4bpPE9WWU+mOwpxewVAgnEy9JlEgK4tqzJuDk5lnY+2sAbZkKeU/muPK8lXRRhNSsYWwwMxpO23+dNDc+zzvOUxg8No3zCs/jNABIsBYZd0EnRRtCjju6vZTrF3IsFO3avrNJASkAbB4jiXIXuzUPlLfXlf8ADOdo0rjHJhf3fH7A+xjirzbeam1YaLR/bkxTwaeupGwZNzIvPV6kH8sk3lj/AG1fWu7bHoZHwj+tQ5KZTWehKki9rKyTv+o4nY/rWPwNA7p2x3te31GsCnb5Z0bh76j5isF+88Q7f5nJMVnS3yfPNNiyEj1U8LsrH4TWHqKZzBHnjLiTisSnpiMnvaTwjTTaWWktoFkjVWMS96RCRx1cFNYHDLMMubHnBz81JwSQ2bty809I1VMiz4ccumapSRzZ5plOJLbStMvUoX1qNZuKD/dJ/wA9lZ+Lj/WSfYP6VvjFx5p+Gm23lyVSp+rMGqtz7ZflOy1j1DxLEuQvdmofKW+vK/4ZztGlcY5ML+74/YGWVIRHbzln2dNOrU88Vnao0yjMaSnJiiruJT0VIOsDJuWa8M7/AA5JnLH+2frkdebaKdItKc7ZfnyTv+o4nY/rT7SXmlIcF0nVTqHcMn6tqTcHzhW59elmzHBqzjnfPJizRZnvA86s4VEcDsZtY8pN6muaKI8s8yTWDtF7EGvwnOPsyY1N3pGsnwq9SfVWBwt7R89Y76vWfVk+9sX6Y7WXEoxlxFNBVr89DDsTYTZp5ChzC/8AWs3Fm+M0F+78q3xiCePDPsSa39I54Tnz/pUl2XKb0SIjib7dVQY4jRkNDm29fiWJche7NQ+Ut9eV/wAM52jSmlZx2VoVeqoWJMMxGm1Z90ptspWMs+ShZp7GHD4JAR86Wtx9d1ErVUKLmcNzb0ZFKCUknYKdXnrKjSznKoa9lYZH3rDQjn2q66myFR0gpZcdvzIF6djSnHVr3q9wjfiGu6j/AP8AXSfd/apa5U6bGJiPNtoUNqTTqy20pYSVEC9hz1Ieku4m1KEJ/NRqtmnXUR4vtZymltHzVi1YvBEyPwfCp1prc2w6y49pWlouBxhbJi2HCakFJzXRsNQ14hhyNEqKp5vmzamHEMSSGkxiy3z5xrCsPTBbOvOcVtVTi0toUtZska71BQrFMRVJdHeUcUZMel73i5ifCOavZWDxN6RAFDvitavG8S5C92ah8pb68rkJ1TiiM3Wa3g7+H31vB38PvreDv4ffQw9znUmkYekcZRNNNIb4iQMuISM7gI2c9PqsLZNz+HlbgkOjgDies+IY6+t15EFnarjVEjpjMJaRsHzpRCUkq1AVCHdPFVSF+Bb4o+njmJche7NQ+Ut9f6Ja0oF1kCpU0r4LWodNLUEita1atZrDcFUuzkvgp8zpoAJFhqA8QdIY3TBbupKxqPstkx+WbCIzrcXxrVh8YRIqWxt2k9J8cxLkL3ZqHylvryqnNpUQQu41V3Qa81dd0GvNXTElDxITe/ryHZq207NeuRqTSlFRuo366U6L2HvpjAkrsp2QVA+ZUWGxGHeWwD08/iWJQETW7HUscVVJiYu2nRpkpzOv+1Ybhegc00helf8Ap47iXIXuzUPlLfXlf8M52jReAPPWmT66aWW1hSabWHEBQyYix/qJ9tPJzk5Nzk7OG9nDrHE+wtSUJzlqCUjnNb9i/tLPxit+xf2ln4xQmRibCQz8YyE220Z8UG2+GviptxDgu2tKh0g5N+xf2ln4xW/Yv7Sz8YrfsX9pZ+MUlQUkFJuDz5FKCUlSiABzmm5DDis1t5tauhKr5TLjA2MhkEdKxW/Yv7Sz8YpDza+I4hXUfsLnRUKsp9u/apqQy94J1C+o5DMjA2Mhn4xW/Yv7Sz8Ypx9lq2ldQjtKtW/Yv7Sz8Ypt1t0XacSsfhN/0+Jche7NQ+Ut9eV/wznaNK4xyPxbQY76NmYM6sPfzF5h4pyKAULHZUlrQu25uankWN+am1qbcC0GyhrvWHyhLjJcG3YodByuIS4kpWLpPNWOMoYnFLSc1Nr2rC8PiuwGluMgqI21i8FuO7HXHRYFWvJjspT07e+dmtJsKVhMQs5gaA/Fz1gkeS1iPFUGxcLPMcm6KKzH0GhQEZ172rc/DYkRll5sKIVasaw1huGXGG81SejnrDuQR/3YyboHSmKGUcd05tR1GBiYzvIVY9WXdHFZajJdQgBZXrPTW56KzJL2nQFWtWOQkQ3G1sXSlXNfYawCWuTGUHTdSDa/Tkxae5Lk6Fg97vm6vKqPhEVtoBbeernUaxGCuPPCYiV6+EnN5qbztGnP41tdboorLLKHG0BKirXbnrc7FZkafTIC7WtepURmQnvqAbCwPRURAclMoVxVLANMMNR0kNICB6v0+Jche7NQ+Ut9eV/wznaNK4xyYekOYWylWtJQBUxgxnyg+w9NQntK3Y8YZJbOla/ENlLTcEGlCxtWDTd6SeF4JWpX2N0f3l/CKwzE4jMJptx2ygNmaaizY8pRDDmcR6jk3Qw1okl9Iu2vn6DUHGnmAEOjSo+dQprMtN2la+dJ5sm6r/bfxflWBTo8WMtL7maSq+w0xiUR90NtO5yzzZpy8s3Qf9uOPn/7rdIzmTA4Njg+dYM/p4DZ5xwTk3T8gb/ej6GtzLiG1SM9SU7Np663Rym31tttKCs29yKwGIqNGJc1LXrt0VNWW4byhtCCRWEi+Isdr7G6jkjfbrAJjEUPadebnWtq66OLwbeH/lNYfy+N+8T9fEMS5C92ah8pb68r/hnO0aVxjkwv7vj9gVikXfDF0+ETrFMOFl0KFIUFJCk7DkxFjNOkTsO2n0XF8m56bpW97uHho4vrGXdH95fwisIYaVhzJU2gm20ikttt60ISnqGTfsdcrewVdzotUzBY72trvS/VsqPpIeIpHlpXmn15N1X+2/i/KtzbTbkReehKuHzikstIN0toB6QKBvsqU6GI7jh8kXrCo88tF+O40nSeftPyrFYs9cbPkrZWlvXwdv0rcw/mvLZPlcIZN0/IEfvB9DWAxGZenD6c61ra9lcPDsQ16y2feKZcS80lxGtKtdSkaWM635ySKw5WinslWrhfY3Uckb7dbmW0OCRnoSri7R10qOxbwLfw1h/L437xP18QxLkL3ZqHylvryv8AhnO0aVxjkwv7vj9gZMZi6JzSo4itvqNYc/Y6NWzmyLSFpKVbDT7RacKTTqM0+qmHVMupcRqUnXUOQmVHS4jn5uipDqWGlOL4orF5KJUwuN3zbW11h2LxmIbba8/OT6qxfFmpMXRMhWvbesO5BH/dp+lTI0mDiBfQkqTnZwUPzpGOMqb1NOlzzQKgQXpM7fUpGYL52aeejqrHZzUws6G/AvtrBcRZhsLQ7nXKr6hUvG2FR1paC88iwuK3OD/lo7RrH8RS6kx2r6lcM9VYPLZdZQy1fOQgX1ViktmOzmP374CLdNRHjHktujyTUOU3LbK2r2vbXWPz2n2tC3fOSvXqrAprUNTumvZVtlY7CMptLzCbrG0dIrCMQMO7MlKwjm1bMmMYStTpeii99ak0xjT0cBuWwSRqvsNLny8RGihsltB2uU2nMbSnbYWrH5zUhtLTV85KtdYFOah6bTX4VtlTsQZiCzl7qFwAKjL0Uhpw7EqCqhy25aCpm9gba/0+Jche7NQ+Ut9eV/wznaNK4xyYX93x+wMjzSXm1IXsNSGlR3ihW0VEe0zXrG3JNY0rdxxhS05wtRFjWBzd7SMxZ70v5H9X4lyF7s1D5S315X/DOdo0rjHJhf3fH7Ay4xF0zWkRx0fMVFe0Ll+bnoG4uMmIMZi88bDT6OfJgE7fDOiWe+I+Y/V2Jche7NAkG41GtO76RfvrTu+kX76Os66YwqEthtSmdZSDxjXceD6D+dVNNpabCECyRqA+xi0XQPZyfBq+VB1wCwWoDrrTu+kX76LrihYrUR15O48H0H86qYw2Kw4FtN5qhz5x/VykhSbKAI6DW9Y/oGvgFb1j+ga+AVvWP6Br4BW9Y/oGvgFAWFhs+04hLgs4kKHQRW9Y/oGvgFb1j+ga+AVvWP6Br4BW9Y/oGvgH/iK//8QAKhAAAQMBBgYDAQEBAAAAAAAAAQARITEQQVFhcfBAgaGxwdEgkfHhUKD/2gAIAQEAAT8h/wCF43lczAaakIuOb3h0TiblV38L/aJAOSwRZiDkCADDcAi6AhOPuURL7e8uu3+PRXV6nturt+p2IjG5DQVf/VAWB10QVNeIdCL4Tkn7KP8ATHpNrtxZHVBWRDuELME4Ch+A/Dds3f6gXEVxUl82QHJIyiAAFBbPxhe0J5CPY+ByiAxyP8hdDwA75YXFsTytieVsTytieVsTytieVsTyvB4KFMwaKgh1g/ZNBWbiC1TetC5gZPEU8joC2tZCATkMx+nQg5uSLIPT0I8T6wpejDuWc5lcFqUGzVR0xwLPMgly/QHpfoD0v0B6X6A9L9Ael+gPS/hKvkNUcC0yKDAhhyKaTsJlRA3TlAeHHC4DJHI1i+4POp7sYgtxr7U9Rmoo+dEn7JSBgcIqBjY/LaC5lkfVCBxbYxSCAFOGzBxUlQeS7CZda04QAlr+0WYkRmVQbRkEe1+iPS/RHpfoj0v0R6X6I9KXg7IB4p1iydMMVpfw4VsaZLiMouUXKKBMr1oTBZla4alQkLqEQRGChWmZwODI0MKXV4QwmM+lypuj4CSgmA3NUbl1lR/KzEIf0EZbEDFsvZwrZtGKMUY05SpY6P8Ae/tHABjH7R4zaCDCHcrASbgYo9wim0nAwYVRkc0N44IeJpzTdI2TgstwbH4nwgXukEVgMsE6hif7QMJVs5lzwrZtGK68/HBaFBbyJkshFmSnsmrI4aWuhTjeMLj2W16FtehXJBMO4ToZCZLa9CHrnBHFeYXGeS2vQjhwOEYEwM1zCY6gmR8p5IfBiu5XDVDbwkxyuhm9XAa/LJAeUOx+k4AcmEdE1i+Cly43nFV1lqFYQlgOSjnBfPtRJyKh86dG4Vs2jFdeflgBaGPDwuQkLBnTrLDXIXuENYbkdDIYaZOvw6L6STInIAEDgpodgxqf0TBOJlQVtFOjJog3DlQRARlg1KAIGPcYcFdpEZmaonFV7C2hu/aJxhsz0EDgahHfBE3fSQPmKkxN5OzV8ENUfSCCFZnSiGQgUAt5aTqRJzFjmfQQw2AwHCtm0Yrrz8sOd4Hl5XMSsONOvsdW0bG1YrLlzpBY2dCVwlEQq5J1P3Lq1kaqj30AbcAQjdCDotimRb1DyLzyTUIsCcbuHV/ogbi5Hrwq476TQ6YXqZcAB/AhRkS42ZLBpEljXaK8Fc0/zhmzaMV15+OCPTXiyV6rGWNAHWxlbj/aesnQB7mzf8VgAKkz7Os6ErGQuCkxlkDCLk1I2BaIBNAyrh46EK8CH0hmBAdKVgin2gqhKu3MLDtYI/q0sAGMhLIumwDsMW0j7I173sUPGwgrBjDnegmHHCQvvcM2bRiiiCD4raKGiQhMncMAFD5sUfDkC9OxpcFhk2A5R7/F0+lASaRTr3eYRRaTSATfV1uMV+wTVIiAySjGFBXyBCNQh/cqpJI0gjAhfHhUCsO4sbA9ObhmiIIX1Pp06h73zV2TgbKZMsC4sEYk7L0Fjoe55XlGx+Px7Yd5hDVZqM1Gagqh5lNXLYQf3FoTehXioXU2YAdH7OArKoPp5VL0k4kVJg5OSKDSydHn/HbG8VADmOJOoqnAluCOY1x6kIjADADgI0Eez81k1YORhzTIzIX+ANj2UGAHtfgD2vwB7TWELrDwbXuKBWYojw4sUZiCtVAg0skG6oDDCa+XPggcv1hOBaH/AKcnd4S9R/gmzaMUSAhyykOFRUwTZM0tAqLMxQWWHwO6gCsBaMMGEicLAAEkwTnvaFqONBUEwPgMMMJIM4CQRYLGzkjALJShLpaVFgxABFg1bjLNppKKBeBirBDDNhMCIqDYDHAJGjDvuwYyAxYkPZwbZtGK682GCpA14qTcHI2FI3ISjk1iyUGqR1RrATeNoAW9YSdtAokEcccVGXgQ50sY14JmTeU94NAeShJYQEEoyJkIyXTEZMT2jkwTo5CswJAT2TB8IspmMBkgcf8APFaWMo3gxAlCNlt6qZE8gXIScs7HRxFF7mh4m5pqj+rAwJPMmsPRxTRM5YgKcEZ6jp6HSEV0Ka7QYlkYMS5AX8G2bRiuvNg53MHJOztXCKccex+AxLJMhyqiCBXJhmgQQ4kZW1l1OfOLzgEyGjmLvYRawfkEJkGMioZMxayOVoPQwwVyuLDuLXbvSG8N0JOYXHzRbhMD4GxJIeY1w5ZAJc6BdYdRk3jm+p+HR+xWs/Q0yJ82/pbFg4Rs2jFdebcPwOq5K7AqMkRBwRZE3kqA1Fl2g2crayzJ8UE3lPuIyAKoiQheEnoQhB5d7EVPgMXHtwwnwTNFoCDRdcQgVAQr9tDM3J60XJuBOZGt3rQ4yA5otMU8V1wk+CFO2Z9IorBiKGr96EOHgIOTx8Oj9ihG1QmR17NbFg4Rs2jFdefhiNpUJql12AIcErlEnEKZFSJy4YrudOIi0m9ZUqUCQLyWUlfTDxaAhbeQTo/xDiXhKGtepRwdH1CuRMJNEKDMSEMW9KnTDSCfvdcDpjPXJGaJ0Kj8ycEImCwMAwf1YoIRiLwo21xl6F3tfwOFCcFhB6Omz3YCZty5mrZ1xOckKzMvWVGGTYa3KQCycb07lLLxg4TMbERB6OhGXaoQwhy4aF0TYnxjTwbZtGK68/DAioFVka4oIC91Yi3DQikiEBgqnaM9z/TbNoxXXn44jyJBA3sDkgCI4NDZEOPkU8G87LhX/nrDRSC8L9Kv0qIkJOSnU5wb9tVtexNPnoPhDrSjNghrBwEv06yy4TVRK2vYiR6ID+f84mPdQOPiAAAAIQAAoPlq2xf8jIAAAH//xAArEAEAAQEGBQUAAwEBAAAAAAABEQAQITFBUWFxgZGh8CBAscHRMOHxUKD/2gAIAQEAAT8Q/wDC8GqEIw1cBRoRuqiR4xy0JPCD4/8AacmDFWCtkpIaHw2WIZlOm4vDGnCVGYqbKVTvJi7qeFh2qbVHWAH/AFRg+xcVoM2pidlJPopc8mQhJCSshV4tVwE3ZkedSo2I7j7Cgy8dkHBE9BqS+EmUsOX/AFHQGVkFKrKcxw+Jf6o9HEUFyPkUTMABwLUUeYGJqqxWbGE3BoYz1428tIoW1OW1PsFKFEFTvH8AUKFChQoXOLgftp7xw/Iah12saj0OxhU4nuJpYOHMB79qjrGH2u7Say4XUzpSIOpmWZ3auZJiGfD9qF1EueLsX0h84/FL+3ZmZyqnJKRzAufNLAwIj0pP8xtQQvKPYd0pE4ovrLFixYsWZI8VfVROUTVDkm09GpVYMk1RTHABzlw06aPjQUE5IjI+1Nj0emzBI1NgwY4hYRee7wdfSE+Jr63nw7LePFzzcN3jCz/bhWlRpG6wB8tGM0PYd0/jVBuUYcGlwSxMxWUzhXiBj8SkaDWuo9pnH+stA3EmFuAuObQ2kb3H9Xq1q1atWJIUBZKzALu1UOkkAB6ex909CkB0wYoY09DnOz8cJfVDgbsh2rd3am2bjJc5nTZq5mMXcpqzRBhEzKgIwTpf2eZ+zdsCAuJDsEudTsEBOqA8X4rASI5sEX+iSoKNQb4WlDvb3cg3WsUMFamN5q9LBAZyLJX8qYcC1ex3unoXzGqoRrkY1t+tKPEQGJvq6Xl/lXY1dvSFBabglGyNRREVyYQ+7JikBs1mERxMmtARu4U+wUWpSG3CPI5DPT2UAQszTk7NDI21ZF84hVyBZJQGkKemX+Et8DF3Du8qj66OxYslhOC9g6FQGZdSW+rr7HunoXzGqvFa2eL0tPcKhL1UpUQ7DMqFYkV2cywRs0eNNxCOlisUGtzbJLvI244wcQt4wJbwKufgCsAlYLMTy7CzKzCJHwnI2YyLCNqJJSGUAStI984I+CgD7gMXnRD6BvPhFzlPKb6KSEK5Awbn4KP2LPGaIzEO1HXfPeoaUSGqiQbVZOaKG04CZeFx/dDhhipFiEI4jAC9aOy8ifEjSLie58zp9j7p6F8xqrxWtni9PQICSVECeZNk+nR1KN/Znd86VmwzIR3o8JoYAYFgMLkOCTSi5GhEkSjKKEtxI9O2mga+C5f38ogOMAR3pxMnxEHB2oAgAEBSyQGqr4di6mxVQQkgHlSsqTAnewOdBL3F4wvfla6cToblZButMykq8ZEflJrSqTB1GNGxnJ8TN7q+X0w8EoSMQmc1Grq2DQAGuYPRFACfAYA2C2NRZ4MTy701t6jjk1g8NJkBAex7p6F8xqrxWtni9PQJDKKgBdd9WOatPQp3Vjd9dr0OPDM/UBIbC2eU1q0AaQL+/u1YvgDiYPj9tLNzLL11hkkcisd1PNUo8J02a16Y5Nkhd3BxXWjED7IoQkNHdx5Lu1MyILp81/OtS178Sqb7BZW9FQhEDmE4q+SKfmvgf50/oFLndUmXMQbEVc+hbf5Q6+y7p6F8xqrxWtni9LYZ2XSFDEl0GEuRU34MflYKS51xpsgT1sxE4Hwy9GyHMCHYE2eU1qB6GXycKAOiiF+kkedP9AjSWVK+EM3hSDSc3ZJTdwcYYKVMoSxH+DrZAJBgbxnQTiEzGT8utmHxHIv37G1AAAsWd6DJcUAHuLxBwoHvcfwU6+W8Rob44pe79FuGYlAqblcxiXr2XdPQvmNVXuwmxURy3okIouLbF8tTYLVlQXEWSuAU4SWf397CKMJsViGtwGRW6bdwoSSjAGK1G6Ge9ebVJ95XuGKc6WwsMmlhLGHFbBXQUavApYMDVooK6SAq1HzxmLnOGiJAubdeb8p6AA5yGwINsLhoVWf63/lRRaKF1c4UjI/zVSJP4IAlqBAYnMv+Jd3ezPVzMcx8daCCEX2C4cl/f3fdPQpBI0Xgs6V/svyv9l+V/svymiO2T6qWbcT91C1M3FcVtvF2uMEZGxV7OrsWQAVnE/g+eHsL5Ronots3Ao0NEXritCNUdcAJVp7LDROH+ne7M953T+NZ2Rq48KAZW5cR9VnpyNaAydgGVdAKDhmgrvq0dugMAGAHsI/yOALk9Nk5kwBg8OL4camsFqji+aHvO6ehVOlkgkYtLFgpizCCm0LY2QhYLAtQiqSCSJxrPZ1JoN4wGTisXtBmKIAR0U0GfSLqFf7JwRVEllkmZUTQIuaHFBWWsiVDiy3rv/vve6ehfMaqggymBR/SlXppSaJTfyM8NRsjGzMdGnklixrYr3FXZ435d/QP6JNJuteb/deb/dMb8AUq87CKGSqwBTkSuXUsl1ilEVBXm/3Xm/3Xm/3Qb6OiBIiYjYmAhgBiq4FH1gW4Q2Vr2GNQMRFmvN/ulw0d8K2oE0JO2GSlOJigOnELGNegJE515v8AdGX+TBtpFeb/AHUcqRgdFT/P3T0L5jVXitbJxotpDx0przPYRENAcylnKrxnS636Wj+nyRKgjYTzC27p9nSheGRbhaXFpYFZUvTOPBFfNgBmkuEvhlWEqw5DrQpKZUAQ45UBgSENEYABgcH7pXgUKRK/avKdxFAAEoCjtZXu4wxSi/RzqBWO5mmT5oRBVmhLTp6aCyXypEs/qjpEuE7VacAUkyqXPd0suZPUiVidlRpOLwbCokBtBVIoQEO2Lt9PRSREEUyYEWAxfqssnoBM1CyhsYkKq7DygMMf5+6ehfMaq8VrYdfUSGk5gszNwaHLiTzMmwiJfp9c6EEmTqJQo3GlPykq7RyftE3EJH0JSmgLpqmMFRvCO4jwFhqKRYEEGhFDFWA+6vWym4cYswUpsKXiwsjvV8BGNoFbwLWA+Nh9yoI8RY4L9UsPt5PC0EEduonD/ShNW0AwlP8Aw2yES4e/WnejhwaUYTDH2PpM7vY8z4mB2p5mI9jw3dPQvmNVeK1s8XpQyHMpiM6TgQo1liVB4xVmYogGWrnVxN1fuWDeuYnIy7Op6JS3WkzU8zJEmm6UIShKUgcE68JRetC5vXjj+aZrBF3JBOCfNmCkI+JKj/epw7QsOYUVOohmowrgdBzY60IrYxUBPUp/q3GDNzkrDO9x5/1bgUVEEWr3FwoDhwVIG/V3qPiq7NYaI+KBUpi/dSU+lmcJcARmgtEfYobunoXzGqvFa2eL0sjYNyhd/b+1jKWVposkgYCrzaL+gNXGZh+VGrVW/k7NXQRuQ4jQtpixLCxQqoJCFjxoDZUjJitTWLAASfyoP5NE39MIErjnRpxQJ1qH44pAcMaF3SgwUFaFpTiL65cz8QkRUrpDQCETUw1lQcWiReoh5lUbm4mBAqQBnl3AI9PWiamORscwnrSUtRQoQfspp2i4AS9LCzigqLEiSvbDmX9aJayUSuSOTYP8tDAmd/NEwgpOQSkt5WVjlhSb9blAiWlwYqMEfpSKiHjCphHMIot48MUNBV/LBKuD/P3T0L5jVXitbPF6WTEIzqaJwqQsuwIhklIsYTvrzsLAiu8zKxG8nRoA4GGsfBv8PJ5H/P7p6F8xqrxWtni9LUvKhQxxEoPy8UUKkcQwRsxrPcpuHvOyzEcYFxwh82/53dKwmdJCWrLLkcqrKrV2IwmUFws4wSKkLAwJZfRNz3c4UhwzAYLEmDhioPJpBCxjP9TMDZh/ziGDACG4+myyyw/bgBABgB6r3DzAM8H/AMjFllli1//+AAMA/9k=" alt="Reno Research"></span>
+      <b>Reno Research</b>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#how">How It Works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#trusted">Trusted IDs</a>
+      <a href="#portfolio">Portfolios</a>
+    </nav>
+    <a href="#lead" class="btn btn-gold appbar-cta" style="padding:.7rem 1.4rem;font-size:1.05rem">Get Matched
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+<a id="top"></a>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <h1>The <span class="gv">Smarter Way</span> to Find an <span class="gv">Interior Designer</span></h1>
+      <p>Get connected to interior designers suited to your project requirements.</p>
+      <a href="#lead" class="btn btn-gold">Get Matched
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORM BAND ===== -->
+<section class="band band-navy band-pad" id="lead">
+  <div class="wrap">
+    <div class="form-grid">
+      <!-- aside -->
+      <div class="form-aside reveal">
+        <span class="eyebrow">Free · 60 Seconds</span>
+        <h2>You Fill in the Info &amp; <span class="gv">We'll Do the Matching</span></h2>
+        <p>Fill this in once. Our engine matches you to vetted firms that fit your property, timeline and budget.</p>
+        <ul class="aside-list">
+          <li><span class="bx"></span> Get 5 Free Quotes from Vetted Firms</li>
+          <li><span class="bx"></span> Compare Ideas and Quotes Side By Side</li>
+          <li><span class="bx"></span> Efficient Matching Engine to Skip the Guesswork</li>
+        </ul>
+        <div class="privacy-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          Your Contact Details Stay Private
+        </div>
+      </div>
+
+      <!-- the card -->
+      <div class="card reveal" id="leadForm">
+        <div class="state-form" id="stateForm">
+          <div class="field">
+            <label for="propertyType">Property Type <span class="req">*</span></label>
+            <select class="select" id="propertyType">
+              <option value="BTO HDB">BTO HDB</option>
+              <option value="Resale HDB">Resale HDB</option>
+              <option value="Landed">Landed</option>
+              <option value="Condo">Condo</option>
+              <option value="Partial">Partial</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="subblock" id="otherBlock">
+              <div class="sublabel">What kind of space? (choose one)</div>
+              <div class="chips" id="otherChips">
+                <button type="button" class="chip-opt" data-val="Commercial">Commercial</button>
+                <button type="button" class="chip-opt" data-val="Restaurant Renovation">Restaurant Renovation</button>
+                <button type="button" class="chip-opt" data-val="Office Renovation">Office Renovation</button>
+                <button type="button" class="chip-opt" data-val="Others Not Specified">Others Not Specified</button>
+              </div>
+            </div>
+            <div class="subblock" id="partialBlock">
+              <div class="sublabel">Which areas? (choose all that apply)</div>
+              <div class="chips" id="partialChips">
+                <button type="button" class="chip-opt" data-val="Kitchen">Kitchen</button>
+                <button type="button" class="chip-opt" data-val="Toilet">Toilet</button>
+                <button type="button" class="chip-opt" data-val="Bedroom">Bedroom</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Renovation Timeline <span class="req">*</span></label>
+            <div class="chips" id="timelineChips">
+              <button type="button" class="chip-opt" data-val="Keys collected">Keys Collected</button>
+              <button type="button" class="chip-opt" data-val="Within 1 month">&lt; 1 Month</button>
+              <button type="button" class="chip-opt" data-val="1-3 months">1–3 Months</button>
+              <button type="button" class="chip-opt" data-val="3-6 months">3–6 Months</button>
+              <button type="button" class="chip-opt" data-val="More than 6 months">&gt;6 Months</button>
+            </div>
+            <div class="err" id="err-timeline">Please pick a timeline.</div>
+            <input type="checkbox" id="keysCollected" hidden>
+          </div>
+
+          <div class="field">
+            <label>Budget Range</label>
+            <div class="budget-display">
+              <span class="v" id="budgetLabel">SGD $30,000 to $80,000</span>
+              <label class="check-line"><input type="checkbox" id="flexBudget"> Flexible budget</label>
+            </div>
+            <div class="dual" id="dual">
+              <div class="track"></div><div class="fill" id="fill"></div>
+              <input type="range" id="rMin" min="0" max="200000" step="1000" value="30000">
+              <input type="range" id="rMax" min="0" max="200000" step="1000" value="80000">
+            </div>
+            <div class="minmax" id="minmax">
+              <input class="input" id="minBox" type="text" value="30,000">
+              <input class="input" id="maxBox" type="text" value="80,000">
+            </div>
+            <div class="hint" id="flexNote" style="display:none">Great — we'll match you across budgets and your designer can advise on a range that fits.</div>
+          </div>
+
+          <div class="field">
+            <label>Floor Plans <span style="color:var(--muted);font-weight:600">(optional · up to 5)</span></label>
+            <div class="dropzone" id="dropzone">
+              <div class="di"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+              <b>Drag &amp; Drop, Or Tap To Upload</b>
+              <span>JPEG, PNG or PDF · Max 5 Files</span>
+              <input type="file" id="fileInput" accept="image/*,application/pdf" multiple hidden>
+            </div>
+            <div class="filelist" id="fileList"></div>
+            <div class="hint" id="fileHint" style="display:none"></div>
+          </div>
+
+          <div class="field" style="margin-bottom:.4rem">
+            <label style="font-weight:700;color:#25404f;margin-bottom:.6rem">Particulars <span class="req">*</span></label>
+            <input class="input" id="name" type="text" placeholder="Full Name" autocomplete="name">
+            <div class="err" id="err-name">Please enter your name.</div>
+          </div>
+          <div class="row2" style="margin-bottom:.5rem">
+            <div>
+              <input class="input" id="email" type="email" placeholder="you@email.com" autocomplete="email">
+              <div class="err" id="err-email">Enter a valid email address.</div>
+            </div>
+            <div>
+              <div class="phone-wrap">
+                <span class="cc">+65</span>
+                <input class="input" id="phone" type="tel" inputmode="numeric" maxlength="8" placeholder="8123 4567">
+              </div>
+              <div class="err" id="err-phone">Enter a valid 8-digit SG number.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:1.3rem">
+            <button class="btn btn-gold btn-block" id="submitBtn" type="button"><span id="submitText">Get Matched</span></button>
+            <div class="err" id="err-submit" style="margin-top:.6rem">Something went wrong. Please try again.</div>
+            <p class="form-foot">By submitting you agree to be contacted by suitable firms about your renovation.</p>
+          </div>
+        </div>
+
+        <!-- DONE -->
+        <div class="state-done" id="stateDone">
+          <div class="ring"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>You're in. We're on it.</h3>
+          <p>Thanks <b id="doneName">there</b>! Your brief is matching against 200+ vetted firms right now. The handful that fit will reach out shortly. Keep an eye on your phone and inbox.</p>
+          <button class="btn btn-dark" type="button" style="margin-top:1.4rem" onclick="location.reload()">Submit another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SMART MATCHING ===== -->
+<section class="band band-light band-pad" id="how">
+  <div class="wrap">
+    <div class="match-grid">
+      <div class="video reveal" id="videoShell">
+        <video id="renoVideo" src="../reno_video.mp4" poster="../reno_video_poster.jpg" preload="none" playsinline controls></video>
+        <div class="cover" id="videoCover"><img src="../reno_video_poster.jpg" alt="How Reno Research works"></div>
+        <div class="play"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="match-copy reveal">
+        <h2>Smart Matching Helps <span class="gv">Skip the Guesswork &amp; Saves You the Headache</span></h2>
+        <p class="sub1">Save time, energy and money.</p>
+        <p class="sub2">Let our algorithms, AI and human touch do the work.</p>
+        <div class="steps">
+          <div class="step"><h4>We Vet the Firms</h4><p>We've visited and vetted 200+ qualified renovation firms so they're ready to handle real projects.</p></div>
+          <div class="step"><h4>We Share your Brief</h4><p>Your renovation requirements are quietly shown to these 200+ firms, never your contact details.</p></div>
+          <div class="step"><h4>Matching Ones Reply</h4><p>Only the handful confident they can meet your needs get connected with you.</p></div>
+          <div class="step gold"><h4>Never Share Your Details</h4><p>…unless it's the handful of suitable firms, <b>5 maximum.</b></p></div>
+        </div>
+        <div class="trust-row">
+          <div class="t"><img src="assets/ic-shield.png" alt=""> Quality Vetted Firms</div>
+          <div class="t"><img src="assets/ic-people.png" alt=""> Handpicked Matches</div>
+          <div class="t"><img src="assets/ic-ai.png" alt=""> Powered by AI</div>
+          <div class="t"><img src="assets/ic-heart.png" alt=""> Real Human Touch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="band band-navy band-pad" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head reveal">
+      <h2>Still Don't Trust Us? <span class="gv">Then Trust Reviews From Homeowners!</span></h2>
+      <div class="stars">5 Stars on Google
+        <svg width="30" height="30" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0012 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 010-4.2V7.06H2.18a11 11 0 000 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 002.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+        <span class="g">★★★★★</span>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="review reveal"><div class="top"><span class="av" style="background:#dea741"></span><div><div class="nm">Kandhasamy Murugan</div><div class="rs">★★★★★</div></div></div><p>Reno Research helped me find a renovation company, and through them I did my kitchen renovation. They completed the work on time exactly the way I wanted. Happy with the service provided. 👍</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#2ca24a"></span><div><div class="nm">Juat Theng Khoo</div><div class="rs">★★★★★</div></div></div><p>A very effective way to link contractors to homeowners. I had 8-10 contractors contact me in under a week after leaving my info. Just exercise your own discretion when picking the right one.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#e0483c"></span><div><div class="nm">Priya RamK</div><div class="rs">★★★★★</div></div></div><p>Reno Research was very responsive and gave me a good number of contacts to liaise with. They followed up whenever the schedule changed. I really appreciate their hard work and dedication.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#3f51e0"></span><div><div class="nm">Yan Tukiman</div><div class="rs">★★★★★</div></div></div><p>They helped me find multiple contractors so I could compare ideas and quotations for my reno work. Very helpful indeed, saved me a lot of time finding contractors myself.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#d69a2e"></span><div><div class="nm">Teck Hua Tan</div><div class="rs">★★★★★</div></div></div><p>Zeon was helpful, professional and always ready with answers. He introduced me to 2 qualified IDs, personally reviewed, who all gave good competitive quotes. Highly recommend 😀</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#c13ccf"></span><div><div class="nm">Ryan</div><div class="rs">★★★★★</div></div></div><p>Glad we attended the 6-7 June 2026 event, and it was vastly different. The IDs seemed experienced and the interactions didn't feel forced. The conversations were meaningful and of good quality.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUSTED IDs ===== -->
+<section class="band band-light band-pad" id="trusted">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label" style="color:var(--navy)"><span class="line"></span><span class="gv">Trusted IDs</span></div>
+      <a href="../firms.html" class="btn btn-ghost" style="color:var(--navy);border-color:rgba(16,40,57,.4)">View More
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+    <div class="panel reveal">
+      <div class="id-grid">
+        <div class="id-card">
+          <div class="logo"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1767612782382_9pylkr2a0gh_company_logo_1767612781708.jpeg" alt="2nd Phase Interior"></div>
+          <div class="meta"><b>2nd Phase Interior</b><span>5 Star Avg Rating</span></div>
+        </div>
+        <div class="id-card">
+          <div class="logo"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1772611922849_i6azdbdcvcl_Livinci_Interior_Logo.webp" alt="Livinci Interior Design"></div>
+          <div class="meta"><b>Livinci Interior Design</b><span>4.7 Star Avg Rating</span></div>
+        </div>
+        <div class="id-card">
+          <div class="logo"><img src="https://s3-reno-bucket.s3.ap-southeast-2.amazonaws.com/uploads/images/1763530399521_rbha1k92tua_company_logo_1763530409787.jpeg" alt="Des & Co Interior"></div>
+          <div class="meta"><b>Des &amp; Co Interior</b><span>4.6 Avg Rating</span></div>
+        </div>
+      </div>
+      <a href="#lead" class="btn btn-gold btn-block">Get Matched
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="band band-navy band-pad" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label" style="color:var(--cream)"><span class="line"></span><span class="gv">Portfolio</span></div>
+      <a href="../portfolio.html" class="btn btn-ghost">View More
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+    <div class="panel reveal">
+      <div class="pf-grid">
+        <div class="pf"><img src="assets/p1.jpg" alt="Minimalist resale HDB" loading="lazy"><div class="cap">Minimalist</div><div class="sub">Resale HDB</div></div>
+        <div class="pf"><img src="assets/p2.jpg" alt="BTO HDB interior" loading="lazy"><div class="cap">Other</div><div class="sub">BTO HDB</div></div>
+        <div class="pf"><img src="assets/p3.jpg" alt="Modern BTO HDB" loading="lazy"><div class="cap">Modern</div><div class="sub">BTO HDB</div></div>
+        <div class="pf"><img src="assets/p4.jpg" alt="Modern contemporary condo" loading="lazy"><div class="cap">Modern Contemporary</div><div class="sub">Condo</div></div>
+        <div class="pf"><img src="assets/p5.jpg" alt="Scandinavian condo" loading="lazy"><div class="cap">Scandinavian</div><div class="sub">Condo</div></div>
+        <div class="pf"><img src="assets/p6.jpg" alt="Landed home interior" loading="lazy"><div class="cap">Other</div><div class="sub">Landed Home</div></div>
+      </div>
+      <a href="#lead" class="btn btn-gold btn-block">Get Matched
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <a class="brand" href="#top"><b style="color:#fff;font-family:Granville,serif;font-style:normal">Reno Research</b></a>
+      <nav class="foot-links">
+        <a href="../firms.html">Firms</a>
+        <a href="../portfolio.html">Portfolio</a>
+        <a href="../blogs.html">Guides</a>
+        <a href="../loan.html">Loan</a>
+        <a href="../packages.html">Packages</a>
+        <a href="/">Main site</a>
+      </nav>
+    </div>
+    <div class="foot-copy">© <span id="yr"></span> Reno Research · Technology-driven renovation matchmaking in Singapore. hello@renoresearch.sg</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- scroll reveal (fallback: reveal all if IO unavailable) ---------- */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+
+/* ---------- property type conditionals ---------- */
+const propertyType=document.getElementById('propertyType');
+const otherBlock=document.getElementById('otherBlock');
+const partialBlock=document.getElementById('partialBlock');
+let otherSelection=null;
+let partialSelections=new Set();
+function syncPropertyBlocks(){
+  const v=propertyType.value;
+  otherBlock.classList.toggle('show',v==='Other');
+  partialBlock.classList.toggle('show',v==='Partial');
+  if(v!=='Other'){otherSelection=null;document.querySelectorAll('#otherChips .chip-opt').forEach(c=>c.classList.remove('on'));}
+  if(v!=='Partial'){partialSelections.clear();document.querySelectorAll('#partialChips .chip-opt').forEach(c=>c.classList.remove('on'));}
+}
+propertyType.addEventListener('change',syncPropertyBlocks);
+document.querySelectorAll('#otherChips .chip-opt').forEach(chip=>{
+  chip.addEventListener('click',()=>{document.querySelectorAll('#otherChips .chip-opt').forEach(c=>c.classList.remove('on'));chip.classList.add('on');otherSelection=chip.dataset.val;});
+});
+document.querySelectorAll('#partialChips .chip-opt').forEach(chip=>{
+  chip.addEventListener('click',()=>{chip.classList.toggle('on');const v=chip.dataset.val;chip.classList.contains('on')?partialSelections.add(v):partialSelections.delete(v);});
+});
+
+/* ---------- timeline single-select (first chip = keys collected) ---------- */
+let timeline=null;
+const keysCollected=document.getElementById('keysCollected');
+document.querySelectorAll('#timelineChips .chip-opt').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    document.querySelectorAll('#timelineChips .chip-opt').forEach(c=>c.classList.remove('on'));
+    chip.classList.add('on');timeline=chip.dataset.val;
+    keysCollected.checked=(timeline==='Keys collected');
+    document.getElementById('err-timeline').classList.remove('show');
+  });
+});
+
+/* ---------- budget dual slider ---------- */
+const rMin=document.getElementById('rMin'),rMax=document.getElementById('rMax');
+const minBox=document.getElementById('minBox'),maxBox=document.getElementById('maxBox');
+const fill=document.getElementById('fill'),budgetLabel=document.getElementById('budgetLabel');
+const MAX=200000,MIN_GAP=5000;
+const fmt=n=>'SGD $'+Number(n).toLocaleString('en-SG');
+const num=s=>parseInt(String(s).replace(/[^\d]/g,''),10)||0;
+function paintFill(){
+  const lo=+rMin.value,hi=+rMax.value;
+  fill.style.left=(lo/MAX*100)+'%';
+  fill.style.width=((hi-lo)/MAX*100)+'%';
+  budgetLabel.textContent=fmt(lo)+' to '+fmt(hi).replace('SGD $','$');
+}
+function fromSlider(){
+  let lo=+rMin.value,hi=+rMax.value;
+  if(lo>hi-MIN_GAP){ if(document.activeElement===rMin){lo=hi-MIN_GAP;rMin.value=lo;}else{hi=lo+MIN_GAP;rMax.value=hi;} }
+  minBox.value=Number(rMin.value).toLocaleString('en-SG');
+  maxBox.value=Number(rMax.value).toLocaleString('en-SG');
+  paintFill();
+}
+rMin.addEventListener('input',fromSlider);
+rMax.addEventListener('input',fromSlider);
+paintFill();
+
+/* ---------- flexible budget ---------- */
+const flexBudget=document.getElementById('flexBudget');
+const dual=document.getElementById('dual'),minmax=document.getElementById('minmax'),flexNote=document.getElementById('flexNote');
+function syncFlexBudget(){
+  const flex=flexBudget.checked;
+  dual.style.display=flex?'none':'';
+  flexNote.style.display=flex?'block':'none';
+  budgetLabel.textContent=flex?'Flexible budget':fmt(+rMin.value)+' to '+fmt(+rMax.value).replace('SGD $','$');
+}
+flexBudget.addEventListener('change',syncFlexBudget);
+syncFlexBudget();
+
+/* ---------- file upload ---------- */
+const dropzone=document.getElementById('dropzone'),fileInput=document.getElementById('fileInput');
+const fileList=document.getElementById('fileList'),fileHint=document.getElementById('fileHint');
+let floorPlanFiles=[];
+dropzone.addEventListener('click',()=>fileInput.click());
+dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('drag')});
+dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag'));
+dropzone.addEventListener('drop',e=>{e.preventDefault();dropzone.classList.remove('drag');addFiles(e.dataTransfer.files)});
+fileInput.addEventListener('change',e=>addFiles(e.target.files));
+function addFiles(list){
+  for(const f of list){
+    if(floorPlanFiles.length>=5){flashHint('Max 5 files. Remove one to add more.');break;}
+    if(!/^image\/|application\/pdf/.test(f.type)){flashHint('Only images and PDFs are accepted.');continue;}
+    floorPlanFiles.push(f);
+  }
+  renderFiles();
+}
+function flashHint(msg){fileHint.style.display='block';fileHint.style.color='#c0392b';fileHint.textContent=msg;setTimeout(()=>{fileHint.style.display='none'},2600);}
+function renderFiles(){
+  fileList.innerHTML='';
+  floorPlanFiles.forEach((f,idx)=>{
+    const isPdf=f.type==='application/pdf';
+    const row=document.createElement('div');row.className='fileitem';
+    row.innerHTML=`<span class="ft ${isPdf?'pdf':'img'}">${isPdf?'PDF':'IMG'}</span><span class="fn"></span><button class="rm" aria-label="Remove">×</button>`;
+    row.querySelector('.fn').textContent=f.name;
+    row.querySelector('.rm').addEventListener('click',()=>{floorPlanFiles.splice(idx,1);renderFiles();});
+    fileList.appendChild(row);
+  });
+  const imgs=floorPlanFiles.filter(f=>f.type!=='application/pdf').length;
+  const pdfs=floorPlanFiles.length-imgs;
+  if(floorPlanFiles.length){fileHint.style.display='block';fileHint.style.color='var(--muted)';fileHint.textContent=`${floorPlanFiles.length}/5 attached · ${imgs} image${imgs!==1?'s':''}, ${pdfs} PDF${pdfs!==1?'s':''}`;}
+  else fileHint.style.display='none';
+}
+
+/* ---------- validation + submit (same API contract as main site) ---------- */
+const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function setErr(id,show){const inp=document.getElementById(id),err=document.getElementById('err-'+id);if(inp)inp.classList.toggle('bad',show);if(err)err.classList.toggle('show',show);}
+function validateForm(){
+  let ok=true;
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone=document.getElementById('phone').value.replace(/\D/g,'');
+  if(!name){setErr('name',true);ok=false}else setErr('name',false);
+  if(!emailRe.test(email)){setErr('email',true);ok=false}else setErr('email',false);
+  if(phone.length!==8){setErr('phone',true);ok=false}else setErr('phone',false);
+  if(!timeline){document.getElementById('err-timeline').classList.add('show');ok=false}
+  return ok;
+}
+const API='https://api.renoresearch.sg';
+function buildUserData(imageUrls,pdfUrls){
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone='+65'+document.getElementById('phone').value.replace(/\D/g,'');
+  const flex=flexBudget.checked;
+  const pType=propertyType.value;
+  const keys=keysCollected.checked;
+  return {
+    role:'Homeowner', id:'lead_'+Date.now(), userType:'Homeowner',
+    name, email, phone, profileImage:null,
+    address:'', unitNumber:'', postalCode:'',
+    companyName:'', uen:'', bio:'', specialRequirements:'',
+    renovationType:pType,
+    otherRenovationType:pType==='Other'?otherSelection:null,
+    renovationTypes:[pType],
+    renovationTiming:timeline, timeline:timeline,
+    partialSelections:pType==='Partial'?[...partialSelections]:[],
+    hasCollectedKeys:keys, keysCollected:keys,
+    isFlexibleBudget:flex,
+    selectedBudgetRangeLabel:flex?'Flexible':null,
+    selectedBudgetValues:{min:+rMin.value,max:+rMax.value},
+    budgetFlexibility:null,
+    renovationLoanInterest:false,
+    renovationLoan:{isLookingForLoan:false,loanTypes:[]},
+    selectedLoanTypes:[],
+    allowDesignerMatching:true,
+    meetingExpertInterest:false,
+    importantFactor:'Quality of materials and workmanship',
+    newLeadsNotification:true, portfolioUpdatesNotification:false,
+    newMatchesNotification:true, messagesNotification:true, leadUpdatesNotification:false,
+    floorplanImages:imageUrls, floorplanFiles:pdfUrls,
+    siteImages:[], portfolioImages:[], accreditationFiles:[],
+    appointmentSlots:[], appointmentDates:[],
+    socialLoginData:null, renovationPlans:[],
+    rateLimiting:{periodStartTime:new Date().toISOString(),requestCount:0,requestsInPeriod:[]},
+    leadFormMetadata:{submittedFromLeadForm:true,advancedFormFilled:false,submissionTimestamp:new Date().toISOString(),formVersion:'1.0',variant:'alt_b'}
+  };
+}
+async function uploadFloorPlans(){
+  const imageUrls=[],pdfUrls=[];
+  for(const f of floorPlanFiles){
+    const fd=new FormData(); fd.append('file',f,f.name);
+    try{
+      const res=await fetch(`${API}/uploadfile`,{method:'POST',body:fd});
+      if(!res.ok) continue;
+      const j=await res.json();
+      const url=(j&&j.file&&j.file.url)||j.url||j.fileUrl||j.Location;
+      if(url&&/^https?:/.test(url)){ (f.type==='application/pdf'?pdfUrls:imageUrls).push(url); }
+    }catch(_){}
+  }
+  return {imageUrls,pdfUrls};
+}
+const stateForm=document.getElementById('stateForm');
+const stateDone=document.getElementById('stateDone');
+const submitBtn=document.getElementById('submitBtn'),submitText=document.getElementById('submitText');
+const errSubmit=document.getElementById('err-submit');
+submitBtn.addEventListener('click',async ()=>{
+  if(submitBtn.disabled) return;
+  errSubmit.classList.remove('show');
+  if(!validateForm()){
+    const firstBad=document.querySelector('.err.show, .input.bad, .select.bad');
+    if(firstBad)firstBad.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  submitText.textContent='Uploading & matching…';submitBtn.disabled=true;
+  try{
+    const {imageUrls,pdfUrls}=await uploadFloorPlans();
+    const userData=buildUserData(imageUrls,pdfUrls);
+    const body=new URLSearchParams({
+      phone:userData.phone,email:userData.email,
+      data:JSON.stringify(userData),registrationSource:'lead-registration'
+    });
+    const res=await fetch(`${API}/registerlead`,{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
+      body
+    });
+    const j=await res.json().catch(()=>({}));
+    if(res.ok && j.success){
+      if(window.fbq) fbq('track','Lead',{content_name:'Lead Registration',content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0});
+      if(window.gtag) gtag('event','generate_lead',{currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant_id:'alt_b'});
+      document.getElementById('doneName').textContent=userData.name.split(' ')[0]||'there';
+      stateForm.style.display='none';stateDone.classList.add('show');
+      stateDone.scrollIntoView({behavior:'smooth',block:'center'});
+    }else{
+      errSubmit.textContent=(j&&j.msg)||'We couldn’t submit your request. Please try again.';
+      errSubmit.classList.add('show');
+    }
+  }catch(err){
+    errSubmit.textContent='Network error — please check your connection and try again.';
+    errSubmit.classList.add('show');
+  }finally{
+    submitBtn.disabled=false;submitText.textContent='Get Matched';
+  }
+});
+
+/* init */
+syncPropertyBlocks();
+
+/* ---------- video: lazy play on click ---------- */
+(function(){
+  const shell=document.getElementById('videoShell'),vid=document.getElementById('renoVideo'),cover=document.getElementById('videoCover');
+  if(!shell||!vid||!cover) return;
+  function play(){shell.classList.add('playing');const p=vid.play();if(p&&p.catch)p.catch(()=>{});}
+  cover.addEventListener('click',play);
+  shell.querySelector('.play').addEventListener('click',play);
+  vid.addEventListener('ended',()=>shell.classList.remove('playing'));
+})();
+</script>
+</body>
+</html>
