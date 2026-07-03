@@ -174,18 +174,24 @@ form{padding:1.6rem clamp(1.2rem,2.5vw,2rem) 1.8rem}
 .switch input:checked + .track{background:var(--gold)}
 .switch input:checked + .track::after{transform:translateX(20px)}
 .switch b{font-size:.9rem}
-#coBlock{margin-top:1.1rem;display:none}
-#coBlock.show{display:block;animation:drop .3s ease}
 @keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 /* file upload box */
-.filebox{display:flex;align-items:center;gap:.6rem;padding:.8rem .95rem;border:1.5px dashed var(--line);
-  border-radius:11px;background:var(--cream-soft);cursor:pointer;color:var(--muted);font-size:.9rem;font-weight:600;
-  transition:border-color .2s,background .2s,color .2s}
-.filebox:hover{border-color:var(--gold-soft)}
-.filebox svg{flex:none}
-.filebox .fb-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.filebox.filled{border-style:solid;border-color:var(--gold);background:#FFF9F0;color:var(--gold-deep)}
+.filebox{display:flex;align-items:center;gap:.9rem;padding:1.1rem 1.1rem;border:2px dashed var(--gold-soft);
+  border-radius:14px;background:linear-gradient(180deg,#FFFDF8,var(--cream-soft));cursor:pointer;color:var(--ink-soft);
+  transition:border-color .2s,background .2s,color .2s,box-shadow .2s,transform .12s}
+.filebox:hover{border-color:var(--gold);box-shadow:0 8px 22px -14px rgba(232,164,30,.6);transform:translateY(-1px)}
+.filebox .fb-ic{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;
+  background:#FBF1D9;color:var(--gold-deep)}
+.filebox .fb-body{display:flex;flex-direction:column;min-width:0;line-height:1.25;flex:1}
+.filebox .fb-text{font-weight:700;font-size:.94rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filebox .fb-sub{font-size:.76rem;color:var(--muted);font-weight:500}
+.filebox .fb-btn{flex:none;padding:.5rem .95rem;border-radius:999px;background:var(--ink);color:#fff;
+  font-size:.82rem;font-weight:700;transition:background .2s}
+.filebox:hover .fb-btn{background:var(--ink-2)}
+.filebox.filled{border-style:solid;border-color:var(--gold);background:#FFF9F0}
+.filebox.filled .fb-ic{background:var(--gold);color:var(--ink-2)}
+.filebox.filled .fb-btn{background:var(--gold);color:var(--ink-2)}
 .filebox.bad{border-color:#D9534F;background:#FCEDEC}
 .field .subfield{margin-top:.9rem}
 
@@ -393,7 +399,6 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
             <div class="input-prefix"><span>$</span><input id="budgetMax" name="budgetMax" type="text" inputmode="numeric" placeholder="80,000"></div></div>
         </div>
         <div class="err" data-for="budget" style="margin-top:-.5rem;margin-bottom:.6rem">Enter a valid budget range.</div>
-        <label class="switch" style="margin-bottom:1rem"><input type="checkbox" id="flexibleBudget"><span class="track"></span><b>My budget is flexible</b></label>
         <div class="grid2">
           <div class="field"><label for="timeline">Renovation timeline <span class="req">*</span></label>
             <select id="timeline" name="timeline">
@@ -448,60 +453,28 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
         <div class="grid2">
           <div class="field"><label>Credit Bureau (CBS) report <span class="req">*</span></label>
             <label class="filebox" for="cbsReport" id="cbsReportBox">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-              <span class="fb-text">Upload PDF</span>
+              <span class="fb-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+              <span class="fb-body"><span class="fb-text">Upload CBS report</span><span class="fb-sub">PDF · click to browse</span></span>
+              <span class="fb-btn">Browse</span>
               <input id="cbsReport" type="file" accept=".pdf" hidden>
             </label>
             <div class="err" data-for="cbsReport">Please upload your CBS report.</div></div>
           <div class="field"><label>MLCB report <span class="req">*</span></label>
             <label class="filebox" for="mlcbReport" id="mlcbReportBox">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-              <span class="fb-text">Upload PDF</span>
+              <span class="fb-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+              <span class="fb-body"><span class="fb-text">Upload MLCB report</span><span class="fb-sub">PDF · click to browse</span></span>
+              <span class="fb-btn">Browse</span>
               <input id="mlcbReport" type="file" accept=".pdf" hidden>
             </label>
             <div class="err" data-for="mlcbReport">Please upload your MLCB report.</div></div>
         </div>
         <div class="field"><label>Floor plans <span class="opt">(optional)</span></label>
           <label class="filebox" for="floorPlans" id="floorPlansBox">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-            <span class="fb-text">Upload images or PDFs</span>
+            <span class="fb-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+            <span class="fb-body"><span class="fb-text">Upload floor plans</span><span class="fb-sub">Images or PDFs · click to browse</span></span>
+            <span class="fb-btn">Browse</span>
             <input id="floorPlans" type="file" accept="image/*,.pdf" multiple hidden>
           </label></div>
-      </div>
-
-      <!-- 5. Co-applicant -->
-      <div class="sec">
-        <div class="sec-h"><span class="num">5</span><div><h2>Co-applicant</h2><span>Adding one can improve your loan eligibility.</span></div></div>
-        <label class="switch"><input type="checkbox" id="hasCoApplicant"><span class="track"></span><b>I'm applying with a co-applicant</b></label>
-        <div id="coBlock">
-          <div class="grid2">
-            <div class="field"><label for="coName">Co-applicant name <span class="req">*</span></label>
-              <input id="coName" type="text" placeholder="Full name">
-              <div class="err" data-for="coName">Enter your co-applicant's name.</div></div>
-            <div class="field"><label for="coRelationship">Relationship <span class="req">*</span></label>
-              <select id="coRelationship">
-                <option value="">Select…</option>
-                <option>Spouse</option><option>Parent</option><option>Sibling</option><option>Partner</option><option>Other</option>
-              </select>
-              <div class="err" data-for="coRelationship">Select a relationship.</div></div>
-          </div>
-          <div class="grid2">
-            <div class="field"><label>Co-applicant CBS report <span class="req">*</span></label>
-              <label class="filebox" for="coCbsReport" id="coCbsReportBox">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                <span class="fb-text">Upload PDF</span>
-                <input id="coCbsReport" type="file" accept=".pdf" hidden>
-              </label>
-              <div class="err" data-for="coCbsReport">Please upload the CBS report.</div></div>
-            <div class="field"><label>Co-applicant MLCB report <span class="req">*</span></label>
-              <label class="filebox" for="coMlcbReport" id="coMlcbReportBox">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                <span class="fb-text">Upload PDF</span>
-                <input id="coMlcbReport" type="file" accept=".pdf" hidden>
-              </label>
-              <div class="err" data-for="coMlcbReport">Please upload the MLCB report.</div></div>
-          </div>
-        </div>
       </div>
 
       <!-- consent + submit -->
@@ -585,25 +558,24 @@ form.querySelectorAll('input[name="propertyType"]').forEach(r =>
     el('partialBlock').style.display = e.target.value === 'Partial' ? 'block' : 'none';
   }));
 
-// co-applicant toggle
-el('hasCoApplicant').addEventListener('change', e =>
-  el('coBlock').classList.toggle('show', e.target.checked));
-
 // file inputs → reflect chosen filename on the box
 const fileBoxes = {
   cbsReport: 'cbsReportBox', mlcbReport: 'mlcbReportBox', floorPlans: 'floorPlansBox',
-  coCbsReport: 'coCbsReportBox', coMlcbReport: 'coMlcbReportBox',
 };
 Object.entries(fileBoxes).forEach(([inputId, boxId]) => {
+  const box = el(boxId);
+  const txt = box.querySelector('.fb-text');
+  const btn = box.querySelector('.fb-btn');
+  const defaultText = txt.textContent;
   el(inputId).addEventListener('change', e => {
-    const box = el(boxId);
-    const txt = box.querySelector('.fb-text');
     const files = e.target.files;
     if (files && files.length){
       txt.textContent = files.length > 1 ? `${files.length} files selected` : files[0].name;
+      if (btn) btn.textContent = 'Change';
       box.classList.add('filled'); box.classList.remove('bad');
     } else {
-      txt.textContent = inputId === 'floorPlans' ? 'Upload images or PDFs' : 'Upload PDF';
+      txt.textContent = defaultText;
+      if (btn) btn.textContent = 'Browse';
       box.classList.remove('filled');
     }
   });
@@ -646,13 +618,6 @@ function validate(){
 
   if (!el('cbsReport').files.length) fail('cbsReport');
   if (!el('mlcbReport').files.length) fail('mlcbReport');
-
-  if (el('hasCoApplicant').checked){
-    if (!el('coName').value.trim()) fail('coName');
-    if (!el('coRelationship').value) fail('coRelationship');
-    if (!el('coCbsReport').files.length) fail('coCbsReport');
-    if (!el('coMlcbReport').files.length) fail('coMlcbReport');
-  }
 
   if (!el('consent').checked){
     formMsg.textContent = 'Please accept the terms to continue.';
@@ -704,12 +669,6 @@ form.addEventListener('submit', async (e) => {
     const cbsReportUrl = await uploadFile(el('cbsReport').files[0]);
     const mlcbReportUrl = await uploadFile(el('mlcbReport').files[0]);
 
-    let coApplicantCbsReportUrl = null, coApplicantMlcbReportUrl = null;
-    if (el('hasCoApplicant').checked){
-      coApplicantCbsReportUrl = await uploadFile(el('coCbsReport').files[0]);
-      coApplicantMlcbReportUrl = await uploadFile(el('coMlcbReport').files[0]);
-    }
-
     const floorPlanImageUrls = [], floorPlanPdfUrls = [];
     for (const f of el('floorPlans').files){
       const url = await uploadFile(f);
@@ -725,20 +684,11 @@ form.addEventListener('submit', async (e) => {
     const partialSelections = [...form.querySelectorAll('input[name="partial"]:checked')].map(c => c.value);
     const timeline = el('timeline').value;
     const keyCollected = form.querySelector('input[name="keyCollected"]:checked').value === 'yes';
-    const flexibleBudget = el('flexibleBudget').checked;
     const budgetMin = num(el('budgetMin').value);
     const budgetMax = num(el('budgetMax').value);
-    const hasCoApplicant = el('hasCoApplicant').checked;
     const allowDesignerMatching = el('allowDesignerMatching').checked;
     const monthlyIncome = digits(el('monthlyIncome').value) || null;
     const nowIso = new Date().toISOString();
-
-    const coApplicant = hasCoApplicant ? {
-      name: el('coName').value.trim() || null,
-      relationship: el('coRelationship').value || null,
-      cbsReportUrl: coApplicantCbsReportUrl,
-      mlcbReportUrl: coApplicantMlcbReportUrl,
-    } : null;
 
     // Mirrors _buildUserData() in lead_registration_with_loan_mob.dart
     const data = {
@@ -757,8 +707,8 @@ form.addEventListener('submit', async (e) => {
       partialSelections: propertyType === 'Partial' ? partialSelections : [],
       hasCollectedKeys: keyCollected,
       keysCollected: keyCollected,
-      isFlexibleBudget: flexibleBudget,
-      selectedBudgetRangeLabel: flexibleBudget ? 'Flexible' : null,
+      isFlexibleBudget: false,
+      selectedBudgetRangeLabel: null,
       selectedBudgetValues: { min: budgetMin, max: budgetMax },
       budgetFlexibility: null,
       renovationLoanInterest: true,
@@ -779,8 +729,8 @@ form.addEventListener('submit', async (e) => {
       yearsEmployed: el('yearsEmployed').value.trim() || null,
       cbsReportUrl,
       mlcbReportUrl,
-      hasCoApplicant,
-      coApplicant,
+      hasCoApplicant: false,
+      coApplicant: null,
       floorplanImages: floorPlanImageUrls,
       floorplanFiles: floorPlanPdfUrls,
       siteImages: [],
