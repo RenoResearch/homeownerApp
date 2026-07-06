@@ -125,16 +125,33 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
 .hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:center;
   background:linear-gradient(90deg,rgba(16,40,57,.15) 0%,rgba(16,40,57,.55) 48%,rgba(16,40,57,.95) 78%),url('assets/hero.jpg') center/cover no-repeat;}
 .hero .wrap{width:min(1200px,92vw);padding:5rem 0}
-.hero-copy{max-width:640px;margin-left:auto;text-align:right;color:var(--cream)}
-.hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);color:#fbeddb;line-height:1.05}
+.hero-copy{max-width:720px;margin-left:auto;text-align:right;color:var(--cream)}
+.hero h1{font-size:clamp(2.6rem,5vw,4rem);color:#fbeddb;line-height:1.08;font-weight:400}
 .hero h1 .gv{color:#fff}
+/* responsive line breaks: desktop breaks after "to" (2 lines, second line kept
+   whole), mobile breaks before "to" and before "Interior" (3 lines) */
+.br-m{display:none}
+@media(min-width:761px){.brk2{white-space:nowrap}}
 .hero p{margin:1.4rem 0 2rem;font-size:1.15rem;color:rgba(243,230,210,.9);max-width:34rem;margin-left:auto}
 .hero .btn{font-size:1.3rem;padding:1rem 2rem}
 
 /* ---------- generic band ---------- */
-.band{position:relative}
-.band-navy{background:var(--navy) url('assets/bg-navy.jpg') center/cover;color:var(--cream)}
-.band-light{background:var(--mist) url('assets/bg-light.jpg') center/cover;color:var(--ink)}
+.band{position:relative;overflow:hidden}
+.band > .wrap{position:relative;z-index:1}
+/* Flat colour fills the whole band at every viewport (no white gaps, text stays
+   readable). The blueprint/lattice artwork is overlaid separately and scaled
+   freely so it never dictates the band's coverage. */
+.band-navy{background:var(--navy);color:var(--cream)}
+.band-light{background:var(--mist);color:var(--ink)}
+.band::before,.band::after{content:"";position:absolute;pointer-events:none;z-index:0;background-repeat:no-repeat}
+.band-light::before,.band-navy::before{top:0;left:0;width:min(34%,320px);aspect-ratio:348/654;
+  background-image:url('assets/deco-grid.png');background-size:contain;background-position:left top}
+.band-light::before{opacity:.5}
+.band-navy::before{opacity:.3}
+.band-light::after{bottom:0;right:0;width:min(26%,340px);aspect-ratio:351/1053;
+  background-image:url('assets/deco-plan-dark.png');background-size:contain;background-position:right bottom;opacity:.35}
+.band-navy::after{bottom:0;right:0;width:min(46%,620px);aspect-ratio:1939/969;
+  background-image:url('assets/deco-plan-white.png');background-size:contain;background-position:right bottom;opacity:.12}
 .band-pad{padding:5.5rem 0}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:700;
   letter-spacing:.02em;background:rgba(222,167,65,.16);color:var(--gold);padding:.4rem .9rem;border-radius:999px}
@@ -144,7 +161,7 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
 
 /* ---------- FORM band ---------- */
 .form-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:3.5rem;align-items:center}
-.form-aside h2{font-size:clamp(2rem,3.6vw,3rem);color:#fbeddb;margin:1.2rem 0 1rem;line-height:1.06}
+.form-aside h2{font-size:clamp(2rem,3.6vw,3rem);color:#fbeddb;margin:1.2rem 0 1rem;line-height:1.12;font-weight:400}
 .form-aside h2 .gv{color:#fff}
 .form-aside > p{color:rgba(243,230,210,.85);font-size:1.1rem;max-width:32rem}
 .aside-list{list-style:none;padding:0;margin:1.6rem 0;display:grid;gap:.85rem}
@@ -249,7 +266,8 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
 .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 .review{background:var(--cream);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow-navy);color:#2c3a44}
 .review .top{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem}
-.review .av{width:44px;height:44px;border-radius:50%;flex:none}
+.review .av{width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:"PT Sans",sans-serif;font-weight:700;font-size:1.15rem;line-height:1}
 .review .nm{font-weight:700;font-size:1.05rem;color:#1c2a33}
 .review .rs{color:#9aa0a6;letter-spacing:.08em;font-size:.9rem}
 .review p{font-size:.95rem;color:#4a5560;line-height:1.55}
@@ -301,6 +319,8 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
   .appbar-cta{display:none}
   .review-grid,.id-grid,.pf-grid{grid-template-columns:1fr}
   .band-pad{padding:3.5rem 0}
+  .br-d{display:none}
+  .br-m{display:inline}
 }
 @media(max-width:520px){
   .steps{grid-template-columns:1fr}
@@ -337,7 +357,7 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy reveal">
-      <h1>The <span class="gv">Smarter Way</span> to Find an <span class="gv">Interior Designer</span></h1>
+      <h1>The <span class="gv">Smarter Way</span> <br class="br-m">to <br class="br-d"><span class="brk2">Find an <br class="br-m"><span class="gv">Interior Designer</span></span></h1>
       <p>Get connected to interior designers suited to your project requirements.</p>
       <a href="#lead" class="btn btn-gold">Get Matched
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg>
@@ -353,7 +373,7 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
       <!-- aside -->
       <div class="form-aside reveal">
         <span class="eyebrow">Free · 60 Seconds</span>
-        <h2>You Fill in the Info &amp; <span class="gv">We'll Do the Matching</span></h2>
+        <h2>You Fill in the Info &amp;<br><span class="gv">We'll Do the Matching</span></h2>
         <p>Fill this in once. Our engine matches you to vetted firms that fit your property, timeline and budget.</p>
         <ul class="aside-list">
           <li><span class="bx"></span> Get 5 Free Quotes from Vetted Firms</li>
@@ -489,7 +509,7 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
         <div class="play"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="match-copy reveal">
-        <h2>Smart Matching Helps <span class="gv">Skip the Guesswork &amp; Saves You the Headache</span></h2>
+        <h2>Smart Matching Helps<br><span class="gv">Skip the Guesswork &amp; Saves You the Headache</span></h2>
         <p class="sub1">Save time, energy and money.</p>
         <p class="sub2">Let our algorithms, AI and human touch do the work.</p>
         <div class="steps">
@@ -520,12 +540,12 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
       </div>
     </div>
     <div class="review-grid">
-      <div class="review reveal"><div class="top"><span class="av" style="background:#dea741"></span><div><div class="nm">Kandhasamy Murugan</div><div class="rs">★★★★★</div></div></div><p>Reno Research helped me find a renovation company, and through them I did my kitchen renovation. They completed the work on time exactly the way I wanted. Happy with the service provided. 👍</p></div>
-      <div class="review reveal"><div class="top"><span class="av" style="background:#2ca24a"></span><div><div class="nm">Juat Theng Khoo</div><div class="rs">★★★★★</div></div></div><p>A very effective way to link contractors to homeowners. I had 8-10 contractors contact me in under a week after leaving my info. Just exercise your own discretion when picking the right one.</p></div>
-      <div class="review reveal"><div class="top"><span class="av" style="background:#e0483c"></span><div><div class="nm">Priya RamK</div><div class="rs">★★★★★</div></div></div><p>Reno Research was very responsive and gave me a good number of contacts to liaise with. They followed up whenever the schedule changed. I really appreciate their hard work and dedication.</p></div>
-      <div class="review reveal"><div class="top"><span class="av" style="background:#3f51e0"></span><div><div class="nm">Yan Tukiman</div><div class="rs">★★★★★</div></div></div><p>They helped me find multiple contractors so I could compare ideas and quotations for my reno work. Very helpful indeed, saved me a lot of time finding contractors myself.</p></div>
-      <div class="review reveal"><div class="top"><span class="av" style="background:#d69a2e"></span><div><div class="nm">Teck Hua Tan</div><div class="rs">★★★★★</div></div></div><p>Zeon was helpful, professional and always ready with answers. He introduced me to 2 qualified IDs, personally reviewed, who all gave good competitive quotes. Highly recommend 😀</p></div>
-      <div class="review reveal"><div class="top"><span class="av" style="background:#c13ccf"></span><div><div class="nm">Ryan</div><div class="rs">★★★★★</div></div></div><p>Glad we attended the 6-7 June 2026 event, and it was vastly different. The IDs seemed experienced and the interactions didn't feel forced. The conversations were meaningful and of good quality.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#dea741">K</span><div><div class="nm">Kandhasamy Murugan</div><div class="rs">★★★★★</div></div></div><p>Reno Research helped me find a renovation company, and through them I did my kitchen renovation. They completed the work on time exactly the way I wanted. Happy with the service provided. 👍</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#2ca24a">J</span><div><div class="nm">Juat Theng Khoo</div><div class="rs">★★★★★</div></div></div><p>A very effective way to link contractors to homeowners. I had 8-10 contractors contact me in under a week after leaving my info. Just exercise your own discretion when picking the right one.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#e0483c">P</span><div><div class="nm">Priya RamK</div><div class="rs">★★★★★</div></div></div><p>Reno Research was very responsive and gave me a good number of contacts to liaise with. They followed up whenever the schedule changed. I really appreciate their hard work and dedication.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#3f51e0">Y</span><div><div class="nm">Yan Tukiman</div><div class="rs">★★★★★</div></div></div><p>They helped me find multiple contractors so I could compare ideas and quotations for my reno work. Very helpful indeed, saved me a lot of time finding contractors myself.</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#d69a2e">T</span><div><div class="nm">Teck Hua Tan</div><div class="rs">★★★★★</div></div></div><p>Zeon was helpful, professional and always ready with answers. He introduced me to 2 qualified IDs, personally reviewed, who all gave good competitive quotes. Highly recommend 😀</p></div>
+      <div class="review reveal"><div class="top"><span class="av" style="background:#c13ccf">R</span><div><div class="nm">Ryan</div><div class="rs">★★★★★</div></div></div><p>Glad we attended the 6-7 June 2026 event, and it was vastly different. The IDs seemed experienced and the interactions didn't feel forced. The conversations were meaningful and of good quality.</p></div>
     </div>
   </div>
 </section>
@@ -786,6 +806,20 @@ async function uploadFloorPlans(){
   return {imageUrls,pdfUrls};
 }
 const stateForm=document.getElementById('stateForm');
+/* ---------- fire CintraFormViewed once the lead form scrolls into view ---------- */
+(function(){
+  const form=document.getElementById('leadForm');
+  if(!form) return;
+  let fired=false;
+  const send=()=>{ if(fired) return; fired=true; if(window.fbq) fbq('trackCustom','CintraFormViewed',{variant:'alt_b'}); };
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){send();io.disconnect();}}),{threshold:.25});
+    io.observe(form);
+  }else{
+    send();
+  }
+})();
+
 const stateDone=document.getElementById('stateDone');
 const submitBtn=document.getElementById('submitBtn'),submitText=document.getElementById('submitText');
 const errSubmit=document.getElementById('err-submit');
@@ -812,7 +846,10 @@ submitBtn.addEventListener('click',async ()=>{
     });
     const j=await res.json().catch(()=>({}));
     if(res.ok && j.success){
-      if(window.fbq) fbq('track','Lead',{content_name:'Lead Registration',content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0});
+      if(window.fbq){
+        fbq('track','Lead',{content_name:'Lead Registration',content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0});
+        fbq('trackCustom','CintraFormSubmit',{content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant:'alt_b'});
+      }
       if(window.gtag) gtag('event','generate_lead',{currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant_id:'alt_b'});
       document.getElementById('doneName').textContent=userData.name.split(' ')[0]||'there';
       stateForm.style.display='none';stateDone.classList.add('show');
