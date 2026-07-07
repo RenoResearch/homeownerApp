@@ -854,18 +854,23 @@ const otpCode=document.getElementById('otpCode'),errOtp=document.getElementById(
 const otpSubmitBtn=document.getElementById('otpSubmitBtn'),otpSubmitText=document.getElementById('otpSubmitText');
 const otpResendBtn=document.getElementById('otpResendBtn'),otpBackBtn=document.getElementById('otpBackBtn');
 
-/* OTP flow state: flow token from /signuphandler binds the verify step to this session */
-let otpFlowToken=null;
+/* OTP flow state: flow token from /signuphandler binds the verify step to this session.
+   phoneVerifiedOnce stays true after a successful verify so a failed /registerlead
+   can be retried without re-entering (and re-consuming) the OTP. */
+let otpFlowToken=null,phoneVerifiedOnce=false;
 
 /* Complete registration via the SAME /registerlead route (used both after OTP
-   verification and for the test-number auto-login bypass). */
-async function completeRegistration(){
+   verification and for the test-number auto-login bypass). Pass otpVerified=true
+   so the server marks the phone verified. */
+async function completeRegistration(otpVerified){
   const {imageUrls,pdfUrls}=await uploadFloorPlans();
   const userData=buildUserData(imageUrls,pdfUrls);
-  const body=new URLSearchParams({
+  const fields={
     phone:userData.phone,email:userData.email,
     data:JSON.stringify(userData),registrationSource:'lead-registration'
-  });
+  };
+  if(otpVerified) fields.phoneVerified='true';
+  const body=new URLSearchParams(fields);
   const res=await fetch(`${API}/registerlead`,{
     method:'POST',
     headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
@@ -932,7 +937,7 @@ submitBtn.addEventListener('click',async ()=>{
       return;
     }
     // Show OTP entry
-    otpFlowToken=r.token;
+    otpFlowToken=r.token;phoneVerifiedOnce=false;otpSubmitText.textContent='Verify & Get Matched';
     document.getElementById('otpPhone').textContent='+65 '+document.getElementById('phone').value.replace(/\D/g,'');
     stateForm.style.display='none';stateOtp.classList.add('show');
     otpCode.value='';errOtp.classList.remove('show');
@@ -947,31 +952,46 @@ submitBtn.addEventListener('click',async ()=>{
   }
 });
 
-otpSubmitBtn.addEventListener('click',async ()=>{
+async function submitOtp(){
   if(otpSubmitBtn.disabled) return;
   errOtp.classList.remove('show');
-  const code=otpCode.value.replace(/\D/g,'');
-  if(code.length!==6){ errOtp.textContent='Enter the 6-digit code.';errOtp.classList.add('show');return; }
-  otpSubmitText.textContent='Verifying…';otpSubmitBtn.disabled=true;
+  otpSubmitBtn.disabled=true;
   try{
-    const res=await fetch(`${API}/verifyleadotp`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({token:otpFlowToken,code})
-    });
-    const j=await res.json().catch(()=>({}));
-    if(!(res.ok && j.success)){
-      errOtp.textContent=(j&&j.msg)||'That code isn’t right. Please try again.';errOtp.classList.add('show');
-      return;
+    // Verify the code — skipped when we've already verified and are just
+    // retrying a failed registration (the OTP has been consumed server-side).
+    if(!phoneVerifiedOnce){
+      const code=otpCode.value.replace(/\D/g,'');
+      if(code.length!==6){ errOtp.textContent='Enter the 6-digit code.';errOtp.classList.add('show');return; }
+      otpSubmitText.textContent='Verifying…';
+      const res=await fetch(`${API}/verifyleadotp`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({token:otpFlowToken,code})
+      });
+      const j=await res.json().catch(()=>({}));
+      if(!(res.ok && j.success)){
+        errOtp.textContent=(j&&j.msg)||'That code isn’t right. Please try again.';errOtp.classList.add('show');
+        return;
+      }
+      phoneVerifiedOnce=true;
     }
     otpSubmitText.textContent='Matching…';
-    const done=await completeRegistration();
-    if(done!==true){ errOtp.textContent=done.error;errOtp.classList.add('show'); }
+    const done=await completeRegistration(true);
+    if(done!==true){ errOtp.textContent=done.error;errOtp.classList.add('show');otpSubmitText.textContent='Retry'; }
   }catch(err){
     errOtp.textContent='Network error — please check your connection and try again.';errOtp.classList.add('show');
+    otpSubmitText.textContent=phoneVerifiedOnce?'Retry':'Verify & Get Matched';
   }finally{
-    otpSubmitBtn.disabled=false;otpSubmitText.textContent='Verify & Get Matched';
+    otpSubmitBtn.disabled=false;
+    if(!phoneVerifiedOnce) otpSubmitText.textContent='Verify & Get Matched';
   }
+}
+otpSubmitBtn.addEventListener('click',submitOtp);
+/* Enter submits; auto-submit once 6 digits are entered. */
+otpCode.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); submitOtp(); } });
+otpCode.addEventListener('input',()=>{
+  otpCode.value=otpCode.value.replace(/\D/g,'').slice(0,6);
+  if(otpCode.value.length===6 && !phoneVerifiedOnce) submitOtp();
 });
 
 otpResendBtn.addEventListener('click',async ()=>{
@@ -981,12 +1001,14 @@ otpResendBtn.addEventListener('click',async ()=>{
   const r=await requestOtp();
   if(r.error){ errOtp.textContent=r.error;errOtp.classList.add('show');otpResendBtn.disabled=false;otpResendBtn.textContent='Resend code';return; }
   otpFlowToken=r.token||otpFlowToken;
+  phoneVerifiedOnce=false;otpSubmitText.textContent='Verify & Get Matched';
   otpCode.value='';otpCode.focus();
   startResendCooldown(30);
 });
 
 otpBackBtn.addEventListener('click',()=>{
   clearInterval(resendTimer);
+  phoneVerifiedOnce=false;otpSubmitText.textContent='Verify & Get Matched';
   stateOtp.classList.remove('show');stateForm.style.display='';
   stateForm.scrollIntoView({behavior:'smooth',block:'center'});
 });
