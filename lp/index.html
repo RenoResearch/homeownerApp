@@ -226,6 +226,17 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
 .hint{font-size:.82rem;margin-top:.4rem;color:var(--muted)}
 .form-foot{font-size:.82rem;color:#8a7c62;margin-top:.7rem;text-align:center}
 
+/* otp state */
+.state-otp{display:none}
+.state-otp.show{display:block}
+.state-otp h3{font-size:1.5rem;color:#25404f;margin-bottom:.4rem}
+.state-otp p{color:#4a5a64;font-size:.95rem;margin-bottom:1.1rem}
+.state-otp p b{color:#25404f}
+.otp-input{letter-spacing:.5em;text-align:center;font-size:1.4rem;font-weight:700}
+.otp-actions{display:flex;justify-content:space-between;align-items:center;margin-top:.7rem;font-size:.85rem}
+.otp-link{border:none;background:none;color:#25404f;font-weight:700;cursor:pointer;text-decoration:underline;padding:0}
+.otp-link:disabled{color:#8a7c62;cursor:default;text-decoration:none}
+
 /* done state */
 .state-done{display:none;text-align:center;padding:1.5rem .5rem}
 .state-done.show{display:block}
@@ -484,6 +495,21 @@ h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.01em}
             <button class="btn btn-gold btn-block" id="submitBtn" type="button"><span id="submitText">Get Matched</span></button>
             <div class="err" id="err-submit" style="margin-top:.6rem">Something went wrong. Please try again.</div>
             <p class="form-foot">By submitting you agree to be contacted by suitable firms about your renovation.</p>
+          </div>
+        </div>
+
+        <!-- OTP VERIFICATION -->
+        <div class="state-otp" id="stateOtp">
+          <h3>Verify your number</h3>
+          <p>We sent a 6-digit code to <b id="otpPhone">your phone</b>. Enter it below to confirm your details.</p>
+          <div class="field">
+            <input class="input otp-input" id="otpCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="••••••">
+            <div class="err" id="err-otp">That code isn't right. Please try again.</div>
+          </div>
+          <button class="btn btn-gold btn-block" id="otpSubmitBtn" type="button"><span id="otpSubmitText">Verify &amp; Get Matched</span></button>
+          <div class="otp-actions">
+            <button class="otp-link" id="otpBackBtn" type="button">← Edit details</button>
+            <button class="otp-link" id="otpResendBtn" type="button">Resend code</button>
           </div>
         </div>
 
@@ -821,8 +847,71 @@ const stateForm=document.getElementById('stateForm');
 })();
 
 const stateDone=document.getElementById('stateDone');
+const stateOtp=document.getElementById('stateOtp');
 const submitBtn=document.getElementById('submitBtn'),submitText=document.getElementById('submitText');
 const errSubmit=document.getElementById('err-submit');
+const otpCode=document.getElementById('otpCode'),errOtp=document.getElementById('err-otp');
+const otpSubmitBtn=document.getElementById('otpSubmitBtn'),otpSubmitText=document.getElementById('otpSubmitText');
+const otpResendBtn=document.getElementById('otpResendBtn'),otpBackBtn=document.getElementById('otpBackBtn');
+
+/* OTP flow state: flow token from /signuphandler binds the verify step to this session */
+let otpFlowToken=null;
+
+/* Complete registration via the SAME /registerlead route (used both after OTP
+   verification and for the test-number auto-login bypass). */
+async function completeRegistration(){
+  const {imageUrls,pdfUrls}=await uploadFloorPlans();
+  const userData=buildUserData(imageUrls,pdfUrls);
+  const body=new URLSearchParams({
+    phone:userData.phone,email:userData.email,
+    data:JSON.stringify(userData),registrationSource:'lead-registration'
+  });
+  const res=await fetch(`${API}/registerlead`,{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
+    body
+  });
+  const j=await res.json().catch(()=>({}));
+  if(res.ok && j.success){
+    if(window.fbq){
+      fbq('track','Lead',{content_name:'Lead Registration',content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0});
+      fbq('trackCustom','CintraFormSubmit',{content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant:'alt_b'});
+    }
+    if(window.gtag) gtag('event','generate_lead',{currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant_id:'alt_b'});
+    document.getElementById('doneName').textContent=userData.name.split(' ')[0]||'there';
+    stateForm.style.display='none';stateOtp.classList.remove('show');stateDone.classList.add('show');
+    stateDone.scrollIntoView({behavior:'smooth',block:'center'});
+    return true;
+  }
+  return {error:(j&&j.msg)||'We couldn’t submit your request. Please try again.'};
+}
+
+/* Request an OTP via the existing /signuphandler route (Twilio SMS). */
+async function requestOtp(){
+  const phone='+65'+document.getElementById('phone').value.replace(/\D/g,'');
+  const res=await fetch(`${API}/signuphandler`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({number:phone,channel:'sms'})
+  });
+  const j=await res.json().catch(()=>({}));
+  if(!res.ok || !j.success){
+    return {error:(j&&j.msg)||'We couldn’t send a verification code. Please try again.'};
+  }
+  return j; // {success, token, ...} or test-number {autoLogin:true, testMode:true}
+}
+
+/* resend cooldown */
+let resendTimer=null;
+function startResendCooldown(secs){
+  clearInterval(resendTimer);
+  let left=secs;
+  otpResendBtn.disabled=true;
+  const tick=()=>{ otpResendBtn.textContent=left>0?`Resend in ${left}s`:'Resend code'; if(left<=0){otpResendBtn.disabled=false;clearInterval(resendTimer);} left--; };
+  tick();
+  resendTimer=setInterval(tick,1000);
+}
+
 submitBtn.addEventListener('click',async ()=>{
   if(submitBtn.disabled) return;
   errSubmit.classList.remove('show');
@@ -831,39 +920,75 @@ submitBtn.addEventListener('click',async ()=>{
     if(firstBad)firstBad.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-  submitText.textContent='Uploading & matching…';submitBtn.disabled=true;
+  submitText.textContent='Sending code…';submitBtn.disabled=true;
   try{
-    const {imageUrls,pdfUrls}=await uploadFloorPlans();
-    const userData=buildUserData(imageUrls,pdfUrls);
-    const body=new URLSearchParams({
-      phone:userData.phone,email:userData.email,
-      data:JSON.stringify(userData),registrationSource:'lead-registration'
-    });
-    const res=await fetch(`${API}/registerlead`,{
-      method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
-      body
-    });
-    const j=await res.json().catch(()=>({}));
-    if(res.ok && j.success){
-      if(window.fbq){
-        fbq('track','Lead',{content_name:'Lead Registration',content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0});
-        fbq('trackCustom','CintraFormSubmit',{content_category:userData.renovationType,currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant:'alt_b'});
-      }
-      if(window.gtag) gtag('event','generate_lead',{currency:'SGD',value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0,variant_id:'alt_b'});
-      document.getElementById('doneName').textContent=userData.name.split(' ')[0]||'there';
-      stateForm.style.display='none';stateDone.classList.add('show');
-      stateDone.scrollIntoView({behavior:'smooth',block:'center'});
-    }else{
-      errSubmit.textContent=(j&&j.msg)||'We couldn’t submit your request. Please try again.';
-      errSubmit.classList.add('show');
+    const r=await requestOtp();
+    if(r.error){ errSubmit.textContent=r.error;errSubmit.classList.add('show');return; }
+    // Test numbers bypass OTP entirely — go straight to registration.
+    if(r.autoLogin||r.testMode){
+      submitText.textContent='Matching…';
+      const done=await completeRegistration();
+      if(done!==true){ errSubmit.textContent=done.error;errSubmit.classList.add('show'); }
+      return;
     }
+    // Show OTP entry
+    otpFlowToken=r.token;
+    document.getElementById('otpPhone').textContent='+65 '+document.getElementById('phone').value.replace(/\D/g,'');
+    stateForm.style.display='none';stateOtp.classList.add('show');
+    otpCode.value='';errOtp.classList.remove('show');
+    startResendCooldown(30);
+    otpCode.focus();
+    stateOtp.scrollIntoView({behavior:'smooth',block:'center'});
   }catch(err){
     errSubmit.textContent='Network error — please check your connection and try again.';
     errSubmit.classList.add('show');
   }finally{
     submitBtn.disabled=false;submitText.textContent='Get Matched';
   }
+});
+
+otpSubmitBtn.addEventListener('click',async ()=>{
+  if(otpSubmitBtn.disabled) return;
+  errOtp.classList.remove('show');
+  const code=otpCode.value.replace(/\D/g,'');
+  if(code.length!==6){ errOtp.textContent='Enter the 6-digit code.';errOtp.classList.add('show');return; }
+  otpSubmitText.textContent='Verifying…';otpSubmitBtn.disabled=true;
+  try{
+    const res=await fetch(`${API}/verifyleadotp`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({token:otpFlowToken,code})
+    });
+    const j=await res.json().catch(()=>({}));
+    if(!(res.ok && j.success)){
+      errOtp.textContent=(j&&j.msg)||'That code isn’t right. Please try again.';errOtp.classList.add('show');
+      return;
+    }
+    otpSubmitText.textContent='Matching…';
+    const done=await completeRegistration();
+    if(done!==true){ errOtp.textContent=done.error;errOtp.classList.add('show'); }
+  }catch(err){
+    errOtp.textContent='Network error — please check your connection and try again.';errOtp.classList.add('show');
+  }finally{
+    otpSubmitBtn.disabled=false;otpSubmitText.textContent='Verify & Get Matched';
+  }
+});
+
+otpResendBtn.addEventListener('click',async ()=>{
+  if(otpResendBtn.disabled) return;
+  errOtp.classList.remove('show');
+  otpResendBtn.disabled=true;otpResendBtn.textContent='Sending…';
+  const r=await requestOtp();
+  if(r.error){ errOtp.textContent=r.error;errOtp.classList.add('show');otpResendBtn.disabled=false;otpResendBtn.textContent='Resend code';return; }
+  otpFlowToken=r.token||otpFlowToken;
+  otpCode.value='';otpCode.focus();
+  startResendCooldown(30);
+});
+
+otpBackBtn.addEventListener('click',()=>{
+  clearInterval(resendTimer);
+  stateOtp.classList.remove('show');stateForm.style.display='';
+  stateForm.scrollIntoView({behavior:'smooth',block:'center'});
 });
 
 /* init */
