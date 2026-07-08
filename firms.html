@@ -141,7 +141,13 @@ img{max-width:100%;display:block}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold-soft)}
 .card .top{display:flex;align-items:center;gap:.8rem}
 .card .av{width:48px;height:48px;border-radius:12px;flex:none;display:grid;place-items:center;
-  font-weight:800;color:#fff;font-size:1.1rem;font-family:"Fraunces",serif}
+  font-weight:800;color:#fff;font-size:1.1rem;font-family:"Fraunces",serif;overflow:hidden}
+.card .av img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.card .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem}
+.card .shots img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:var(--cream)}
+.card .shots .more{position:relative}
+.card .shots .more::after{content:attr(data-more);position:absolute;inset:0;display:grid;place-items:center;
+  background:rgba(27,27,46,.55);color:#fff;font-weight:700;font-size:.85rem;border-radius:10px}
 .card .head{min-width:0}
 .card .head b{display:block;font-size:1.02rem;font-weight:700;line-height:1.2;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -415,10 +421,18 @@ function render(list){
       ? `<span class="stat rating"><span class="star">&#9733;</span><b>${f.rating.toFixed(1)}</b>${f.reviewCount ? ` (${f.reviewCount})` : ''}</span>`
       : `<span class="stat">New firm</span>`;
     const firmHref = f.publicId ? `/firms/${encodeURIComponent(f.publicId)}/` : `firm.html?id=${esc(f._id)}`;
+    const avatar = f.companyLogo
+      ? `<span class="av"><img src="${esc(f.companyLogo)}" alt="${esc(name)} logo" loading="lazy"></span>`
+      : `<span class="av" style="background:${colorFor(name)}">${esc(initials(name))}</span>`;
+    const shots = (f.showroomImageUrls || []).filter(Boolean);
+    const shotsHtml = shots.length ? `<div class="shots">${shots.slice(0,3).map((u,i) => {
+      const extra = i === 2 && shots.length > 3 ? ` class="more" data-more="+${shots.length - 3}"` : '';
+      return `<span${extra}><img src="${esc(u)}" alt="${esc(name)} showroom" loading="lazy"></span>`;
+    }).join('')}</div>` : '';
     return `<a class="card" href="${firmHref}" aria-label="${esc(name)}">
       ${badge}
       <div class="top">
-        <span class="av" style="background:${colorFor(name)}">${esc(initials(name))}</span>
+        ${avatar}
         <div class="head">
           <b title="${esc(name)}">${esc(name)}</b>
           <span class="loc">
@@ -427,6 +441,7 @@ function render(list){
           </span>
         </div>
       </div>
+      ${shotsHtml}
       <div class="chips">
         ${spec ? `<span class="chip-tag spec">${esc(spec)}</span>` : ''}
         <span class="chip-tag">${esc(prettyLoc(f.location))}</span>
