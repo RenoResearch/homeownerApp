@@ -351,8 +351,12 @@ section{padding:4.8rem 0}
 .err.show{display:block}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .phone-wrap{display:flex}
-.phone-wrap .cc{display:flex;align-items:center;padding:0 .85rem;border:1.5px solid var(--line);border-right:none;
-  border-radius:var(--r-sm) 0 0 var(--r-sm);background:var(--cream);font-weight:700;font-size:.9rem;color:var(--ink-soft)}
+.phone-wrap .cc{display:flex;align-items:center;padding:0 1.5rem 0 .7rem;border:1.5px solid var(--line);border-right:none;
+  border-radius:var(--r-sm) 0 0 var(--r-sm);background:var(--cream);font-weight:700;font-size:.9rem;color:var(--ink-soft);
+  appearance:none;-webkit-appearance:none;cursor:pointer;max-width:6.2rem;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%235E5E72' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .45rem center}
+.phone-wrap .cc:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,164,30,.16);outline:none}
 .phone-wrap .input{border-radius:0 var(--r-sm) var(--r-sm) 0}
 .select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235E5E72' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.4rem}
 
@@ -929,8 +933,65 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
             <div class="field">
               <label for="phone">Phone <span class="req">*</span></label>
               <div class="phone-wrap">
-                <span class="cc">+65</span>
-                <input class="input" id="phone" type="tel" inputmode="numeric" maxlength="8" placeholder="8123 4567">
+                <select class="cc" id="cc" aria-label="Country code">
+                  <option value="+65" selected>SG +65</option>
+                  <option value="+60">MY +60</option>
+                  <option value="+62">ID +62</option>
+                  <option value="+66">TH +66</option>
+                  <option value="+84">VN +84</option>
+                  <option value="+63">PH +63</option>
+                  <option value="+95">MM +95</option>
+                  <option value="+855">KH +855</option>
+                  <option value="+856">LA +856</option>
+                  <option value="+673">BN +673</option>
+                  <option value="+86">CN +86</option>
+                  <option value="+852">HK +852</option>
+                  <option value="+886">TW +886</option>
+                  <option value="+853">MO +853</option>
+                  <option value="+81">JP +81</option>
+                  <option value="+82">KR +82</option>
+                  <option value="+91">IN +91</option>
+                  <option value="+92">PK +92</option>
+                  <option value="+880">BD +880</option>
+                  <option value="+94">LK +94</option>
+                  <option value="+977">NP +977</option>
+                  <option value="+61">AU +61</option>
+                  <option value="+64">NZ +64</option>
+                  <option value="+1">US/CA +1</option>
+                  <option value="+44">UK +44</option>
+                  <option value="+353">IE +353</option>
+                  <option value="+33">FR +33</option>
+                  <option value="+49">DE +49</option>
+                  <option value="+39">IT +39</option>
+                  <option value="+34">ES +34</option>
+                  <option value="+351">PT +351</option>
+                  <option value="+31">NL +31</option>
+                  <option value="+32">BE +32</option>
+                  <option value="+41">CH +41</option>
+                  <option value="+43">AT +43</option>
+                  <option value="+46">SE +46</option>
+                  <option value="+47">NO +47</option>
+                  <option value="+45">DK +45</option>
+                  <option value="+358">FI +358</option>
+                  <option value="+7">RU +7</option>
+                  <option value="+90">TR +90</option>
+                  <option value="+971">AE +971</option>
+                  <option value="+966">SA +966</option>
+                  <option value="+974">QA +974</option>
+                  <option value="+965">KW +965</option>
+                  <option value="+973">BH +973</option>
+                  <option value="+968">OM +968</option>
+                  <option value="+972">IL +972</option>
+                  <option value="+20">EG +20</option>
+                  <option value="+27">ZA +27</option>
+                  <option value="+234">NG +234</option>
+                  <option value="+254">KE +254</option>
+                  <option value="+55">BR +55</option>
+                  <option value="+52">MX +52</option>
+                  <option value="+54">AR +54</option>
+                  <option value="+56">CL +56</option>
+                </select>
+                <input class="input" id="phone" type="tel" inputmode="numeric" maxlength="15" placeholder="8123 4567">
               </div>
               <div class="err" id="err-phone">Enter a valid 8-digit SG number.</div>
             </div>
@@ -1324,12 +1385,18 @@ function validateForm(){
   const name=document.getElementById('name').value.trim();
   const email=document.getElementById('email').value.trim();
   const phone=document.getElementById('phone').value.replace(/\D/g,'');
+  const cc=document.getElementById('cc').value;
+  const phoneOk=cc==='+65'?phone.length===8:(phone.length>=5&&phone.length<=14);
+  document.getElementById('err-phone').textContent=cc==='+65'?'Enter a valid 8-digit SG number.':'Enter a valid phone number.';
   if(!name){setErr('name',true);ok=false}else setErr('name',false);
   if(!emailRe.test(email)){setErr('email',true);ok=false}else setErr('email',false);
-  if(phone.length!==8){setErr('phone',true);ok=false}else setErr('phone',false);
+  if(!phoneOk){setErr('phone',true);ok=false}else setErr('phone',false);
   if(!timeline){document.getElementById('err-timeline').classList.add('show');ok=false}
   return ok;
 }
+document.getElementById('cc').addEventListener('change',e=>{
+  document.getElementById('phone').placeholder=e.target.value==='+65'?'8123 4567':'Phone number';
+});
 const API='https://api.renoresearch.sg';
 
 // Build the lead `data` object matching the server / admin-console schema
@@ -1337,7 +1404,7 @@ const API='https://api.renoresearch.sg';
 function buildUserData(imageUrls,pdfUrls){
   const name=document.getElementById('name').value.trim();
   const email=document.getElementById('email').value.trim();
-  const phone='+65'+document.getElementById('phone').value.replace(/\D/g,'');
+  const phone=document.getElementById('cc').value+document.getElementById('phone').value.replace(/\D/g,'');
   const flex=document.getElementById('flexBudget').checked;
   const pType=propertyType.value;
   const keys=document.getElementById('keysCollected').checked;
