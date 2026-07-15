@@ -187,7 +187,7 @@ function renderFirmBody(f){
         ${projects.length ? `<div class="section"><h2>Recent projects</h2><div class="pf-grid">${projects.slice(0,8).map(p => {
           const cover = p.coverImage || (p.imageUrls && p.imageUrls[0]) || (p.images && p.images[0]) || '';
           const title = (p.title || '').trim() || `${p.renovationType || p.propertyType || 'Renovation'} project`;
-          const pid = p.portfolioId || p._id || '';
+          const pid = p.portfolioId || p._id || p.id || '';
           const inner = `${cover ? `<img class="cv" src="${esc(cover)}" alt="${esc(title)}" loading="lazy">` : `<div class="cv"></div>`}<div class="bd"><b>${esc(title)}</b></div>`;
           return pid ? `<a class="pf-card" href="/portfolio-item.html?id=${encodeURIComponent(pid)}">${inner}</a>` : `<div class="pf-card">${inner}</div>`;
         }).join('')}</div></div>` : ''}
