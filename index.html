@@ -421,19 +421,13 @@ section{padding:4.8rem 0}
 .submit-row .btn{width:100%;padding:1.05rem;font-size:1rem}
 .form-foot{text-align:center;font-size:.74rem;color:var(--muted);margin-top:.8rem}
 
-/* OTP / success overlay (in-card states) */
-.state-otp,.state-done{display:none;text-align:center;padding:1rem .5rem}
-.state-otp.show,.state-done.show{display:block}
-.state-otp .ring,.state-done .ring{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 1rem}
-.state-otp .ring{background:var(--gold-soft);color:var(--gold-deep)}
+/* success overlay (in-card state) */
+.state-done{display:none;text-align:center;padding:1rem .5rem}
+.state-done.show{display:block}
+.state-done .ring{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 1rem}
 .state-done .ring{background:#E2F4EC;color:var(--ok)}
-.state-otp h3,.state-done h3{font-size:1.4rem;margin-bottom:.5rem}
-.state-otp p,.state-done p{color:var(--muted);font-size:.92rem}
-.otp-inputs{display:flex;gap:.6rem;justify-content:center;margin:1.4rem 0}
-.otp-inputs input{width:54px;height:60px;text-align:center;font-size:1.5rem;font-weight:700;border:1.5px solid var(--line);border-radius:12px}
-.otp-inputs input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,164,30,.16);outline:none}
-.resend{font-size:.8rem;color:var(--muted);margin-top:.6rem}
-.resend b{color:var(--gold-deep);cursor:pointer}
+.state-done h3{font-size:1.4rem;margin-bottom:.5rem}
+.state-done p{color:var(--muted);font-size:.92rem}
 
 /* ---------- TESTIMONIALS ---------- */
 .rating-hero{display:flex;align-items:center;gap:1.4rem;justify-content:center;margin-top:1.8rem;flex-wrap:wrap}
