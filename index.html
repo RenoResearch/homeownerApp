@@ -325,7 +325,12 @@ section{padding:4.8rem 0}
 /* ---------- LEAD FORM ---------- */
 .form-band{background:var(--cream-soft)}
 /* keep anchored sections clear of the 74px sticky app bar */
-#lead,#leadForm,#how,#video,#reviews,#designers{scroll-margin-top:90px}
+#lead,#leadForm,#how,#video,#reviews,#designers,#event,#eventForm{scroll-margin-top:90px}
+/* admin-uploaded horizontal event banner (hidden until one is set) */
+.ev-banner{display:block;margin:0 auto 2.2rem;max-width:60rem;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--cream-soft)}
+.ev-banner[hidden]{display:none}
+.ev-banner img{display:block;width:100%;height:auto}
 .form-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.6rem;align-items:start}
 .form-aside .badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;font-weight:600;font-size:.78rem;padding:.4rem .8rem;border-radius:999px}
 .form-aside h2{font-size:clamp(1.8rem,3vw,2.5rem);margin-top:1.1rem}
@@ -1096,6 +1101,164 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
   <div class="sd" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#fff" d="M0 80 L1440 26 L1440 80 Z"/></svg></div>
 </section>
 
+<!-- ===== 3b. EVENT REGISTRATION ===== -->
+<section class="bg-white sec-rel" id="event">
+    <span class="amb orb-g" style="width:300px;height:300px;left:-120px;top:60px"></span>
+  <div class="wrap">
+    <!-- Horizontal banner, uploaded by admin (Admin Console → Users → Add/Edit User → Event section) -->
+    <a class="ev-banner" id="eventBanner" hidden></a>
+
+    <div class="form-grid">
+      <!-- aside -->
+      <div class="form-aside reveal">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/></svg>
+          Event registration
+        </span>
+        <h2>Register for the Reno Research event.</h2>
+        <p>Sign up here and we'll save your spot. Share your renovation details now so the firms you meet on the day already know what you're looking for.</p>
+        <ul class="aside-list">
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Free to attend. Registration takes 60 seconds.</li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Meet vetted firms face to face.</li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> We'll confirm the venue, date and time with you.</li>
+        </ul>
+        <div class="privacy-note">
+          <span class="lk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+          <span>Your contact details stay private. We only share them with the handful of suitable firms, never sold or spammed.</span>
+        </div>
+      </div>
+
+      <!-- the card -->
+      <div class="card reveal" id="eventForm">
+        <!-- STATE: FORM -->
+        <div class="state-form" id="stateForm-ev">
+          <div class="field">
+            <label for="name-ev">Full name <span class="req">*</span></label>
+            <input class="input" id="name-ev" type="text" placeholder="e.g. Aditya Tan" autocomplete="name">
+            <div class="err" id="err-name-ev">Please enter your name.</div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="email-ev">Email <span class="req">*</span></label>
+              <input class="input" id="email-ev" type="email" placeholder="you@email.com" autocomplete="email">
+              <div class="err" id="err-email-ev">Enter a valid email address.</div>
+            </div>
+            <div class="field">
+              <label for="phone-ev">Phone <span class="req">*</span></label>
+              <div class="phone-wrap">
+                <!-- options are cloned from the main form's country-code list at init -->
+                <select class="cc" id="cc-ev" aria-label="Country code"><option value="+65" selected>SG +65</option></select>
+                <input class="input" id="phone-ev" type="tel" inputmode="numeric" maxlength="15" placeholder="8123 4567">
+              </div>
+              <div class="err" id="err-phone-ev">Enter a valid 8-digit SG number.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="propertyType-ev">Property / renovation type <span class="req">*</span></label>
+            <select class="select" id="propertyType-ev">
+              <option value="BTO HDB">BTO HDB</option>
+              <option value="Resale HDB">Resale HDB</option>
+              <option value="Landed">Landed</option>
+              <option value="Condo">Condo</option>
+              <option value="Partial">Partial</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <!-- conditional: Other (single-select) -->
+            <div class="subblock" id="otherBlock-ev">
+              <div class="sublabel">What kind of space? (choose one)</div>
+              <div class="chips" id="otherChips-ev">
+                <button type="button" class="chip-opt" data-val="Commercial">Commercial</button>
+                <button type="button" class="chip-opt" data-val="Restaurant Renovation">Restaurant Renovation</button>
+                <button type="button" class="chip-opt" data-val="Office Renovation">Office Renovation</button>
+                <button type="button" class="chip-opt" data-val="Others Not Specified">Others Not Specified</button>
+              </div>
+            </div>
+
+            <!-- conditional: Partial (multi-select) -->
+            <div class="subblock" id="partialBlock-ev">
+              <div class="sublabel">Which areas? (choose all that apply)</div>
+              <div class="chips" id="partialChips-ev">
+                <button type="button" class="chip-opt" data-val="Kitchen">Kitchen</button>
+                <button type="button" class="chip-opt" data-val="Toilet">Toilet</button>
+                <button type="button" class="chip-opt" data-val="Bedroom">Bedroom</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Renovation timeline <span class="req">*</span></label>
+            <div class="chips" id="timelineChips-ev">
+              <button type="button" class="chip-opt" data-val="Within 1 month">Within 1 month</button>
+              <button type="button" class="chip-opt" data-val="1-3 months">1-3 months</button>
+              <button type="button" class="chip-opt" data-val="3-6 months">3-6 months</button>
+              <button type="button" class="chip-opt" data-val="More than 6 months">More than 6 months</button>
+            </div>
+            <div class="err" id="err-timeline-ev">Please pick a timeline.</div>
+          </div>
+
+          <div class="field">
+            <div class="toggle-row">
+              <div class="tx"><b>Have you collected your keys?</b><span>Helps firms know if you're ready to start.</span></div>
+              <label class="switch"><input type="checkbox" id="keysCollected-ev"><span class="slider-sw"></span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Budget range</label>
+            <div class="budget-display">
+              <span class="v" id="budgetLabel-ev">S$30,000 to S$80,000</span>
+              <label class="check-line" style="font-weight:600;font-size:.84rem">
+                <input type="checkbox" id="flexBudget-ev"> I have a flexible budget
+              </label>
+            </div>
+            <div class="dual" id="dual-ev">
+              <div class="track"></div><div class="fill" id="fill-ev"></div>
+              <input type="range" id="rMin-ev" min="0" max="200000" step="1000" value="30000">
+              <input type="range" id="rMax-ev" min="0" max="200000" step="1000" value="80000">
+            </div>
+            <div class="minmax" id="minmax-ev">
+              <div class="mm"><span class="pfx">S$</span><input class="input" id="minBox-ev" type="text" inputmode="numeric" value="30,000"></div>
+              <div class="mm"><span class="pfx">S$</span><input class="input" id="maxBox-ev" type="text" inputmode="numeric" value="80,000"></div>
+            </div>
+            <div class="flex-note" id="flexNote-ev" style="display:none;color:var(--muted);font-size:.86rem;margin-top:.2rem">Great — we'll match you across budgets and your designer can advise on a range that fits.</div>
+          </div>
+
+          <div class="field">
+            <label>Floor plans <span style="color:var(--muted);font-weight:600">(optional · up to 5)</span></label>
+            <div class="dropzone" id="dropzone-ev">
+              <div class="di"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+              <b>Drag &amp; drop, or tap to upload</b>
+              <span>JPG, PNG or PDF · max 5 files</span>
+              <input type="file" id="fileInput-ev" accept="image/*,application/pdf" multiple hidden>
+            </div>
+            <div class="filelist" id="fileList-ev"></div>
+            <div class="hint" id="fileHint-ev" style="display:none"></div>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn btn-gold" id="submitBtn-ev" type="button">
+              <span id="submitText-ev">Register for the event</span>
+            </button>
+            <div class="err" id="err-submit-ev" style="margin-top:.6rem">Something went wrong. Please try again.</div>
+            <p class="form-foot">By registering you agree to be contacted about this event and by suitable firms about your renovation.</p>
+          </div>
+        </div>
+
+        <!-- STATE: DONE -->
+        <div class="state-done" id="stateDone-ev">
+          <div class="ring"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>You're registered.</h3>
+          <p>Thanks <b id="doneName-ev">there</b>! Your spot at the Reno Research event is saved. We'll be in touch with the venue, date and timing, and the firms that fit your brief will reach out too.</p>
+          <button class="btn btn-dark" type="button" style="margin-top:1.4rem" onclick="location.reload()">Register someone else</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 4. TESTIMONIALS ===== -->
 <section id="reviews" class="bg-white sec-rel pb-div">
     <span class="amb orb-g" style="width:320px;height:320px;right:-120px;top:-40px"></span>
@@ -1219,7 +1382,7 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:3.2rem 0
       </div>
       <div class="foot-col"><h4>Explore</h4><a href="firms.html">Firms</a><a href="portfolio.html">Portfolio</a><a href="blogs.html">Guides</a><a href="loan.html">Loan</a></div>
       <div class="foot-col"><h4>Company</h4><a href="#how">How it works</a><a href="#designers">Trusted IDs</a><a href="#reviews">Reviews</a></div>
-      <div class="foot-col"><h4>Homeowners</h4><a href="#leadForm">Get matched</a><a href="#video">Watch overview</a><a href="#leadForm">Submit floor plan</a></div>
+      <div class="foot-col"><h4>Homeowners</h4><a href="#leadForm">Get matched</a><a href="#event">Event registration</a><a href="#video">Watch overview</a><a href="#leadForm">Submit floor plan</a></div>
       <div class="foot-col"><h4>Contact</h4><a href="#">hello@renoresearch.sg</a><a href="#">WhatsApp us</a><a href="#">renoresearch.sg</a></div>
     </div>
     <div class="foot-bottom">
@@ -1243,294 +1406,380 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   setInterval(()=>{ if(firms[i]) firms[i].classList.add('match'); i=(i+1)%firms.length; }, 1000);
 })();
 
-/* ---------- property type conditionals ---------- */
-const propertyType=document.getElementById('propertyType');
-const otherBlock=document.getElementById('otherBlock');
-const partialBlock=document.getElementById('partialBlock');
-let otherSelection=null;            // single
-let partialSelections=new Set();    // multi
-function syncPropertyBlocks(){
-  const v=propertyType.value;
-  otherBlock.classList.toggle('show',v==='Other');
-  partialBlock.classList.toggle('show',v==='Partial');
-  if(v!=='Other'){otherSelection=null;document.querySelectorAll('#otherChips .chip-opt').forEach(c=>c.classList.remove('on'));}
-  if(v!=='Partial'){partialSelections.clear();document.querySelectorAll('#partialChips .chip-opt').forEach(c=>c.classList.remove('on'));}
-}
-propertyType.addEventListener('change',syncPropertyBlocks);
-
-/* single-select chips (Other) */
-document.querySelectorAll('#otherChips .chip-opt').forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    document.querySelectorAll('#otherChips .chip-opt').forEach(c=>c.classList.remove('on'));
-    chip.classList.add('on');otherSelection=chip.dataset.val;
-  });
-});
-/* multi-select chips (Partial) */
-document.querySelectorAll('#partialChips .chip-opt').forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    chip.classList.toggle('on');
-    const v=chip.dataset.val;
-    chip.classList.contains('on')?partialSelections.add(v):partialSelections.delete(v);
-  });
-});
-
-/* ---------- timeline single-select ---------- */
-let timeline=null;
-document.querySelectorAll('#timelineChips .chip-opt').forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    document.querySelectorAll('#timelineChips .chip-opt').forEach(c=>c.classList.remove('on'));
-    chip.classList.add('on');timeline=chip.dataset.val;
-    document.getElementById('err-timeline').classList.remove('show');
-  });
-});
-
-/* ---------- budget dual slider <-> min/max boxes ---------- */
-const rMin=document.getElementById('rMin'),rMax=document.getElementById('rMax');
-const minBox=document.getElementById('minBox'),maxBox=document.getElementById('maxBox');
-const fill=document.getElementById('fill'),budgetLabel=document.getElementById('budgetLabel');
-const MAX=200000,MIN_GAP=5000;
-const fmt=n=>'S$'+Number(n).toLocaleString('en-SG');
-const num=s=>parseInt(String(s).replace(/[^\d]/g,''),10)||0;
-function paintFill(){
-  const lo=+rMin.value,hi=+rMax.value;
-  fill.style.left=(lo/MAX*100)+'%';
-  fill.style.width=((hi-lo)/MAX*100)+'%';
-  budgetLabel.textContent=fmt(lo)+' to '+fmt(hi);
-}
-function fromSlider(){
-  let lo=+rMin.value,hi=+rMax.value;
-  if(lo>hi-MIN_GAP){ if(document.activeElement===rMin){lo=hi-MIN_GAP;rMin.value=lo;}else{hi=lo+MIN_GAP;rMax.value=hi;} }
-  minBox.value=Number(rMin.value).toLocaleString('en-SG');
-  maxBox.value=Number(rMax.value).toLocaleString('en-SG');
-  paintFill();
-}
-function fromBoxes(which){
-  let lo=Math.min(Math.max(num(minBox.value),0),MAX);
-  let hi=Math.min(Math.max(num(maxBox.value),0),MAX);
-  if(which==='min'&&lo>hi-MIN_GAP)hi=Math.min(lo+MIN_GAP,MAX);
-  if(which==='max'&&hi<lo+MIN_GAP)lo=Math.max(hi-MIN_GAP,0);
-  rMin.value=lo;rMax.value=hi;
-  minBox.value=lo.toLocaleString('en-SG');maxBox.value=hi.toLocaleString('en-SG');
-  paintFill();
-}
-rMin.addEventListener('input',fromSlider);
-rMax.addEventListener('input',fromSlider);
-minBox.addEventListener('change',()=>fromBoxes('min'));
-maxBox.addEventListener('change',()=>fromBoxes('max'));
-minBox.addEventListener('input',()=>{minBox.value=minBox.value.replace(/[^\d,]/g,'')});
-maxBox.addEventListener('input',()=>{maxBox.value=maxBox.value.replace(/[^\d,]/g,'')});
-paintFill();
-
-/* ---------- flexible budget → hide range + slider ---------- */
-const flexBudget=document.getElementById('flexBudget');
-const dual=document.getElementById('dual'),minmax=document.getElementById('minmax'),flexNote=document.getElementById('flexNote');
-function syncFlexBudget(){
-  const flex=flexBudget.checked;
-  dual.style.display=flex?'none':'';
-  minmax.style.display=flex?'none':'';
-  flexNote.style.display=flex?'block':'none';
-  budgetLabel.textContent=flex?'Flexible budget':fmt(+rMin.value)+' to '+fmt(+rMax.value);
-}
-flexBudget.addEventListener('change',syncFlexBudget);
-syncFlexBudget();
-
-/* ---------- file upload (max 5, drag&drop, split img/pdf) ---------- */
-const dropzone=document.getElementById('dropzone'),fileInput=document.getElementById('fileInput');
-const fileList=document.getElementById('fileList'),fileHint=document.getElementById('fileHint');
-let floorPlanFiles=[];
-dropzone.addEventListener('click',()=>fileInput.click());
-dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('drag')});
-dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag'));
-dropzone.addEventListener('drop',e=>{e.preventDefault();dropzone.classList.remove('drag');addFiles(e.dataTransfer.files)});
-fileInput.addEventListener('change',e=>addFiles(e.target.files));
-function addFiles(list){
-  for(const f of list){
-    if(floorPlanFiles.length>=5){flashHint('Max 5 files. Remove one to add more.');break;}
-    if(!/^image\/|application\/pdf/.test(f.type)){flashHint('Only images and PDFs are accepted.');continue;}
-    floorPlanFiles.push(f);
-  }
-  renderFiles();
-}
-function flashHint(msg){fileHint.style.display='block';fileHint.style.color='#c0392b';fileHint.textContent=msg;setTimeout(()=>{fileHint.style.display='none'},2600);}
-function renderFiles(){
-  fileList.innerHTML='';
-  floorPlanFiles.forEach((f,idx)=>{
-    const isPdf=f.type==='application/pdf';
-    const row=document.createElement('div');row.className='fileitem';
-    row.innerHTML=`<span class="ft ${isPdf?'pdf':'img'}">${isPdf?'PDF':'IMG'}</span><span class="fn">${f.name}</span><button class="rm" aria-label="Remove">×</button>`;
-    row.querySelector('.rm').addEventListener('click',()=>{floorPlanFiles.splice(idx,1);renderFiles();});
-    fileList.appendChild(row);
-  });
-  const imgs=floorPlanFiles.filter(f=>f.type!=='application/pdf').length;
-  const pdfs=floorPlanFiles.length-imgs;
-  if(floorPlanFiles.length){fileHint.style.display='block';fileHint.style.color='var(--muted)';fileHint.textContent=`${floorPlanFiles.length}/5 attached · ${imgs} image${imgs!==1?'s':''}, ${pdfs} PDF${pdfs!==1?'s':''}`;}
-  else fileHint.style.display='none';
-}
-
-/* ---------- validation + submit flow ---------- */
-const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-function setErr(id,show){
-  const inp=document.getElementById(id),err=document.getElementById('err-'+id);
-  if(inp)inp.classList.toggle('bad',show);
-  if(err)err.classList.toggle('show',show);
-}
-function validateForm(){
-  let ok=true;
-  const name=document.getElementById('name').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const phone=document.getElementById('phone').value.replace(/\D/g,'');
-  const cc=document.getElementById('cc').value;
-  const phoneOk=cc==='+65'?phone.length===8:(phone.length>=5&&phone.length<=14);
-  document.getElementById('err-phone').textContent=cc==='+65'?'Enter a valid 8-digit SG number.':'Enter a valid phone number.';
-  if(!name){setErr('name',true);ok=false}else setErr('name',false);
-  if(!emailRe.test(email)){setErr('email',true);ok=false}else setErr('email',false);
-  if(!phoneOk){setErr('phone',true);ok=false}else setErr('phone',false);
-  if(!timeline){document.getElementById('err-timeline').classList.add('show');ok=false}
-  return ok;
-}
-document.getElementById('cc').addEventListener('change',e=>{
-  document.getElementById('phone').placeholder=e.target.value==='+65'?'8123 4567':'Phone number';
-});
 const API='https://api.renoresearch.sg';
+const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Build the lead `data` object matching the server / admin-console schema
-// (mirrors AuthService().registerLead → _buildUserData in the homeowner app).
-function buildUserData(imageUrls,pdfUrls){
-  const name=document.getElementById('name').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const phone=document.getElementById('cc').value+document.getElementById('phone').value.replace(/\D/g,'');
-  const flex=document.getElementById('flexBudget').checked;
-  const pType=propertyType.value;
-  const keys=document.getElementById('keysCollected').checked;
-  return {
-    role:'Homeowner', id:'lead_'+Date.now(), userType:'Homeowner',
-    name, email, phone, profileImage:null,
-    address:'', unitNumber:'', postalCode:'',
-    companyName:'', uen:'', bio:'',
-    specialRequirements:'',
-    renovationType:pType,
-    otherRenovationType:pType==='Other'?otherSelection:null,
-    renovationTypes:[pType],
-    renovationTiming:timeline, timeline:timeline,
-    partialSelections:pType==='Partial'?[...partialSelections]:[],
-    hasCollectedKeys:keys, keysCollected:keys,
-    isFlexibleBudget:flex,
-    selectedBudgetRangeLabel:flex?'Flexible':null,
-    selectedBudgetValues:{min:+rMin.value,max:+rMax.value},
-    budgetFlexibility:null,
-    renovationLoanInterest:false,
-    renovationLoan:{isLookingForLoan:false,loanTypes:[]},
-    selectedLoanTypes:[],
-    allowDesignerMatching:true,
-    meetingExpertInterest:false,
-    importantFactor:'Quality of materials and workmanship',
-    newLeadsNotification:true, portfolioUpdatesNotification:false,
-    newMatchesNotification:true, messagesNotification:true, leadUpdatesNotification:false,
-    floorplanImages:imageUrls, floorplanFiles:pdfUrls,
-    siteImages:[], portfolioImages:[], accreditationFiles:[],
-    appointmentSlots:[], appointmentDates:[],
-    socialLoginData:null, renovationPlans:[],
-    rateLimiting:{periodStartTime:new Date().toISOString(),requestCount:0,requestsInPeriod:[]},
-    leadFormMetadata:{submittedFromLeadForm:true,advancedFormFilled:false,submissionTimestamp:new Date().toISOString(),formVersion:'1.0'}
-  };
-}
+/* ---------- lead form engine ----------
+   The page runs two identical forms: the main "Get matched" form (#leadForm,
+   element ids unsuffixed) and the event registration form (#eventForm, ids
+   suffixed "-ev"). initLeadForm() wires one instance; every element is looked
+   up as <base id> + suffix, so the markup of the two stays in sync.        */
+function initLeadForm(sfx,opts){
+  opts=opts||{};
+  const $=id=>document.getElementById(id+sfx);
+  const chipsIn=base=>document.querySelectorAll('#'+base+sfx+' .chip-opt');
+  if(!$('submitBtn')) return;   // form not present on this page
 
-// Upload floor-plan files to /uploadfile (public, multipart). Returns image + pdf URLs.
-async function uploadFloorPlans(){
-  const imageUrls=[],pdfUrls=[];
-  for(const f of floorPlanFiles){
-    const fd=new FormData(); fd.append('file',f,f.name);
-    try{
-      const res=await fetch(`${API}/uploadfile`,{method:'POST',body:fd});
-      if(!res.ok) continue;
-      const j=await res.json();
-      const url=(j&&j.file&&j.file.url)||j.url||j.fileUrl||j.Location;
-      if(url&&/^https?:/.test(url)){ (f.type==='application/pdf'?pdfUrls:imageUrls).push(url); }
-    }catch(_){/* skip failed upload, keep submission going */}
+  /* ---------- property type conditionals ---------- */
+  const propertyType=$('propertyType');
+  const otherBlock=$('otherBlock');
+  const partialBlock=$('partialBlock');
+  let otherSelection=null;            // single
+  let partialSelections=new Set();    // multi
+  function syncPropertyBlocks(){
+    const v=propertyType.value;
+    otherBlock.classList.toggle('show',v==='Other');
+    partialBlock.classList.toggle('show',v==='Partial');
+    if(v!=='Other'){otherSelection=null;chipsIn('otherChips').forEach(c=>c.classList.remove('on'));}
+    if(v!=='Partial'){partialSelections.clear();chipsIn('partialChips').forEach(c=>c.classList.remove('on'));}
   }
-  return {imageUrls,pdfUrls};
-}
+  propertyType.addEventListener('change',syncPropertyBlocks);
 
-const stateForm=document.getElementById('stateForm');
-const stateDone=document.getElementById('stateDone');
-const submitBtn=document.getElementById('submitBtn'),submitText=document.getElementById('submitText');
-const errSubmit=document.getElementById('err-submit');
+  /* single-select chips (Other) */
+  chipsIn('otherChips').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chipsIn('otherChips').forEach(c=>c.classList.remove('on'));
+      chip.classList.add('on');otherSelection=chip.dataset.val;
+    });
+  });
+  /* multi-select chips (Partial) */
+  chipsIn('partialChips').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chip.classList.toggle('on');
+      const v=chip.dataset.val;
+      chip.classList.contains('on')?partialSelections.add(v):partialSelections.delete(v);
+    });
+  });
 
-submitBtn.addEventListener('click',async ()=>{
-  if(submitBtn.disabled) return;
-  errSubmit.classList.remove('show');
-  if(!validateForm()){
-    const firstBad=document.querySelector('.err.show, .input.bad, .select.bad');
-    if(firstBad)firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-    return;
+  /* ---------- timeline single-select ---------- */
+  let timeline=null;
+  chipsIn('timelineChips').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chipsIn('timelineChips').forEach(c=>c.classList.remove('on'));
+      chip.classList.add('on');timeline=chip.dataset.val;
+      $('err-timeline').classList.remove('show');
+    });
+  });
+
+  /* ---------- budget dual slider <-> min/max boxes ---------- */
+  const rMin=$('rMin'),rMax=$('rMax');
+  const minBox=$('minBox'),maxBox=$('maxBox');
+  const fill=$('fill'),budgetLabel=$('budgetLabel');
+  const MAX=200000,MIN_GAP=5000;
+  const fmt=n=>'S$'+Number(n).toLocaleString('en-SG');
+  const num=s=>parseInt(String(s).replace(/[^\d]/g,''),10)||0;
+  function paintFill(){
+    const lo=+rMin.value,hi=+rMax.value;
+    fill.style.left=(lo/MAX*100)+'%';
+    fill.style.width=((hi-lo)/MAX*100)+'%';
+    budgetLabel.textContent=fmt(lo)+' to '+fmt(hi);
   }
-  submitText.textContent='Uploading & matching…';submitBtn.disabled=true;
-  try{
-    const {imageUrls,pdfUrls}=await uploadFloorPlans();
-    const userData=buildUserData(imageUrls,pdfUrls);
-    const body=new URLSearchParams({
-      phone:userData.phone,
-      email:userData.email,
-      data:JSON.stringify(userData),
-      registrationSource:'lead-registration'
-    });
-    const res=await fetch(`${API}/registerlead`,{
-      method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
-      body
-    });
-    const j=await res.json().catch(()=>({}));
-    if(res.ok && j.success){
-      // Meta Pixel: lead conversion
-      if(window.fbq) fbq('track','Lead',{
-        content_name:'Lead Registration',
-        content_category:userData.renovationType,
-        currency:'SGD',
-        value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0
-      });
-      document.getElementById('doneName').textContent=userData.name.split(' ')[0]||'there';
-      stateForm.style.display='none';stateDone.classList.add('show');
-      stateDone.scrollIntoView({behavior:'smooth',block:'center'});
-    }else{
-      errSubmit.textContent=(j&&j.msg)||'We couldn’t submit your request. Please try again.';
-      errSubmit.classList.add('show');
+  function fromSlider(){
+    let lo=+rMin.value,hi=+rMax.value;
+    if(lo>hi-MIN_GAP){ if(document.activeElement===rMin){lo=hi-MIN_GAP;rMin.value=lo;}else{hi=lo+MIN_GAP;rMax.value=hi;} }
+    minBox.value=Number(rMin.value).toLocaleString('en-SG');
+    maxBox.value=Number(rMax.value).toLocaleString('en-SG');
+    paintFill();
+  }
+  function fromBoxes(which){
+    let lo=Math.min(Math.max(num(minBox.value),0),MAX);
+    let hi=Math.min(Math.max(num(maxBox.value),0),MAX);
+    if(which==='min'&&lo>hi-MIN_GAP)hi=Math.min(lo+MIN_GAP,MAX);
+    if(which==='max'&&hi<lo+MIN_GAP)lo=Math.max(hi-MIN_GAP,0);
+    rMin.value=lo;rMax.value=hi;
+    minBox.value=lo.toLocaleString('en-SG');maxBox.value=hi.toLocaleString('en-SG');
+    paintFill();
+  }
+  rMin.addEventListener('input',fromSlider);
+  rMax.addEventListener('input',fromSlider);
+  minBox.addEventListener('change',()=>fromBoxes('min'));
+  maxBox.addEventListener('change',()=>fromBoxes('max'));
+  minBox.addEventListener('input',()=>{minBox.value=minBox.value.replace(/[^\d,]/g,'')});
+  maxBox.addEventListener('input',()=>{maxBox.value=maxBox.value.replace(/[^\d,]/g,'')});
+  paintFill();
+
+  /* ---------- flexible budget → hide range + slider ---------- */
+  const flexBudget=$('flexBudget');
+  const dual=$('dual'),minmax=$('minmax'),flexNote=$('flexNote');
+  function syncFlexBudget(){
+    const flex=flexBudget.checked;
+    dual.style.display=flex?'none':'';
+    minmax.style.display=flex?'none':'';
+    flexNote.style.display=flex?'block':'none';
+    budgetLabel.textContent=flex?'Flexible budget':fmt(+rMin.value)+' to '+fmt(+rMax.value);
+  }
+  flexBudget.addEventListener('change',syncFlexBudget);
+  syncFlexBudget();
+
+  /* ---------- file upload (max 5, drag&drop, split img/pdf) ---------- */
+  const dropzone=$('dropzone'),fileInput=$('fileInput');
+  const fileList=$('fileList'),fileHint=$('fileHint');
+  let floorPlanFiles=[];
+  dropzone.addEventListener('click',()=>fileInput.click());
+  dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('drag')});
+  dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag'));
+  dropzone.addEventListener('drop',e=>{e.preventDefault();dropzone.classList.remove('drag');addFiles(e.dataTransfer.files)});
+  fileInput.addEventListener('change',e=>addFiles(e.target.files));
+  function addFiles(list){
+    for(const f of list){
+      if(floorPlanFiles.length>=5){flashHint('Max 5 files. Remove one to add more.');break;}
+      if(!/^image\/|application\/pdf/.test(f.type)){flashHint('Only images and PDFs are accepted.');continue;}
+      floorPlanFiles.push(f);
     }
-  }catch(err){
-    errSubmit.textContent='Network error — please check your connection and try again.';
-    errSubmit.classList.add('show');
-  }finally{
-    submitBtn.disabled=false;submitText.textContent='Get my matches';
+    renderFiles();
   }
-});
+  function flashHint(msg){fileHint.style.display='block';fileHint.style.color='#c0392b';fileHint.textContent=msg;setTimeout(()=>{fileHint.style.display='none'},2600);}
+  function renderFiles(){
+    fileList.innerHTML='';
+    floorPlanFiles.forEach((f,idx)=>{
+      const isPdf=f.type==='application/pdf';
+      const row=document.createElement('div');row.className='fileitem';
+      row.innerHTML=`<span class="ft ${isPdf?'pdf':'img'}">${isPdf?'PDF':'IMG'}</span><span class="fn">${f.name}</span><button class="rm" aria-label="Remove">×</button>`;
+      row.querySelector('.rm').addEventListener('click',()=>{floorPlanFiles.splice(idx,1);renderFiles();});
+      fileList.appendChild(row);
+    });
+    const imgs=floorPlanFiles.filter(f=>f.type!=='application/pdf').length;
+    const pdfs=floorPlanFiles.length-imgs;
+    if(floorPlanFiles.length){fileHint.style.display='block';fileHint.style.color='var(--muted)';fileHint.textContent=`${floorPlanFiles.length}/5 attached · ${imgs} image${imgs!==1?'s':''}, ${pdfs} PDF${pdfs!==1?'s':''}`;}
+    else fileHint.style.display='none';
+  }
 
+  /* ---------- validation ---------- */
+  function setErr(id,show){
+    const inp=$(id),err=$('err-'+id);
+    if(inp)inp.classList.toggle('bad',show);
+    if(err)err.classList.toggle('show',show);
+  }
+  function validateForm(){
+    let ok=true;
+    const name=$('name').value.trim();
+    const email=$('email').value.trim();
+    const phone=$('phone').value.replace(/\D/g,'');
+    const cc=$('cc').value;
+    const phoneOk=cc==='+65'?phone.length===8:(phone.length>=5&&phone.length<=14);
+    $('err-phone').textContent=cc==='+65'?'Enter a valid 8-digit SG number.':'Enter a valid phone number.';
+    if(!name){setErr('name',true);ok=false}else setErr('name',false);
+    if(!emailRe.test(email)){setErr('email',true);ok=false}else setErr('email',false);
+    if(!phoneOk){setErr('phone',true);ok=false}else setErr('phone',false);
+    if(!timeline){$('err-timeline').classList.add('show');ok=false}
+    return ok;
+  }
+  $('cc').addEventListener('change',e=>{
+    $('phone').placeholder=e.target.value==='+65'?'8123 4567':'Phone number';
+  });
 
-/* init */
-syncPropertyBlocks();
+  // Build the lead `data` object matching the server / admin-console schema
+  // (mirrors AuthService().registerLead → _buildUserData in the homeowner app).
+  function buildUserData(imageUrls,pdfUrls){
+    const name=$('name').value.trim();
+    const email=$('email').value.trim();
+    const phone=$('cc').value+$('phone').value.replace(/\D/g,'');
+    const flex=flexBudget.checked;
+    const pType=propertyType.value;
+    const keys=$('keysCollected').checked;
+    const userData={
+      role:'Homeowner', id:'lead_'+Date.now(), userType:'Homeowner',
+      name, email, phone, profileImage:null,
+      address:'', unitNumber:'', postalCode:'',
+      companyName:'', uen:'', bio:'',
+      specialRequirements:'',
+      renovationType:pType,
+      otherRenovationType:pType==='Other'?otherSelection:null,
+      renovationTypes:[pType],
+      renovationTiming:timeline, timeline:timeline,
+      partialSelections:pType==='Partial'?[...partialSelections]:[],
+      hasCollectedKeys:keys, keysCollected:keys,
+      isFlexibleBudget:flex,
+      selectedBudgetRangeLabel:flex?'Flexible':null,
+      selectedBudgetValues:{min:+rMin.value,max:+rMax.value},
+      budgetFlexibility:null,
+      renovationLoanInterest:false,
+      renovationLoan:{isLookingForLoan:false,loanTypes:[]},
+      selectedLoanTypes:[],
+      allowDesignerMatching:true,
+      meetingExpertInterest:false,
+      importantFactor:'Quality of materials and workmanship',
+      newLeadsNotification:true, portfolioUpdatesNotification:false,
+      newMatchesNotification:true, messagesNotification:true, leadUpdatesNotification:false,
+      floorplanImages:imageUrls, floorplanFiles:pdfUrls,
+      siteImages:[], portfolioImages:[], accreditationFiles:[],
+      appointmentSlots:[], appointmentDates:[],
+      socialLoginData:null, renovationPlans:[],
+      rateLimiting:{periodStartTime:new Date().toISOString(),requestCount:0,requestsInPeriod:[]},
+      leadFormMetadata:{submittedFromLeadForm:true,advancedFormFilled:false,submissionTimestamp:new Date().toISOString(),formVersion:'1.0'}
+    };
+    if(opts.eventRegistration){
+      // Event sign-up: the admin console's "Attending an event / workshop?"
+      // block. The event is pre-set; date/time are keyed in by an admin later,
+      // so the entry is marked detailsPending until then.
+      const entry={
+        type:EVENT_DEFAULT.type, name:EVENT_DEFAULT.name,
+        date:'', time:'',
+        detailsPending:true,
+        selfRegistered:true,
+        registeredAt:new Date().toISOString()
+      };
+      userData.eventAttendance={
+        attending:true,
+        events:[entry],
+        // legacy single-event mirror, same as the admin console writes
+        type:entry.type, name:entry.name, date:'', time:'',
+        detailsPending:true
+      };
+      userData.leadFormMetadata.formVersion='event-1.0';
+    }
+    return userData;
+  }
 
-/* ---------- shareable "scroll to lead form" slugs ----------
-   Any of these hashes scroll to the lead form (offset for the sticky bar)
-   and focus the first field:
-     /#get-matched   /#apply   /#get-quote   /#book   /#lead   /#form        */
+  // Upload floor-plan files to /uploadfile (public, multipart). Returns image + pdf URLs.
+  async function uploadFloorPlans(){
+    const imageUrls=[],pdfUrls=[];
+    for(const f of floorPlanFiles){
+      const fd=new FormData(); fd.append('file',f,f.name);
+      try{
+        const res=await fetch(`${API}/uploadfile`,{method:'POST',body:fd});
+        if(!res.ok) continue;
+        const j=await res.json();
+        const url=(j&&j.file&&j.file.url)||j.url||j.fileUrl||j.Location;
+        if(url&&/^https?:/.test(url)){ (f.type==='application/pdf'?pdfUrls:imageUrls).push(url); }
+      }catch(_){/* skip failed upload, keep submission going */}
+    }
+    return {imageUrls,pdfUrls};
+  }
+
+  /* ---------- submit ---------- */
+  const stateForm=$('stateForm');
+  const stateDone=$('stateDone');
+  const submitBtn=$('submitBtn'),submitText=$('submitText');
+  const errSubmit=$('err-submit');
+  const idleLabel=submitText.textContent;
+
+  submitBtn.addEventListener('click',async ()=>{
+    if(submitBtn.disabled) return;
+    errSubmit.classList.remove('show');
+    if(!validateForm()){
+      const firstBad=stateForm.querySelector('.err.show, .input.bad, .select.bad');
+      if(firstBad)firstBad.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    submitText.textContent=opts.busyLabel||'Uploading & matching…';submitBtn.disabled=true;
+    try{
+      const {imageUrls,pdfUrls}=await uploadFloorPlans();
+      const userData=buildUserData(imageUrls,pdfUrls);
+      const body=new URLSearchParams({
+        phone:userData.phone,
+        email:userData.email,
+        data:JSON.stringify(userData),
+        registrationSource:opts.registrationSource||'lead-registration'
+      });
+      const res=await fetch(`${API}/registerlead`,{
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},
+        body
+      });
+      const j=await res.json().catch(()=>({}));
+      if(res.ok && j.success){
+        // Meta Pixel: lead conversion
+        if(window.fbq) fbq('track','Lead',{
+          content_name:opts.pixelName||'Lead Registration',
+          content_category:userData.renovationType,
+          currency:'SGD',
+          value:userData.selectedBudgetValues?userData.selectedBudgetValues.min:0
+        });
+        $('doneName').textContent=userData.name.split(' ')[0]||'there';
+        stateForm.style.display='none';stateDone.classList.add('show');
+        stateDone.scrollIntoView({behavior:'smooth',block:'center'});
+      }else{
+        errSubmit.textContent=(j&&j.msg)||'We couldn’t submit your request. Please try again.';
+        errSubmit.classList.add('show');
+      }
+    }catch(err){
+      errSubmit.textContent='Network error — please check your connection and try again.';
+      errSubmit.classList.add('show');
+    }finally{
+      submitBtn.disabled=false;submitText.textContent=idleLabel;
+    }
+  });
+
+  /* init */
+  syncPropertyBlocks();
+}
+
+/* The event form is pre-tagged with this event; an admin fills in the date and
+   time afterwards in Admin Console → Users → Add/Edit User → Event section. */
+const EVENT_DEFAULT={type:'Event',name:'RenoResearch Event'};
+
+initLeadForm('');
+
+/* ---------- event registration form ---------- */
 (function(){
-  const ALIASES=['get-matched','getmatched','apply','get-quote','quote','book','lead','leadform','form'];
-  function goToLead(){
+  const evForm=document.getElementById('eventForm');
+  if(!evForm) return;
+  // Reuse the main form's country-code list so the two never drift apart.
+  const src=document.getElementById('cc'),dst=document.getElementById('cc-ev');
+  if(src&&dst&&src.options.length>1){
+    dst.innerHTML='';
+    for(const o of src.options) dst.appendChild(o.cloneNode(true));
+    dst.value='+65';
+  }
+  initLeadForm('-ev',{
+    eventRegistration:true,
+    registrationSource:'event-registration',
+    busyLabel:'Registering…',
+    pixelName:'Event Registration'
+  });
+
+  // Horizontal banner uploaded by an admin (Admin Console → Add/Edit User →
+  // Event section). Hidden entirely when no banner is set.
+  fetch(`${API}/site/event-banner`,{headers:{Accept:'application/json'}})
+    .then(r=>r.ok?r.json():null)
+    .then(j=>{
+      const b=j&&j.banner;
+      if(!b||!b.enabled||!b.imageUrl) return;
+      const wrap=document.getElementById('eventBanner');
+      if(!wrap) return;
+      const img=document.createElement('img');
+      img.src=b.imageUrl;
+      img.alt=b.alt||'Reno Research event';
+      img.loading='lazy';
+      wrap.appendChild(img);
+      if(b.linkUrl){wrap.href=b.linkUrl;wrap.target='_blank';wrap.rel='noopener';}
+      wrap.hidden=false;
+    })
+    .catch(()=>{/* no banner — section renders without it */});
+})();
+
+/* ---------- shareable "scroll to a form" slugs ----------
+   Lead form (offset for the sticky bar, first field focused):
+     /#get-matched   /#apply   /#get-quote   /#book   /#lead   /#form
+   Event registration form (this is the QR-code / printed link target):
+     /#event   /#event-registration   /#register   /#rsvp                  */
+(function(){
+  const TARGETS=[
+    {aliases:['get-matched','getmatched','apply','get-quote','quote','book','lead','leadform','form'],
+     card:'leadForm', section:'lead', first:'name'},
+    // the event target lands on the section so the banner and heading are
+    // visible first — this is what a QR scan opens
+    {aliases:['event','event-signup','event-registration','eventform','register','rsvp'],
+     card:'event', section:'event', first:'name-ev'}
+  ];
+  function goTo(t){
     // Scroll straight to the form card so the inputs are visible without
     // manual scrolling (on mobile the aside text stacks above it).
-    const lead=document.getElementById('leadForm')||document.getElementById('lead');
-    if(!lead) return;
-    lead.scrollIntoView({behavior:'smooth',block:'start'});
-    const first=document.getElementById('name');
+    const card=document.getElementById(t.card)||document.getElementById(t.section);
+    if(!card) return;
+    card.scrollIntoView({behavior:'smooth',block:'start'});
+    const first=document.getElementById(t.first);
     if(first) setTimeout(()=>{try{first.focus({preventScroll:true});}catch(e){}},600);
   }
-  function handleHash(){
+  function match(){
     const h=(location.hash||'').replace('#','').toLowerCase();
-    if(ALIASES.includes(h)) goToLead();
+    return TARGETS.find(t=>t.aliases.includes(h));
   }
-  window.addEventListener('hashchange',handleHash);
+  window.addEventListener('hashchange',()=>{const t=match();if(t)goTo(t);});
   // run once on load (after layout settles) for direct links / refreshes
-  if(ALIASES.includes((location.hash||'').replace('#','').toLowerCase())){
-    window.addEventListener('load',()=>setTimeout(goToLead,120));
-  }
+  const initial=match();
+  if(initial) window.addEventListener('load',()=>setTimeout(()=>goTo(initial),120));
 })();
 
 /* ---------- nav "More" dropdown: open on click (required on touch/mobile) ---------- */
